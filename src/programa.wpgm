@@ -1,0 +1,17 @@
+import movimiento.*
+import wollok.game.*
+
+
+
+program Escenario {
+	game.title("Movimiento del personaje")
+	game.height(10)
+	game.width(10)
+	game.boardGround("fondoEspacial.jpg")
+
+	tutorial.iniciar()
+
+	game.showAttributes(personaje) //Debug
+
+	game.start()
+}
