@@ -28,6 +28,7 @@ object personaje {
 object enemigo {
 
 	var property position = game.center()
+	var property girar = 0
 
 	method image() = "devil.png"
 
@@ -43,19 +44,39 @@ object enemigo {
 	 * 	configure.DetenerEventosTiempo("GRAVEDAD")
 	 * }
 	 */
-
-	//REVISAR PORQUE NO GENERA EFECTO
+	// REVISAR PORQUE NO GENERA EFECTO
 	method movimiento() {
-		if (position.x() <= 9) {
-			position = position.right(1)
+	if (not self.colisionoConPersonaje()){
+		if (girar == 0) {
+			self.derecha()
+			if (position.x() == 10) {
+				girar = 1
+			}
 		}
-		if (position.x() >= 0) {
-			position = position.left(1)
+		if (girar == 1) {
+			self.izquierda()
+			if (position.x() == 0) {
+				girar = 0
+			}
 		}
+	}
+	
+	}
+
+	method derecha() {
+		position = position.right(1)
+	}
+
+	method izquierda() {
+		position = position.left(1)
 	}
 
 	method eventoMovimiento() {
-		game.onTick(1000, "MOVIMIENTO", { self.movimiento()})//habria que revisar este metodo 
+		game.onTick(300, "MOVIMIENTO", { self.movimiento()}) // habria que revisar este metodo 
+	}
+
+	method colisionoConPersonaje() {
+		return position == personaje.position()
 	}
 
 }
@@ -90,7 +111,7 @@ object tutorial {
 		game.addVisual(enemigo)
 		config.configurarTeclas()
 		config.configurarColisiones()
-		enemigo.eventoMovimiento()//este esta fallando
+		enemigo.eventoMovimiento() // este esta fallando
 	}
 
 }

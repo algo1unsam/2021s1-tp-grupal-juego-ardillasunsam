@@ -12,6 +12,7 @@ program Escenario {
 	tutorial.iniciar()
 
 	game.showAttributes(personaje) //Debug
+	game.showAttributes(enemigo)
 
 	game.start()
 }
