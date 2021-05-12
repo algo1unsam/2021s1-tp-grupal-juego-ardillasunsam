@@ -1,6 +1,7 @@
 import movimiento.*
 import wollok.game.*
-
+import enemigos.*
+import personaje.*
 
 
 program Escenario {
@@ -11,8 +12,8 @@ program Escenario {
 
 	tutorial.iniciar()
 
-	game.showAttributes(personaje) //Debug
-	game.showAttributes(enemigo)
+	//game.showAttributes(personaje) 
+	//game.showAttributes(enemigo)
 
 	game.start()
 }
