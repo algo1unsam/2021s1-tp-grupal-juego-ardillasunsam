@@ -23,6 +23,8 @@ object config {
 		game.removeTickEvent(evento)
 	}
 
+
+
 }
 
 object tutorial {
@@ -31,8 +33,12 @@ object tutorial {
 		game.addVisual(personaje)
 		config.configurarTeclas()
 		config.configurarColisiones()
-		const dragon1 = new Enemigo(position = game.center())
-		const dragon2 = new Enemigo(position = game.at(2,7))
+		const dragon1 = new Enemigo(position = game.center(), grafico = "zombie.png")
+		const dragon2 = new Enemigo(position = game.at(2, 7), grafico = "devil.png")
+		const trampa1 = new Trampa(position = game.at(3, 8), grafico = "Slime.png")
+		const trampa2  = new Trampa(position = game.at(6, 3), grafico = "Slime.png")
+		game.addVisual(trampa1)
+		game.addVisual(trampa2)
 		game.addVisual(dragon1)
 		game.addVisual(dragon2)
 		dragon1.eventoMovimiento() // este esta fallando
