@@ -9,7 +9,7 @@ object personaje {
 	var ultimaPosicion = position
 	var ultimoMovimiento = up
 
-	method cambiarGeorge(direccion){
+	method cambiarGeorge(direccion) {
 		if (game.getObjectsIn(direccion.mov(self)).isEmpty()) {
 			self.position(direccion.mov(self))
 		}
@@ -17,10 +17,11 @@ object personaje {
 		ultimaPosicion = direccion.mov(self)
 		ultimoMovimiento = direccion
 	}
-	
+
 }
+
 object up {
-	
+
 	method mov(cosa) {
 		if (cosa.position().y() < game.height() - 1) {
 			return cosa.position().up(1)
@@ -40,6 +41,7 @@ object up {
 }
 
 object down {
+
 	method mov(cosa) {
 		if (cosa.position().y() > 0) {
 			return cosa.position().down(1)
@@ -59,6 +61,7 @@ object down {
 }
 
 object left {
+
 	method mov(cosa) {
 		if (cosa.position().x() > 0) {
 			return cosa.position().left(1)
@@ -78,6 +81,7 @@ object left {
 }
 
 object right {
+
 	method mov(cosa) {
 		if (cosa.position().x() < game.width() - 1) {
 			return cosa.position().right(1)
@@ -95,3 +99,4 @@ object right {
 	}
 
 }
+

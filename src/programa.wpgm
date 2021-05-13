@@ -8,7 +8,7 @@ program Escenario {
 	game.title("Movimiento del personaje")
 	game.height(10)
 	game.width(10)
-	game.boardGround("fondoEspacial.jpg")
+	game.boardGround("fondo_carretera.png")
 
 	tutorial.iniciar()
 
