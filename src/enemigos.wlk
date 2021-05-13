@@ -4,14 +4,15 @@ import movimiento.*
 
 class Enemigo {
 
-	var property position 
+	var property position
 	var property girar = 0
+	var property grafico
 
-	method image() = "devil.png"
+	method image() = grafico
 
 	// method position() = game.center()
 	method teEncontro(alguien) {
-			alguien.image('sangre.png')
+		alguien.image('sangre.png')
 		game.say(self, "¡¡GAME OVER JAJAJAJAJ!!")
 			// self.detenerGravedad(config)
 		game.schedule(3500, { game.stop()})
@@ -24,21 +25,20 @@ class Enemigo {
 	 */
 	// REVISAR PORQUE NO GENERA EFECTO
 	method movimiento() {
-	if (not self.colisionoConPersonaje()){
-		if (girar == 0) {
-			self.derecha()
-			if (position.x() == 10) {
-				girar = 1
+		if (not self.colisionoConPersonaje()) {
+			if (girar == 0) {
+				self.derecha()
+				if (position.x() == 10) {
+					girar = 1
+				}
+			}
+			if (girar == 1) {
+				self.izquierda()
+				if (position.x() == 0) {
+					girar = 0
+				}
 			}
 		}
-		if (girar == 1) {
-			self.izquierda()
-			if (position.x() == 0) {
-				girar = 0
-			}
-		}
-	}
-	
 	}
 
 	method derecha() {
@@ -58,3 +58,20 @@ class Enemigo {
 	}
 
 }
+
+class Trampa {
+
+	var property position
+	var property grafico
+
+	method image() = grafico
+
+	method teEncontro(alguien) {
+		alguien.image('sangre.png')
+		game.say(self, "¡¡GAME OVER!!")
+			// self.detenerGravedad(config)
+		game.schedule(3500, { game.stop()})
+	}
+
+}
+
