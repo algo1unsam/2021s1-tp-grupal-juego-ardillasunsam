@@ -2,18 +2,27 @@ import movimiento.*
 import wollok.game.*
 import enemigos.*
 import personaje.*
+import niveles.*
 
 
 program Escenario {
+	
 	game.title("Movimiento del personaje")
 	game.height(10)
 	game.width(10)
-	game.boardGround("fondo_carretera.png")
-
-	tutorial.iniciar()
-
+	
+	nivel1.iniciar()
+	
 	//game.showAttributes(personaje) 
 	//game.showAttributes(enemigo)
 
 	game.start()
+
+
 }
+
+
+
+
+
+

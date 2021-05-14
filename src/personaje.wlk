@@ -2,6 +2,7 @@ import wollok.game.*
 import enemigos.*
 import movimiento.*
 
+
 object personaje {
 
 	var property position = game.origin()
