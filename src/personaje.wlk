@@ -10,13 +10,12 @@ object personaje {
 	var ultimoMovimiento = up
 
 	method cambiarGeorge(direccion) {
-		if (game.getObjectsIn(direccion.mov(self)).isEmpty()) {
-			self.position(direccion.mov(self))
-		}
+		self.position(direccion.mov(self))
 		image = "george_" + direccion.movString() + ".png"
 		ultimaPosicion = direccion.mov(self)
 		ultimoMovimiento = direccion
 	}
+	
 
 }
 
