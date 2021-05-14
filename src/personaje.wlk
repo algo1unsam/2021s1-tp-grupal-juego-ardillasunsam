@@ -8,15 +8,15 @@ object personaje {
 	var property image = "george_down.png"
 	var ultimaPosicion = position
 	var ultimoMovimiento = up
-
-	method cambiarGeorge(direccion) {
+    var property muerto = 0
+    
+	method cambiarGeorge(direccion){
+		if(muerto==0){
 		self.position(direccion.mov(self))
 		image = "george_" + direccion.movString() + ".png"
 		ultimaPosicion = direccion.mov(self)
-		ultimoMovimiento = direccion
+		ultimoMovimiento = direccion}
 	}
-	
-
 }
 
 object up {
@@ -36,7 +36,6 @@ object up {
 	method movString() {
 		return "up"
 	}
-
 }
 
 object down {

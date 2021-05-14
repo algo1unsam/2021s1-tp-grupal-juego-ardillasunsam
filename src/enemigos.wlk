@@ -13,6 +13,7 @@ class Enemigo {
 	// method position() = game.center()
 	method teEncontro(alguien) {
 		alguien.image('sangre.png')
+		alguien.muerto(1)
 		game.say(self, "¡¡GAME OVER JAJAJAJAJ!!")
 			// self.detenerGravedad(config)
 		game.schedule(3500, { game.stop()})
