@@ -5,7 +5,7 @@ import jugador.*
 
 
 class Niveles {
-	var jugadores = []
+	const jugadores = []
 	
 	method jugadores()
 	{
@@ -51,11 +51,21 @@ object nivel1 inherits Niveles {
 		const trampa1 = new ObjetoMalvado(position = game.at(3, 8), grafico = "Slime.png")
 		const trampa2 = new ObjetoMalvado(position = game.at(6, 3), grafico = "Slime.png")
 		const navePortal = new NavePortal(position = game.at(9, 9), grafico = "navePortal.png")
+		const bloque = new Bloque(position = game.at(0,1), grafico ="muro.png" )
+		const bloque1 = new Bloque(position = game.at(1,1), grafico ="muro.png" )
+		const bloque2 = new Bloque(position = game.at(2,1), grafico ="muro.png" )
+		const bloque3 = new Bloque(position = game.at(3,1), grafico ="muro.png" )
+		const bloque4 = new Bloque(position = game.at(4,1), grafico ="muro.png" )
 		game.addVisual(trampa1)
 		game.addVisual(trampa2)
 		game.addVisual(dragon1)
 		game.addVisual(dragon2)
 		game.addVisual(navePortal)
+		game.addVisual(bloque)
+		game.addVisual(bloque1)
+		game.addVisual(bloque2)
+		game.addVisual(bloque3)
+		game.addVisual(bloque4)
 		dragon1.eventoMovimiento() 
 		dragon2.eventoMovimiento()
 	}

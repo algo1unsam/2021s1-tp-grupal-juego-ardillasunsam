@@ -129,3 +129,16 @@ class NavePortal inherits Objeto
 	}
 
 }
+class Bloque inherits Objeto{
+	
+	method teEncontro(alguien){
+		if (alguien.direccion() == 'derecha'){
+			alguien.moverIzquierda(1)
+		} else if(alguien.direccion() == 'izquierda' ){
+			alguien.moverDerecha(1)
+		} else if (alguien.direccion() == 'arriba'){
+			alguien.moverAbajo(1)
+		} else alguien.moverArriba(1)
+	}
+	
+}
