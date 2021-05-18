@@ -106,6 +106,8 @@ class Enemigo inherits ObjetoMalvado
 			}
 		}
 	}
+	
+	override method image() = ( self.grafico() + "_" + self.direccion() + ".png")
 
 	method eventoMovimiento() {
 		game.onTick(300, "MOVIMIENTO", { self.movimiento()}) 

@@ -46,8 +46,8 @@ object nivel1 inherits Niveles {
 		 
 		config.configurarColisiones(jugadores)
 
-		const dragon1 = new Enemigo(position = game.center(), grafico = "zombie.png")
-		const dragon2 = new Enemigo(position = game.at(2, 7), grafico = "devil.png")
+		const dragon1 = new Enemigo(position = game.center(), grafico = 'zombie')
+		const dragon2 = new Enemigo(position = game.at(2, 7), grafico = 'blanca')
 		const trampa1 = new ObjetoMalvado(position = game.at(3, 8), grafico = "Slime.png")
 		const trampa2 = new ObjetoMalvado(position = game.at(6, 3), grafico = "Slime.png")
 		const navePortal = new NavePortal(position = game.at(9, 9), grafico = "navePortal.png")
