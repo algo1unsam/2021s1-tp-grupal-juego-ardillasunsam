@@ -3,15 +3,43 @@ import wollok.game.*
 import objetos.*
 import jugador.*
 
-object nivel1 {
+
+class Niveles {
+	var jugadores = []
+	
+	method jugadores()
+	{
+		return jugadores
+	}
+	
+	method agregarJugador(jugadorPosicion, jugadorGrafico)
+	{
+		if (jugadores.size() > 2) {
+			self.error("maxima cantidad de jugadores alcanzado.")
+		}
 		
-	    method iniciar() {
+		jugadores.add(new Jugador(position = jugadorPosicion, grafico = jugadorGrafico))
+		game.addVisual(jugadores.last())
+		
+		if (jugadores.size() == 1) {
+			config.asignarFlechasPara(jugadores.first())
+		} else {
+			config.asignarWASDPara(jugadores.last())
+		}
+	}
+	
+	method iniciar() {}
+}
+
+
+object nivel1 inherits Niveles {
+	override method iniciar() {
 		game.boardGround("fondo_carretera.png")
 		
-		//const personaje = new Jugador(position = game.origin(), grafico = "george_abajo.png")
-		game.addVisual(jugador)
-		config.asignarFlechasPara(jugador)
-		config.configurarColisiones()
+		self.agregarJugador(game.origin(), "george")
+		self.agregarJugador(game.origin(), "george")
+		config.configurarColisiones(jugadores)
+
 		const dragon1 = new Enemigo(position = game.center(), grafico = "zombie.png")
 		const dragon2 = new Enemigo(position = game.at(2, 7), grafico = "devil.png")
 		const trampa1 = new ObjetoMalvado(position = game.at(3, 8), grafico = "Slime.png")
@@ -26,6 +54,7 @@ object nivel1 {
 		dragon2.eventoMovimiento()
 	}
 }
+
 
 /*object nivel2 {   estamos viendo como imitar a estonoescocapapi
       
