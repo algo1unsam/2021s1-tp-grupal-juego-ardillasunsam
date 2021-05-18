@@ -1,16 +1,16 @@
-import movimiento.*
+import mecanicas.*
 import wollok.game.*
 import objetos.*
-import personaje.*
+import jugador.*
 
 object nivel1 {
 		
 	    method iniciar() {
 		game.boardGround("fondo_carretera.png")
 		
-		//const personaje = new Personaje(position = game.origin(), grafico = "george_down.png")
-		game.addVisual(personaje)
-		config.configurarTeclas()
+		//const personaje = new Jugador(position = game.origin(), grafico = "george_abajo.png")
+		game.addVisual(jugador)
+		config.asignarFlechasPara(jugador)
 		config.configurarColisiones()
 		const dragon1 = new Enemigo(position = game.center(), grafico = "zombie.png")
 		const dragon2 = new Enemigo(position = game.at(2, 7), grafico = "devil.png")
@@ -31,7 +31,7 @@ object nivel1 {
       
 	    method iniciar() {
 		game.boardGround("fondoEspacial.png")
-		game.addVisual(personaje)
+		game.addVisual(jugador)
 		config.configurarTeclas()
 		config.configurarColisiones()
 		const dragon1 = new Enemigo(position = game.center(), grafico = "zombie.png")

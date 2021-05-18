@@ -1,18 +1,18 @@
 import wollok.game.*
-import movimiento.*
+import mecanicas.*
 import objetos.*
-import personaje.*
+import jugador.*
 import niveles.*
 
 
 program Escenario {
 	
-	game.title("Movimiento del personaje")
+	game.title("Movimiento del jugador")
 	game.height(10)
 	game.width(10)
 	nivel1.iniciar()
 	
-	//game.showAttributes(personaje) 
+	//game.showAttributes(jugador) 
 	//game.showAttributes(enemigo)
     game.schedule(5000, {game.boardGround("fondoEspacial.jpg")}) 
 	game.start()

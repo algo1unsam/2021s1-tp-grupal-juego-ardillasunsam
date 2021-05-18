@@ -1,6 +1,6 @@
 import wollok.game.*
-import personaje.*
-import movimiento.*
+import jugador.*
+import mecanicas.*
 
 
 class Objeto
@@ -97,7 +97,7 @@ class Enemigo inherits ObjetoMalvado
 	}
 
 	method colisionoConPersonaje() {
-		return position == personaje.position()
+		return position == jugador.position()
 	}
 
 }

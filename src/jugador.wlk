@@ -1,13 +1,13 @@
 import wollok.game.*
 import objetos.*
-import movimiento.*
+import mecanicas.*
 
 
-class Personaje inherits Objeto
+class Jugador inherits Objeto
 {}
 
 
-object personaje {
+object jugador {
 
 	var property position = game.origin()
 	var property image = "george_abajo.png"
