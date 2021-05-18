@@ -6,7 +6,7 @@ import niveles.*
 
 class Objeto
 {
-	var property muerto = false
+	var property muerto = false	
 	var property position
 	var property direccion = "derecha"
 	var property grafico
@@ -74,9 +74,16 @@ class Objeto
 class ObjetoMalvado inherits Objeto
 {
 	method teEncontro(alguien) {
+		if (alguien.vidas()>0){
+			alguien.bajarVida()
+			alguien.gritar()
+		}
+		else {
 		alguien.muerto(true)
 		game.say(self, "¡¡GAME OVER JAJAJAJAJ!!")
 		game.schedule(3500, { game.stop()})
+		
+		}
 	}
 }
 

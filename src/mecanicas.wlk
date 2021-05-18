@@ -30,6 +30,7 @@ object config {
 
 	method configurarColisiones(jugadores) {
 		jugadores.forEach({ unJugador => game.onCollideDo(unJugador, { algo => algo.teEncontro(unJugador)}) })
+		
 	}
 
 
