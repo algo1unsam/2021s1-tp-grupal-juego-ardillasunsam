@@ -1,10 +1,12 @@
 import wollok.game.*
 import jugador.*
 import mecanicas.*
+import niveles.*
 
 
 class Objeto
 {
+	var property muerto = false
 	var property position
 	var property direccion = "derecha"
 	var property grafico
@@ -13,50 +15,58 @@ class Objeto
 	
 	method moverArriba(distanciaY) 
 	{
-		if (position.y() < (game.height()+distanciaY)) {
+		if ((position.y() < (game.height()-1)) and (not muerto)) {
 			position = position.up(distanciaY)
 		}
 	}
 	
 	method moverAbajo(distanciaY)
 	{
-		if (position.y() > (0-distanciaY)) {
+		if ((position.y() > 0) and (not muerto)) {
 			position = position.down(distanciaY)
 		}
 	}
 	
 	method moverDerecha(distanciaX)
 	{
-		if (position.x() < (game.width()+distanciaX)) {
+		if ((position.x() < (game.width()-1)) and (not muerto)) {
 			position = position.right(distanciaX)
 		}
 	}
 	
 	method moverIzquierda(distanciaX)
 	{
-		if (position.x() > (0-distanciaX)) {
+		if ((position.x() > 0) and (not muerto)) {
 			position = position.left(distanciaX)
 		}
 	}
 	
 	method girarArriba()
 	{
-		direccion = "arriba"
+		if (not muerto) {
+			direccion = "arriba"
+		}	
 	}
 	
 	method girarAbajo()
 	{
-		direccion = "abajo"
+		if (not muerto) {
+			direccion = "abajo"
+		}
 	}
 	
 	method girarDerecha()
 	{
-		direccion = "derecha"
+		if (not muerto) {
+			direccion = "derecha"
+		}	
 	}
 	
 	method girarIzquierda()
 	{
-		direccion = "izquierda"
+		if (not muerto) {
+			direccion = "izquierda"
+		}
 	}
 }
 
@@ -64,10 +74,8 @@ class Objeto
 class ObjetoMalvado inherits Objeto
 {
 	method teEncontro(alguien) {
-		alguien.image('sangre.png')
-		alguien.muerto(1)
+		alguien.muerto(true)
 		game.say(self, "¡¡GAME OVER JAJAJAJAJ!!")
-		
 		game.schedule(3500, { game.stop()})
 	}
 }
@@ -76,10 +84,10 @@ class ObjetoMalvado inherits Objeto
 class Enemigo inherits ObjetoMalvado
 {
 	method movimiento() {
-		if (not self.colisionoConPersonaje()) {
+		if (not self.colisionoConJugador(nivel1.jugadores())) {  /* aplicar polimorfismo a los niveles */
 			if (self.direccion() == "derecha") {
 				self.moverDerecha(1)
-				if (position.x() == 10) {
+				if (position.x() == 9) {   /* nose porque se frenan si pongo 10 */
 					self.girarIzquierda()
 				}
 			}
@@ -96,8 +104,8 @@ class Enemigo inherits ObjetoMalvado
 		game.onTick(300, "MOVIMIENTO", { self.movimiento()}) 
 	}
 
-	method colisionoConPersonaje() {
-		return position == jugador.position()
+	method colisionoConJugador(jugadores) {
+		return jugadores.all({ unJugador => position == unJugador.position() })
 	}
 
 }
