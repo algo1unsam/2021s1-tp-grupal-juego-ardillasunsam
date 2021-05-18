@@ -3,7 +3,6 @@ import wollok.game.*
 import objetos.*
 import jugador.*
 
-
 class Niveles {
 	const jugadores = []
 	
