@@ -10,7 +10,7 @@ class Personaje inherits Objeto
 object personaje {
 
 	var property position = game.origin()
-	var property image = "george_down.png"
+	var property image = "george_abajo.png"
 	var ultimaPosicion = position
 	var ultimoMovimiento = up
     var property muerto = 0
@@ -40,7 +40,7 @@ object up {
 	}
 
 	method movString() {
-		return "up"
+		return "arriba"
 	}
 }
 
@@ -59,7 +59,7 @@ object down {
 	}
 
 	method movString() {
-		return "down"
+		return "abajo"
 	}
 
 }
@@ -79,7 +79,7 @@ object left {
 	}
 
 	method movString() {
-		return "left"
+		return "izquierda"
 	}
 
 }
@@ -99,7 +99,7 @@ object right {
 	}
 
 	method movString() {
-		return "right"
+		return "derecha"
 	}
 
 }
