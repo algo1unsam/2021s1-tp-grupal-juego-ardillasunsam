@@ -37,7 +37,11 @@ object nivel1 inherits Niveles {
 		game.boardGround("fondo_carretera.png")
 		
 		self.agregarJugador(game.origin(), "george")
-		self.agregarJugador(game.origin(), "george")
+		/*
+		 * Con esta linea, funciona bien el multijugador,
+		 * pero se bugea el mensaje.
+		 * self.agregarJugador(game.origin(), "george")
+		 */
 		config.configurarColisiones(jugadores)
 
 		const dragon1 = new Enemigo(position = game.center(), grafico = "zombie.png")
