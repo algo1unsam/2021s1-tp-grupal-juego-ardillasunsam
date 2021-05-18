@@ -27,6 +27,11 @@ object config {
 		keyboard.s().onPressDo({jugadorN.girarAbajo()
 			                    jugadorN.moverAbajo(1)})
 	}
+	
+	method hablar(jugadorN){
+		keyboard.x().onPressDo({jugadorN.mensajeRandom()})
+	}
+	
 
 	method configurarColisiones(jugadores) {
 		jugadores.forEach({ unJugador => game.onCollideDo(unJugador, { algo => algo.teEncontro(unJugador)}) })

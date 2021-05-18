@@ -23,8 +23,10 @@ class Niveles {
 		
 		if (jugadores.size() == 1) {
 			config.asignarFlechasPara(jugadores.first())
+			config.hablar(jugadores.first())
 		} else {
 			config.asignarWASDPara(jugadores.last())
+			config.hablar(jugadores.last())
 		}
 	}
 	

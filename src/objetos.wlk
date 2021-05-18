@@ -114,6 +114,8 @@ class Enemigo inherits ObjetoMalvado
 	method colisionoConJugador(jugadores) {
 		return jugadores.all({ unJugador => position == unJugador.position() })
 	}
+	
+	
 
 }
 
