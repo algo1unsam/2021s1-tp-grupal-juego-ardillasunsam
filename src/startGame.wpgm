@@ -1,6 +1,6 @@
-import movimiento.*
 import wollok.game.*
-import enemigos.*
+import movimiento.*
+import objetos.*
 import personaje.*
 import niveles.*
 

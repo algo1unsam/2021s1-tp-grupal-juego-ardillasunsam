@@ -1,5 +1,5 @@
 import wollok.game.*
-import enemigos.*
+import objetos.*
 import personaje.*
 
 object config {

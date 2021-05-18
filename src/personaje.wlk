@@ -1,6 +1,10 @@
 import wollok.game.*
-import enemigos.*
+import objetos.*
 import movimiento.*
+
+
+class Personaje inherits Objeto
+{}
 
 
 object personaje {
@@ -11,12 +15,13 @@ object personaje {
 	var ultimoMovimiento = up
     var property muerto = 0
     
-	method cambiarGeorge(direccion){
-		if(muerto==0){
-		self.position(direccion.mov(self))
-		image = "george_" + direccion.movString() + ".png"
-		ultimaPosicion = direccion.mov(self)
-		ultimoMovimiento = direccion}
+	method cambiarGeorge(direccion) {
+		if(muerto==0) {
+			self.position(direccion.mov(self))
+			image = "george_" + direccion.movString() + ".png"
+			ultimaPosicion = direccion.mov(self)
+			ultimoMovimiento = direccion
+		}
 	}
 }
 
