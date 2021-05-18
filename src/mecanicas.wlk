@@ -6,22 +6,30 @@ object config {
 
 	method asignarFlechasPara(jugadorN) 
 	{
-		keyboard.left().onPressDo({ jugadorN.cambiarGeorge(left)})
-		keyboard.right().onPressDo({ jugadorN.cambiarGeorge(right)})
-		keyboard.up().onPressDo({ jugadorN.cambiarGeorge(up)})
-		keyboard.down().onPressDo({ jugadorN.cambiarGeorge(down)})
+		keyboard.left().onPressDo({jugadorN.girarIzquierda()
+			                       jugadorN.moverIzquierda(1)})
+		keyboard.right().onPressDo({jugadorN.girarDerecha()
+			                        jugadorN.moverDerecha(1)})
+		keyboard.up().onPressDo({jugadorN.girarArriba()
+			                     jugadorN.moverArriba(1)})
+		keyboard.down().onPressDo({jugadorN.girarAbajo()
+			                       jugadorN.moverAbajo(1)})
 	}
 	
 	method asignarWASDPara(jugadorN) 
 	{
-		keyboard.a().onPressDo({ jugadorN.cambiarGeorge(left)})
-		keyboard.d().onPressDo({ jugadorN.cambiarGeorge(right)})
-		keyboard.w().onPressDo({ jugadorN.cambiarGeorge(up)})
-		keyboard.s().onPressDo({ jugadorN.cambiarGeorge(down)})
+		keyboard.a().onPressDo({jugadorN.girarIzquierda()
+			                    jugadorN.moverIzquierda(1)})
+		keyboard.d().onPressDo({jugadorN.girarDerecha()
+			                    jugadorN.moverDerecha(1)})
+		keyboard.w().onPressDo({jugadorN.girarArriba()
+			                    jugadorN.moverArriba(1)})
+		keyboard.s().onPressDo({jugadorN.girarAbajo()
+			                    jugadorN.moverAbajo(1)})
 	}
 
-	method configurarColisiones() {
-		game.onCollideDo(jugador, { algo => algo.teEncontro(jugador)})
+	method configurarColisiones(jugadores) {
+		jugadores.forEach({ unJugador => game.onCollideDo(unJugador, { algo => algo.teEncontro(unJugador)}) })
 	}
 
 
