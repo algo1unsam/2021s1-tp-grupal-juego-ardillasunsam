@@ -10,11 +10,11 @@ program Escenario {
 	game.title("Movimiento del jugador")
 	game.height(10)
 	game.width(10)
-	inicio.iniciar()// CAMBIAR ACA PARA PROBAR EL NIVEL1
+	nivel1.iniciar()// CAMBIAR ACA poner inicio o nivel1
 	
 	//game.showAttributes(jugador) 
 	//game.showAttributes(enemigo)
-    game.schedule(5000, {game.boardGround("fondoEspacial.jpg")}) 
+    //game.schedule(5000, {game.boardGround("fondoEspacial.jpg")}) 
 	game.start()
 
 }

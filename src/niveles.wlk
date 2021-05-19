@@ -5,7 +5,6 @@ import jugador.*
 import direcciones.*
 
 class Presentacion{		
-	
 	method continuar(){
 		game.stop() // aca deberia pasar a la proxima pantalla
 					//por ahora finaliza el juego
@@ -13,6 +12,12 @@ class Presentacion{
 	
 }
 
+object inicio inherits Presentacion {
+	method iniciar(){
+		game.boardGround ("Principal.jpg")
+		config.presionarEnter(self)
+	}
+}
 class Niveles {
 
 	const jugadores = []
@@ -45,15 +50,9 @@ class Niveles {
 		
 	}
 //--------------------------------------------------------------------------
-	
+
 }
 
-object inicio inherits Presentacion {
-	method iniciar(){
-		game.boardGround ("Principal.jpg")
-		config.presionarEnter(self)
-	}
-}
 
 object nivel1 inherits Niveles {
 
@@ -62,6 +61,7 @@ object nivel1 inherits Niveles {
 			// Con esta linea, funciona bien el multijugador,
 			// pero se bugea el mensaje.
 			// self.agregarJugador(game.origin(), "george")
+		
 			
 //----------------------------new-------------------------------------------			
 		self.agregarZombie(game.center(),'zombie', 100,[0,9],"x")
@@ -82,7 +82,10 @@ object nivel1 inherits Niveles {
 		const bloque5 = new Bloque(position = game.at(7, 4), grafico = "valla.png",tiempo=300,limitesMovimiento=[0,0])
 		const bloque6 = new Bloque(position = game.at(8, 4), grafico = "valla.png",tiempo=300,limitesMovimiento=[0,0])
 		const bloque7 = new Bloque(position = game.at(9, 4), grafico = "valla.png",tiempo=300,limitesMovimiento=[0,0])
-		
+		const rueda = new Herramienta(position = game.at(2,2), grafico = 'rueda.png')
+		const herramienta = new Herramienta(position = game.at(6,7), grafico = 'Herramienta.png')
+		const bidon = new Herramienta(position = game.at(5,8), grafico = 'bidon.png')
+		const tuerca = new Herramienta(position = game.at(9,3), grafico = 'tuerca.png')
 		
 	 	
 	 	game.addVisual(trampa1)
@@ -96,6 +99,11 @@ object nivel1 inherits Niveles {
 		game.addVisual(bloque5)
 		game.addVisual(bloque6)
 		game.addVisual(bloque7)
+		game.addVisual(rueda)
+		game.addVisual(herramienta)
+		game.addVisual(bidon)
+		game.addVisual(tuerca)
+		
 
 
 		self.agregarJugador(game.origin(), "george")

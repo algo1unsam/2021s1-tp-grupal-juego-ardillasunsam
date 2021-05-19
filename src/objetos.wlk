@@ -99,8 +99,9 @@ class Enemigo inherits EnteMalvado {
 class Camioneta inherits objetos.Ente {
 
 	method teEncontro(alguien) {
+		if (alguien.herramientas().size() == 4){
 		game.say(self, "GANASTE")
-		game.schedule(1000, { game.stop()})
+		game.schedule(1000, { game.stop()})}
 	// nivel2.iniciar() estamos viendo como 
 	}
 
@@ -112,6 +113,12 @@ class Bloque inherits objetos.Ente {
 		(alguien.direccion()).contrario(1, alguien)
 	}
 
+}
+class Herramienta inherits Ente{
+	method teEncontro(alguien){
+		alguien.agarrar(self)
+		game.removeVisual(self)
+	}
 }
 
 

@@ -6,6 +6,7 @@ import direcciones.*
 class Jugador inherits objetos.Ente {
 
 	var property vidas = 3
+	var property herramientas = []
 
 	override method image() {
 		if (not muerto) {
@@ -40,6 +41,10 @@ class Jugador inherits objetos.Ente {
 			game.say(self, "ESTOY MUY ASUSTADO")
 		}
 	}
+	method agarrar(algo){
+		herramientas.add(algo)
+	}
+
 	
 
 }
