@@ -83,13 +83,8 @@ class NavePortal inherits Objeto
 class Bloque inherits Objeto{
 	
 	method teEncontro(alguien){
-		if (alguien.direccion() == derecha){
-			izquierda.mover(1,alguien)
-		} else if(alguien.direccion() == izquierda ){
-			derecha.mover(1,alguien)
-		} else if (alguien.direccion() == arriba){
-			abajo.mover(1,alguien)
-		} else arriba.mover(1,alguien)
+		(alguien.direccion()).contrario(1,alguien)
+
 	}
 	
 }

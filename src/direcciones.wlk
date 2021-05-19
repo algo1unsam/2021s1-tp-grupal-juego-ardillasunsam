@@ -17,7 +17,10 @@ object arriba{
 			alguien.direccion(self)
 		}	
 	}
+	method contrario(distancia,alguien){
+		abajo.mover(distancia, alguien)
 
+	}
 
 }
 object abajo{
@@ -32,6 +35,10 @@ object abajo{
 		if (not alguien.muerto()) {
 			alguien.direccion(self)
 		}
+	}
+	method contrario(distancia,alguien){
+		arriba.mover(distancia, alguien)
+
 	}
 
 }
@@ -48,6 +55,10 @@ object derecha{
 			alguien.direccion(self)
 		}	
 	}
+	method contrario(distancia,alguien){
+		izquierda.mover(distancia, alguien)
+
+	}
 }
 object izquierda{
 	
@@ -63,5 +74,9 @@ object izquierda{
 		if (not alguien.muerto()) {
 			alguien.direccion(self)
 		}
+	}
+	method contrario(distancia,alguien){
+		derecha.mover(distancia, alguien)
+
 	}
 }
