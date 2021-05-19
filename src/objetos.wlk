@@ -10,8 +10,8 @@ class Ente {
 	var property position
 	var property direccion = derecha
 	var property grafico
-	var property tiempo
-	var property limitesMovimiento
+	var property tiempo = 500
+	var property limitesMovimiento = [0,10]
 
 	method image() = grafico
 
