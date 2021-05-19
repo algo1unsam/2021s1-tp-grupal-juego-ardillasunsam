@@ -33,12 +33,17 @@ object config {
 		keyboard.x().onPressDo({jugadorN.mensajeRandom()})
 	}
 	
+	
 
 	method configurarColisiones(jugadores) {
 		jugadores.forEach({ unJugador => game.onCollideDo(unJugador, { algo => algo.teEncontro(unJugador)}) })
 		
 	}
-
+	
+	method presionarEnter(presentacion){
+		keyboard.enter().onPressDo({presentacion.continuar()})
+	}
+	
 
 	method DetenerEventosTiempo(evento) {
 		game.removeTickEvent(evento)
