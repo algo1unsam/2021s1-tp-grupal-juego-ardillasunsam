@@ -10,7 +10,7 @@ program Escenario {
 	game.title("Movimiento del jugador")
 	game.height(10)
 	game.width(10)
-	nivel1.iniciar()
+	inicio.iniciar()// CAMBIAR ACA PARA PROBAR EL NIVEL1
 	
 	//game.showAttributes(jugador) 
 	//game.showAttributes(enemigo)
