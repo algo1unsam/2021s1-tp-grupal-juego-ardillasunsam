@@ -37,34 +37,18 @@ class Enemigo inherits EnteMalvado {
 
 	method movimientoX() {
 		if (not self.colisionoConJugador(nivel1.jugadores())) {
-			if (self.direccion() == derecha) {
-				derecha.mover(1, self)
-				if (position.x() == limitesMovimiento.last()) {
-					izquierda.girar(self)
-				}
-			}
-			if (self.direccion() == izquierda) {
-				izquierda.mover(1, self)
-				if (position.x() == limitesMovimiento.first()) {
-					derecha.girar(self)
-				}
+			self.direccion().mover(1, self)
+			if (limitesMovimiento.any({ unLimite => unLimite == position.x() })) {
+				self.direccion().direccionOpuesta().girar(self)
 			}
 		}
 	}
 //---------------------------------------------new------------------------------
 	method movimientoY() {
 		if (not self.colisionoConJugador(nivel1.jugadores())) {
-			if (self.direccion() == arriba) {
-				arriba.mover(1, self)
-				if (position.y() == limitesMovimiento.last()) {
-					abajo.girar(self)
-				}
-			}
-			if (self.direccion() == abajo) {
-				abajo.mover(1, self)
-				if (position.y() == limitesMovimiento.first()) {
-					arriba.girar(self)
-				}
+			self.direccion().mover(1, self)
+			if (limitesMovimiento.any({ unLimite => unLimite == position.y() })) {
+				self.direccion().direccionOpuesta().girar(self)
 			}
 		}
 	}
@@ -96,7 +80,7 @@ class Enemigo inherits EnteMalvado {
 
 }
 
-class Camioneta inherits objetos.Ente {
+class Camioneta inherits Ente {
 
 	method teEncontro(alguien) {
 		if (alguien.herramientas().size() == 4){
@@ -107,13 +91,13 @@ class Camioneta inherits objetos.Ente {
 
 }
 
-class Bloque inherits objetos.Ente {
-
+class Bloque inherits Ente {
 	method teEncontro(alguien) {
-		(alguien.direccion()).contrario(1, alguien)
+		alguien.direccion().direccionOpuesta().girar(alguien)
+		alguien.direccion().mover(1, alguien)
 	}
-
 }
+
 class Herramienta inherits Ente{
 	method teEncontro(alguien){
 		alguien.agarrar(self)

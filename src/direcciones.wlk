@@ -11,17 +11,17 @@ object arriba{
 			alguien.position(alguien.position().up(distanciaY))
 		} 
 	}
+
 	method girar(alguien)
 	{
 		if (not alguien.muerto()) {
 			alguien.direccion(self)
 		}	
 	}
-	method contrario(distancia,alguien){
-		abajo.mover(distancia, alguien)
-
+	
+	method direccionOpuesta() {
+		return abajo
 	}
-
 }
 
 object abajo{
@@ -31,17 +31,17 @@ object abajo{
 			alguien.position(alguien.position().down(distanciaY)) 
 		} 
 	}
+	
 	method girar(alguien)
 	{
 		if (not alguien.muerto()) {
 			alguien.direccion(self)
 		}
 	}
-	method contrario(distancia,alguien){
-		arriba.mover(distancia, alguien)
 
+	method direccionOpuesta() {
+		return arriba
 	}
-
 }
 
 object derecha{
@@ -51,15 +51,16 @@ object derecha{
 			 alguien.position(alguien.position().right(distanciaX))
 		} 
 	}
+	
 	method girar(alguien)
 	{
 		if (not alguien.muerto()) {
 			alguien.direccion(self)
 		}	
 	}
-	method contrario(distancia,alguien){
-		izquierda.mover(distancia, alguien)
-
+	
+	method direccionOpuesta() {
+		return izquierda
 	}
 }
 
@@ -78,8 +79,8 @@ object izquierda{
 			alguien.direccion(self)
 		}
 	}
-	method contrario(distancia,alguien){
-		derecha.mover(distancia,alguien)
 
+	method direccionOpuesta() {
+		return derecha
 	}
 }
