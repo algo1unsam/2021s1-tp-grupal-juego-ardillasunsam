@@ -4,6 +4,15 @@ import objetos.*
 import jugador.*
 import direcciones.*
 
+class Presentacion{		
+	
+	method continuar(){
+		game.stop() // aca deberia pasar a la proxima pantalla
+					//por ahora finaliza el juego
+	}
+	
+}
+
 class Niveles {
 
 	const jugadores = []
@@ -37,6 +46,13 @@ class Niveles {
 	}
 //--------------------------------------------------------------------------
 	
+}
+
+object inicio inherits Presentacion {
+	method iniciar(){
+		game.boardGround ("Principal.jpg")
+		config.presionarEnter(self)
+	}
 }
 
 object nivel1 inherits Niveles {
