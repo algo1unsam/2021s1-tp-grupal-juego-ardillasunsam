@@ -38,19 +38,19 @@ class Enemigo inherits ObjetoMalvado
 	method movimiento() {
 		if (not self.colisionoConJugador(nivel1.jugadores())) {  /* aplicar polimorfismo a los niveles */
 			if ( self.direccion() == derecha) {
-				derecha.moverDerecha(1,self)
+				derecha.mover(1,self)
 				//self.moverDerecha(1)
 				if (position.x() == 9) {   /* nose porque se frenan si pongo 10 */
-					izquierda.girarIzquierda(self)
+					izquierda.girar(self)
 					//self.girarIzquierda()
 				}
 			}
 			if ( self.direccion() == izquierda) {
 				//self.moverIzquierda(1)
-				izquierda.moverIzquierda(1,self)
+				izquierda.mover(1,self)
 				if (position.x() == 0) {
 					//self.girarDerecha()
-					derecha.girarDerecha(self)
+					derecha.girar(self)
 				}
 			}
 		}
@@ -84,12 +84,12 @@ class Bloque inherits Objeto{
 	
 	method teEncontro(alguien){
 		if (alguien.direccion() == derecha){
-			izquierda.moverIzquierda(1,alguien)
+			izquierda.mover(1,alguien)
 		} else if(alguien.direccion() == izquierda ){
-			derecha.moverDerecha(1,alguien)
+			derecha.mover(1,alguien)
 		} else if (alguien.direccion() == arriba){
-			abajo.moverAbajo(1,alguien)
-		} else arriba.moverArriba(1,alguien)
+			abajo.mover(1,alguien)
+		} else arriba.mover(1,alguien)
 	}
 	
 }

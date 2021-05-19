@@ -5,42 +5,44 @@ import jugador.*
 
 object arriba{
 	
-	method moverArriba(distanciaY, alguien) 
+	method mover(distanciaY, alguien) 
 	{
 		if ((alguien.position().y() < (game.height()-1)) and (not alguien.muerto())) {
 			alguien.position(alguien.position().up(distanciaY))
 		} 
 	}
-	method girarArriba(alguien)
+	method girar(alguien)
 	{
 		if (not alguien.muerto()) {
 			alguien.direccion(self)
 		}	
 	}
 
+
 }
 object abajo{
-	method moverAbajo(distanciaY,alguien)
+	method mover(distanciaY,alguien)
 	{
 		if ((alguien.position().y() > 0) and (not alguien.muerto())) {
 			alguien.position(alguien.position().down(distanciaY)) 
 		} 
 	}
-	method girarAbajo(alguien)
+	method girar(alguien)
 	{
 		if (not alguien.muerto()) {
 			alguien.direccion(self)
 		}
 	}
+
 }
 object derecha{
-	method moverDerecha(distanciaX,alguien)
+	method mover(distanciaX,alguien)
 	{
 		if ( (( alguien.position().x() < (game.width()-1) ) and (not alguien.muerto()) )) {
 			 alguien.position(alguien.position().right(distanciaX))
 		} 
 	}
-	method girarDerecha(alguien)
+	method girar(alguien)
 	{
 		if (not alguien.muerto()) {
 			alguien.direccion(self)
@@ -49,14 +51,14 @@ object derecha{
 }
 object izquierda{
 	
-	method moverIzquierda(distanciaX,alguien)
+	method mover(distanciaX,alguien)
 	{
 		if ((alguien.position().x() > 0) and ( not alguien.muerto())) {
 			 alguien.position(alguien.position().left(distanciaX))
 		} 
 	}
 	
-	method girarIzquierda(alguien)
+	method girar(alguien)
 	{
 		if (not alguien.muerto()) {
 			alguien.direccion(self)
