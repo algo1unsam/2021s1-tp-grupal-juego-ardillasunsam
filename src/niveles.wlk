@@ -58,14 +58,16 @@ object nivel1 inherits Niveles {
 		const trampa1 = new EnteMalvado(position = game.at(3, 8), grafico = "Slime.png",tiempo=300,limitesMovimiento=[0,0])
 		const trampa2 = new EnteMalvado(position = game.at(6, 3), grafico = "Slime.png",tiempo=300,limitesMovimiento=[0,0])
 		const camioneta = new Camioneta(position = game.at(7, 9), grafico = "camioneta.png",tiempo=300,limitesMovimiento=[0,0])
-		const bloque = new Bloque(position = game.at(0, 4), grafico = "muro.png",tiempo=300,limitesMovimiento=[0,0])
-		const bloque1 = new Bloque(position = game.at(1, 4), grafico = "muro.png",tiempo=300,limitesMovimiento=[0,0])
-		const bloque2 = new Bloque(position = game.at(2, 4), grafico = "muro.png",tiempo=300,limitesMovimiento=[0,0])
-		const bloque3 = new Bloque(position = game.at(3, 4), grafico = "muro.png",tiempo=300,limitesMovimiento=[0,0])
-		const bloque4 = new Bloque(position = game.at(4, 4), grafico = "muro.png",tiempo=300,limitesMovimiento=[0,0])
-		const bloque5 = new Bloque(position = game.at(7, 4), grafico = "muro.png",tiempo=300,limitesMovimiento=[0,0])
-		const bloque6 = new Bloque(position = game.at(8, 4), grafico = "muro.png",tiempo=300,limitesMovimiento=[0,0])
-		const bloque7 = new Bloque(position = game.at(9, 4), grafico = "muro.png",tiempo=300,limitesMovimiento=[0,0])
+		const bloque = new Bloque(position = game.at(0, 4), grafico = "valla.png",tiempo=300,limitesMovimiento=[0,0])
+		const bloque1 = new Bloque(position = game.at(1, 4), grafico = "valla.png",tiempo=300,limitesMovimiento=[0,0])
+		const bloque2 = new Bloque(position = game.at(2, 4), grafico = "valla.png",tiempo=300,limitesMovimiento=[0,0])
+		const bloque3 = new Bloque(position = game.at(3, 4), grafico = "valla.png",tiempo=300,limitesMovimiento=[0,0])
+		const bloque4 = new Bloque(position = game.at(4, 4), grafico = "valla.png",tiempo=300,limitesMovimiento=[0,0])
+		const bloque5 = new Bloque(position = game.at(7, 4), grafico = "valla.png",tiempo=300,limitesMovimiento=[0,0])
+		const bloque6 = new Bloque(position = game.at(8, 4), grafico = "valla.png",tiempo=300,limitesMovimiento=[0,0])
+		const bloque7 = new Bloque(position = game.at(9, 4), grafico = "valla.png",tiempo=300,limitesMovimiento=[0,0])
+		
+		
 	 	
 	 	game.addVisual(trampa1)
 		game.addVisual(trampa2)
@@ -78,6 +80,7 @@ object nivel1 inherits Niveles {
 		game.addVisual(bloque5)
 		game.addVisual(bloque6)
 		game.addVisual(bloque7)
+
 
 		self.agregarJugador(game.origin(), "george")
 		config.configurarColisiones(jugadores)
