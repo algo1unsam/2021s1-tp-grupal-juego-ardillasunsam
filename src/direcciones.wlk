@@ -23,6 +23,7 @@ object arriba{
 	}
 
 }
+
 object abajo{
 	method mover(distanciaY,alguien)
 	{
@@ -42,6 +43,7 @@ object abajo{
 	}
 
 }
+
 object derecha{
 	method mover(distanciaX,alguien)
 	{
@@ -60,6 +62,7 @@ object derecha{
 
 	}
 }
+
 object izquierda{
 	
 	method mover(distanciaX,alguien)
@@ -76,7 +79,7 @@ object izquierda{
 		}
 	}
 	method contrario(distancia,alguien){
-		derecha.mover(distancia, alguien)
+		derecha.mover(distancia,alguien)
 
 	}
 }

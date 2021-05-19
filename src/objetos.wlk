@@ -4,75 +4,100 @@ import mecanicas.*
 import niveles.*
 import direcciones.*
 
+class Ente {
 
-class Objeto
-{
-	var property muerto = false	
+	var property muerto = false
 	var property position
 	var property direccion = derecha
 	var property grafico
-	
+	var property tiempo
+	var property limitesMovimiento
+
 	method image() = grafico
+
 }
 
+class EnteMalvado inherits Ente {
 
-class ObjetoMalvado inherits Objeto
-{
 	method teEncontro(alguien) {
-		if (alguien.vidas()>0){
+		if (alguien.vidas() > 0) {
 			alguien.bajarVida()
 			alguien.gritar()
-		}
-		else {
-		alguien.muerto(true)
-		game.say(self, "¡¡GAME OVER JAJAJAJAJ!!")
-		game.schedule(3500, { game.stop()})
-		
+			alguien.position(game.origin())
+		} else {
+			alguien.muerto(true)
+			game.say(self, "¡¡GAME OVER JAJAJAJAJ!!")
+			game.schedule(3500, { game.stop()})
 		}
 	}
+
 }
 
+class Enemigo inherits EnteMalvado {
 
-class Enemigo inherits ObjetoMalvado
-{
-	method movimiento() {
-		if (not self.colisionoConJugador(nivel1.jugadores())) {  /* aplicar polimorfismo a los niveles */
-			if ( self.direccion() == derecha) {
-				derecha.mover(1,self)
-				//self.moverDerecha(1)
-				if (position.x() == 9) {   /* nose porque se frenan si pongo 10 */
+	method movimientoX() {
+		if (not self.colisionoConJugador(nivel1.jugadores())) {
+			if (self.direccion() == derecha) {
+				derecha.mover(1, self)
+				if (position.x() == limitesMovimiento.last()) {
 					izquierda.girar(self)
-					//self.girarIzquierda()
 				}
 			}
-			if ( self.direccion() == izquierda) {
-				//self.moverIzquierda(1)
-				izquierda.mover(1,self)
-				if (position.x() == 0) {
-					//self.girarDerecha()
+			if (self.direccion() == izquierda) {
+				izquierda.mover(1, self)
+				if (position.x() == limitesMovimiento.first()) {
 					derecha.girar(self)
 				}
 			}
 		}
 	}
-	
+//---------------------------------------------new------------------------------
+	method movimientoY() {
+		if (not self.colisionoConJugador(nivel1.jugadores())) {
+			if (self.direccion() == arriba) {
+				arriba.mover(1, self)
+				if (position.y() == limitesMovimiento.last()) {
+					abajo.girar(self)
+				}
+			}
+			if (self.direccion() == abajo) {
+				abajo.mover(1, self)
+				if (position.y() == limitesMovimiento.first()) {
+					arriba.girar(self)
+				}
+			}
+		}
+	}
+//---------------------------------------------------------------------------
+
 	override method image() = ( self.grafico() + "_" + self.direccion() + ".png")
 
-	method eventoMovimiento() {
-		game.onTick(300, "MOVIMIENTO", { self.movimiento()}) 
+//------------------------------------------------------------se podra unificar en uno solo?¡?¡
+	method eventoMovimientoX() {
+		self.direccion(derecha)
+		game.onTick(self.tiempo(), "MOVIMIENTO", { self.movimientoX()})
 	}
 
+	method eventoMovimientoY() {
+		self.direccion(abajo)
+		game.onTick(self.tiempo(), "MOVIMIENTO", { self.movimientoY()})
+	}
+
+	/*
+	 *  	method eventoMovimiento(eje,direccion){
+	 * 		self.direccion(direcion)
+	 * 		game.onTick(self.tiempo(),"MOVIMIENTO",{self.movimiento.eje()})
+	 * 	}?¡?¡
+	 */
+//----------------------------------------------------------------------------------------------------
 	method colisionoConJugador(jugadores) {
 		return jugadores.all({ unJugador => position == unJugador.position() })
 	}
-	
-	
 
 }
 
+class Camioneta inherits objetos.Ente {
 
-class NavePortal inherits Objeto
-{
 	method teEncontro(alguien) {
 		game.say(self, "GANASTE")
 		game.schedule(1000, { game.stop()})
@@ -80,11 +105,13 @@ class NavePortal inherits Objeto
 	}
 
 }
-class Bloque inherits Objeto{
-	
-	method teEncontro(alguien){
-		(alguien.direccion()).contrario(1,alguien)
 
+class Bloque inherits objetos.Ente {
+
+	method teEncontro(alguien) {
+		(alguien.direccion()).contrario(1, alguien)
 	}
-	
+
 }
+
+

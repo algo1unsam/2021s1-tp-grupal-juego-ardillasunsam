@@ -17,7 +17,6 @@ program Escenario {
     game.schedule(5000, {game.boardGround("fondoEspacial.jpg")}) 
 	game.start()
 
-
 }
 
 

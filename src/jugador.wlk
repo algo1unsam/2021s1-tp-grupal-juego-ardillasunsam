@@ -3,7 +3,7 @@ import objetos.*
 import mecanicas.*
 import direcciones.*
 
-class Jugador inherits Objeto {
+class Jugador inherits objetos.Ente {
 
 	var property vidas = 3
 
