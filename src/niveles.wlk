@@ -15,7 +15,7 @@ class Presentacion{
 object inicio inherits Presentacion {
 	method iniciar(){
 		game.boardGround ("Principal.jpg")
-		config.presionarEnter(self)
+		teclado.presionarEnter(self)
 	}
 }
 class Niveles {
@@ -34,12 +34,11 @@ class Niveles {
 		jugadores.add(new Jugador(position = jugadorPosicion, grafico = jugadorGrafico))
 		game.addVisual(jugadores.last())
 		if (jugadores.size() == 1) {
-			config.asignarFlechasPara(jugadores.first())
-			config.hablar(jugadores.first())
+			teclado.asignarFlechasPara(jugadores.first())
 		} else {
-			config.asignarWASDPara(jugadores.last())
-			config.hablar(jugadores.last())
+			teclado.asignarWASDPara(jugadores.last())
 		}
+		teclado.hablar(jugadores.last())
 	}
 
 //---------------------------------------new-------------------------------------	
@@ -107,7 +106,7 @@ object nivel1 inherits Niveles {
 
 
 		self.agregarJugador(game.origin(), "george")
-		config.configurarColisiones(jugadores)
+		fisicas.colisiones(jugadores)
 	}
 
 }
