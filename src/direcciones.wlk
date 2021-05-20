@@ -1,10 +1,21 @@
 import wollok.game.*
 import objetos.*
-import mecanicas.*
 import jugador.*
 
-object arriba{
-	
+
+class Direccion 
+{
+	method girar(alguien)
+	{
+		if (not alguien.muerto()) {
+			alguien.direccion(self)
+		}	
+	}
+}
+
+
+object arriba inherits Direccion 
+{
 	method mover(distanciaY, alguien) 
 	{
 		if ((alguien.position().y() < (game.height()-1)) and (not alguien.muerto())) {
@@ -12,19 +23,15 @@ object arriba{
 		} 
 	}
 
-	method girar(alguien)
+	method direccionOpuesta() 
 	{
-		if (not alguien.muerto()) {
-			alguien.direccion(self)
-		}	
-	}
-	
-	method direccionOpuesta() {
 		return abajo
 	}
 }
 
-object abajo{
+
+object abajo inherits Direccion 
+{
 	method mover(distanciaY,alguien)
 	{
 		if ((alguien.position().y() > 0) and (not alguien.muerto())) {
@@ -32,19 +39,15 @@ object abajo{
 		} 
 	}
 	
-	method girar(alguien)
+	method direccionOpuesta() 
 	{
-		if (not alguien.muerto()) {
-			alguien.direccion(self)
-		}
-	}
-
-	method direccionOpuesta() {
 		return arriba
 	}
 }
 
-object derecha{
+
+object derecha inherits Direccion 
+{
 	method mover(distanciaX,alguien)
 	{
 		if ( (( alguien.position().x() < (game.width()-1) ) and (not alguien.muerto()) )) {
@@ -52,35 +55,24 @@ object derecha{
 		} 
 	}
 	
-	method girar(alguien)
+	method direccionOpuesta() 
 	{
-		if (not alguien.muerto()) {
-			alguien.direccion(self)
-		}	
-	}
-	
-	method direccionOpuesta() {
 		return izquierda
 	}
 }
 
-object izquierda{
-	
+
+object izquierda inherits Direccion 
+{
 	method mover(distanciaX,alguien)
 	{
 		if ((alguien.position().x() > 0) and ( not alguien.muerto())) {
 			 alguien.position(alguien.position().left(distanciaX))
 		} 
 	}
-	
-	method girar(alguien)
-	{
-		if (not alguien.muerto()) {
-			alguien.direccion(self)
-		}
-	}
 
-	method direccionOpuesta() {
+	method direccionOpuesta() 
+	{
 		return derecha
 	}
 }
