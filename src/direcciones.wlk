@@ -23,10 +23,7 @@ object arriba inherits Direccion
 		} 
 	}
 
-	method direccionOpuesta() 
-	{
-		return abajo
-	}
+	method direccionOpuesta() = abajo
 }
 
 
@@ -39,10 +36,7 @@ object abajo inherits Direccion
 		} 
 	}
 	
-	method direccionOpuesta() 
-	{
-		return arriba
-	}
+	method direccionOpuesta() = arriba
 }
 
 
@@ -55,10 +49,7 @@ object derecha inherits Direccion
 		} 
 	}
 	
-	method direccionOpuesta() 
-	{
-		return izquierda
-	}
+	method direccionOpuesta() = izquierda
 }
 
 
@@ -71,8 +62,5 @@ object izquierda inherits Direccion
 		} 
 	}
 
-	method direccionOpuesta() 
-	{
-		return derecha
-	}
+	method direccionOpuesta() = derecha
 }
