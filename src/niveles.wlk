@@ -41,11 +41,12 @@ class Niveles {
 		teclado.hablar(jugadores.last())
 	}
 
-	method agregarZombie(zombiePosicion, zombieGrafico, zombieTick) {
-		zombies.add(new EnteMalvado(position = zombiePosicion, grafico = zombieGrafico, tiempo = zombieTick))
+	method agregarZombie(zombiePosicion, zombieGrafico) {
+		zombies.add(new EnteMalvado(position = zombiePosicion, grafico = zombieGrafico))
 		game.addVisual(zombies.last())
 		
 	}
+
 }
 
 
@@ -56,40 +57,70 @@ object nivel1 inherits Niveles {
 			// Con esta linea, funciona bien el multijugador,
 			// pero se bugea el mensaje.
 			// self.agregarJugador(game.origin(), "george")
-
-
-		self.agregarZombie(game.at(2,2),'zombie', 700)
-		zombies.last().agregarPunto(2,2)
-		zombies.last().agregarPunto(6,6)
-
-		zombies.last().iniciarMovimiento()
-
-		/*
-		self.agregarZombie(game.center(),'zombie', 100,[0,9],"x")
-		self.agregarZombie(game.at(2,7), 'blanca', 300,[0,9],"x")
-		self.agregarZombie(game.at(5,8), 'zombie', 500,[2,9],"x")
-		self.agregarZombie(game.at(5,6), 'blanca', 150,[2,9],"y")
-		self.agregarZombie(game.at(5,6), 'blanca', 150,[3,8],"x")
-		self.agregarZombie(game.at(8,9), 'zombie', 350,[5,8],"y")
-
-		const trampa1 = new EnteMalvado(position = game.at(3, 8), grafico = "Slime.png",tiempo=300,limitesMovimiento=[0,0])
-		const trampa2 = new EnteMalvado(position = game.at(6, 3), grafico = "Slime.png",tiempo=300,limitesMovimiento=[0,0])
-		const camioneta = new Camioneta(position = game.at(7, 9), grafico = "camioneta.png",tiempo=300,limitesMovimiento=[0,0])
-		const bloque = new Bloque(position = game.at(0, 4), grafico = "valla.png",tiempo=300,limitesMovimiento=[0,0])
-		const bloque1 = new Bloque(position = game.at(1, 4), grafico = "valla.png",tiempo=300,limitesMovimiento=[0,0])
-		const bloque2 = new Bloque(position = game.at(2, 4), grafico = "valla.png",tiempo=300,limitesMovimiento=[0,0])
-		const bloque3 = new Bloque(position = game.at(3, 4), grafico = "valla.png",tiempo=300,limitesMovimiento=[0,0])
-		const bloque4 = new Bloque(position = game.at(4, 4), grafico = "valla.png",tiempo=300,limitesMovimiento=[0,0])
-		const bloque5 = new Bloque(position = game.at(7, 4), grafico = "valla.png",tiempo=300,limitesMovimiento=[0,0])
-		const bloque6 = new Bloque(position = game.at(8, 4), grafico = "valla.png",tiempo=300,limitesMovimiento=[0,0])
-		const bloque7 = new Bloque(position = game.at(9, 4), grafico = "valla.png",tiempo=300,limitesMovimiento=[0,0])
-		const rueda = new Herramienta(position = game.at(2,2), grafico = 'rueda.png')
-		const herramienta = new Herramienta(position = game.at(6,7), grafico = 'Herramienta.png')
-		const bidon = new Herramienta(position = game.at(5,8), grafico = 'bidon.png')
-		const tuerca = new Herramienta(position = game.at(9,3), grafico = 'tuerca.png')
+			
+			
+			
+		//self.agregarZombie(game.at(3,8),'Slime')<------hayq ue buscar como añadir una clase por el tema de las trampas( que no se muevan)
+		//self.agregarZombie(game.at(7,7),'Slime')
 		
-	 	game.addVisual(trampa1)
-		game.addVisual(trampa2)
+		
+		self.agregarZombie(game.at(5,9),'blanca')// camina recto eje y
+		zombies.last().agregarPunto(5,5)		
+		
+		
+	    self.agregarZombie(game.at(7,6),'zombie')// camina cuadrado
+		zombies.last().agregarPunto(6,7)		
+		
+
+	    self.agregarZombie(game.at(10,8),'blanca')// camina recto eje y
+		zombies.last().agregarPunto(10,2)		
+		
+		
+	    self.agregarZombie(game.at(13,8),'blanca')// camina recto eje y
+		zombies.last().agregarPunto(13,3)		
+		
+		
+	    self.agregarZombie(game.at(15,10),'zombie')// camina cuadrado
+		zombies.last().agregarPunto(11,5)		
+		
+
+	    self.agregarZombie(game.at(10,3),'blanca')// camina recto eje x
+		zombies.last().agregarPunto(16,3)		
+		
+
+	    self.agregarZombie(game.at(1,6),'zombie')// camina cuadrado		
+		zombies.last().agregarPunto(3,11)		
+		
+
+	    self.agregarZombie(game.at(17,11),'blanca')// camina recto eje y
+		zombies.last().agregarPunto(17,3)		
+						
+	    self.agregarZombie(game.at(6,11),'blanca')// camina recto eje x
+		zombies.last().agregarPunto(13,11)						
+						
+		zombies.forEach({zom=>zom.iniciarMovimiento(0,100.randomUpTo(400))})				
+
+		
+		const camioneta = new Camioneta(position = game.at(7, 9), grafico = "camioneta.png")
+		const bloque    = new Bloque(position = game.at(0, 4), grafico = "valla.png")
+		const bloque1   = new Bloque(position = game.at(1, 4), grafico = "valla.png")
+		const bloque2   = new Bloque(position = game.at(2, 4), grafico = "valla.png")
+		const bloque3   = new Bloque(position = game.at(3, 4), grafico = "valla.png")
+		const bloque4   = new Bloque(position = game.at(4, 4), grafico = "valla.png")
+		const bloque5   = new Bloque(position = game.at(7, 4), grafico = "valla.png")
+		const bloque6   = new Bloque(position = game.at(8, 4), grafico = "valla.png")
+		const bloque7   = new Bloque(position = game.at(9, 4), grafico = "valla.png")
+		const bloque8   = new Bloque(position = game.at(9, 2), grafico = "muro.png")
+		const bloque9   = new Bloque(position = game.at(9, 1), grafico = "muro.png")
+		const bloque10  = new Bloque(position = game.at(9, 0), grafico = "muro.png")
+		const bloqueCamion  = new Bloque(position = game.at(8,9), grafico = "autoTracero.png")
+		
+		const rueda = new Herramienta(position = game.at(15,1), grafico = 'rueda.png')
+		const herramienta = new Herramienta(position = game.at(18,6), grafico = 'Herramienta.png')
+		const bidon = new Herramienta(position = game.at(15,11), grafico = 'bidon.png')
+		const tuerca = new Herramienta(position = game.at(3,11), grafico = 'tuerca.png')
+		
+		game.addVisual(bloqueCamion)
 		game.addVisual(camioneta)
 		game.addVisual(bloque)
 		game.addVisual(bloque1)
@@ -99,11 +130,14 @@ object nivel1 inherits Niveles {
 		game.addVisual(bloque5)
 		game.addVisual(bloque6)
 		game.addVisual(bloque7)
+		game.addVisual(bloque8)
+		game.addVisual(bloque9)
+		game.addVisual(bloque10)
 		game.addVisual(rueda)
 		game.addVisual(herramienta)
 		game.addVisual(bidon)
 		game.addVisual(tuerca) 
- 		*/
+ 		
 
 		self.agregarJugador(game.origin(), "george")
 		fisicas.colisiones(jugadores)

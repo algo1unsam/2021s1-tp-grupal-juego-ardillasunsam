@@ -5,38 +5,42 @@ import niveles.*
 import direcciones.*
 
 class Ente {
+
 	var property muerto = false
 	var property position
 	var property direccion = derecha
 	var property grafico
 
 	method image() = grafico
+
 }
 
 class EnteBot inherits Ente {
-	var property tiempo = 500
+
 	var property puntoActual = 0
 	var property puntos = []
-	
+
 	override method image() = (self.grafico() + "_" + self.direccion() + ".png")
 
 	method agregarPunto(coordenadaX, coordenadaY) {
-		puntos.add([coordenadaX, coordenadaY])
+		puntos.add([ coordenadaX, coordenadaY ])
 	}
-	
-	method iniciarMovimiento() {
-		game.onTick(self.tiempo(), "MOVIMIENTO", { self.movimiento() })
+
+	method iniciarMovimiento(banderaMovimiento,tiempo) {
+		puntos.add([self.position().x(),self.position().y()])
+		game.onTick(tiempo, self.toString(), {self.movimiento(banderaMovimiento)})
+		
 	}
-	
+
 	method puntoX(numeroDepPunto) {
 		return puntos.get(numeroDepPunto).first()
 	}
-	
+
 	method puntoY(numeroDepPunto) {
 		return puntos.get(numeroDepPunto).last()
 	}
-	
-	method movimiento() {
+
+	method movimiento(banderaMovimiento) {
 		if (self.position().x() < self.puntoX(puntoActual)) {
 			derecha.girar(self)
 		} else if (self.position().x() > self.puntoX(puntoActual)) {
@@ -47,22 +51,30 @@ class EnteBot inherits Ente {
 			} else if (self.position().y() < self.puntoY(puntoActual)) {
 				arriba.girar(self)
 			} else {
-				if ((puntoActual+1) == puntos.size()) {
-					puntoActual = 0
+				if (self.esElUltimoPunto()) {
+					if (banderaMovimiento == 0) {
+						puntoActual = 0
+					} else {
+						fisicas.DetenerEventosTiempo(self.toString())
+					}
 				} else {
 					puntoActual += 1
 				}
 			}
 		}
-		
 		if (not self.colisionoConJugador(nivel1.jugadores())) {
 			self.direccion().mover(1, self)
 		}
 	}
-	
+
+	method esElUltimoPunto() {
+		return (puntoActual + 1) == puntos.size()
+	}
+
 	method colisionoConJugador(jugadores) {
 		return jugadores.all({ unJugador => position == unJugador.position() })
 	}
+
 }
 
 class EnteMalvado inherits EnteBot {
@@ -81,29 +93,38 @@ class EnteMalvado inherits EnteBot {
 
 }
 
-class Camioneta inherits EnteBot {
+class Camioneta inherits Bloque {
 
-	method teEncontro(alguien) {
-		if (alguien.herramientas().size() == 4){
-		game.say(self, "GANASTE")
-		game.schedule(1000, { game.stop()})}
+   override  method teEncontro(alguien) {
+		if (alguien.herramientas().size() == 4) {
+			game.say(self, "GANASTE")
+			game.schedule(1000, { game.stop()})
+		}else{super(alguien)}
 	// nivel2.iniciar() estamos viendo como 
 	}
-
 }
 
 class Bloque inherits Ente {
+
 	method teEncontro(alguien) {
 		alguien.direccion().direccionOpuesta().girar(alguien)
 		alguien.direccion().mover(1, alguien)
 	}
+
 }
 
-class Herramienta inherits Ente{
-	method teEncontro(alguien){
+class Herramienta inherits Ente {
+	method teEncontro(alguien) {
 		alguien.agarrar(self)
 		game.removeVisual(self)
 	}
 }
 
-
+//object fotograma inherits Ente{
+	
+	//method iniciarAnimacion(imagen){
+	//game.onTick(tiempo, self.toString(), { self.movimiento(banderaMovimiento)})
+	//}
+	
+			
+//}
