@@ -9,7 +9,6 @@ class Presentacion{
 		game.stop() // aca deberia pasar a la proxima pantalla
 					//por ahora finaliza el juego
 	}
-	
 }
 
 object inicio inherits Presentacion {
@@ -18,6 +17,7 @@ object inicio inherits Presentacion {
 		teclado.presionarEnter(self)
 	}
 }
+
 class Niveles {
 
 	const jugadores = []
@@ -44,9 +44,11 @@ class Niveles {
 	method agregarZombie(zombiePosicion, zombieGrafico) {
 		zombies.add(new EnteMalvado(position = zombiePosicion, grafico = zombieGrafico))
 		game.addVisual(zombies.last())
-		
 	}
-
+	
+	method asignarModoEditorA(ente) {
+		keyboard.space().onPressDo({ game.say(ente, "xy = (" + ente.position().x().toString() + ", " + ente.position().y().toString() + ")")})
+	}
 }
 
 
@@ -140,6 +142,7 @@ object nivel1 inherits Niveles {
  		
 
 		self.agregarJugador(game.origin(), "george")
+		self.asignarModoEditorA(jugadores.last())
 		fisicas.colisiones(jugadores)
 	}
 

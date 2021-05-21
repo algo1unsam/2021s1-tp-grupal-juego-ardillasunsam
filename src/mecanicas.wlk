@@ -18,7 +18,6 @@ object teclado {
 		keyboard.down().onPressDo({ abajo.girar(jugadorN)
 			abajo.mover(1, jugadorN)
 		})
-		keyboard.space().onPressDo({ game.say(jugadorN,jugadorN.position().toString())})
 	}
 
 	method asignarWASDPara(jugadorN) {
@@ -36,14 +35,14 @@ object teclado {
 		})
 	}
 
-	method hablar(jugadorN) {
-		keyboard.x().onPressDo({ jugadorN.mensajeRandom()})
+	method hablar(ente) {
+		keyboard.x().onPressDo({ ente.mensajeRandom()})
 	}
 
 	method presionarEnter(presentacion) {
 		keyboard.enter().onPressDo({ presentacion.continuar()})
 	}
-
+	
 }
 
 object fisicas {
