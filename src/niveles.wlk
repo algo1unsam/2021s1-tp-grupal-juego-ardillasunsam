@@ -98,7 +98,7 @@ object nivel1 inherits Niveles {
 	    self.agregarZombie(game.at(6,11),'blanca')// camina recto eje x
 		zombies.last().agregarPunto(13,11)						
 						
-		zombies.forEach({zom=>zom.iniciarMovimiento(0,100.randomUpTo(400))})				
+		zombies.forEach({unZombie => unZombie.iniciarMovimiento("ciclico",100.randomUpTo(400))})				
 
 		
 		const camioneta = new Camioneta(position = game.at(7, 9), grafico = "camioneta.png")

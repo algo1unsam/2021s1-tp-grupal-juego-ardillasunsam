@@ -26,49 +26,65 @@ class EnteBot inherits Ente {
 		puntos.add([ coordenadaX, coordenadaY ])
 	}
 
-	method iniciarMovimiento(banderaMovimiento,tiempo) {
+	method iniciarMovimiento(tipoDeMovimiento,tiempo) {
 		puntos.add([self.position().x(),self.position().y()])
-		game.onTick(tiempo, self.toString(), {self.movimiento(banderaMovimiento)})
+		game.onTick(tiempo, self.toString(), {self.movimiento(tipoDeMovimiento)})
 		
 	}
 
-	method puntoX(numeroDepPunto) {
-		return puntos.get(numeroDepPunto).first()
+	method puntoX(numeroDePunto) {
+		return puntos.get(numeroDePunto).first()
 	}
 
-	method puntoY(numeroDepPunto) {
-		return puntos.get(numeroDepPunto).last()
+	method puntoY(numeroDePunto) {
+		return puntos.get(numeroDePunto).last()
 	}
 
-	method movimiento(banderaMovimiento) {
-		if (self.position().x() < self.puntoX(puntoActual)) {
-			derecha.girar(self)
-		} else if (self.position().x() > self.puntoX(puntoActual)) {
-			izquierda.girar(self)
-		} else {
-			if (self.position().y() > self.puntoY(puntoActual)) {
-				abajo.girar(self)
-			} else if (self.position().y() < self.puntoY(puntoActual)) {
-				arriba.girar(self)
-			} else {
-				if (self.esElUltimoPunto()) {
-					if (banderaMovimiento == 0) {
-						puntoActual = 0
-					} else {
-						fisicas.DetenerEventosTiempo(self.toString())
-					}
-				} else {
-					puntoActual += 1
-				}
+	method movimiento(tipoDeMovimiento) {
+		if (not self.girarEnEjeX()) {
+			if (not self.girarEnEjeY()) {
+				self.puntoAlcanzado(tipoDeMovimiento)
 			}
 		}
 		if (not self.colisionoConJugador(nivel1.jugadores())) {
 			self.direccion().mover(1, self)
 		}
 	}
+	
+	method girarEnEjeX() {
+		if (self.position().x() < self.puntoX(puntoActual)) {
+			derecha.girar(self)
+			return true
+		} else if (self.position().x() > self.puntoX(puntoActual)) {
+			izquierda.girar(self)
+			return true
+		} else {
+			return false
+		}
+	}
+	
+	method girarEnEjeY() {
+		if (self.position().y() > self.puntoY(puntoActual)) {
+			abajo.girar(self)
+			return true
+		} else if (self.position().y() < self.puntoY(puntoActual)) {
+			arriba.girar(self)
+			return true
+		} else {
+			return false
+		}
+	}
 
-	method esElUltimoPunto() {
-		return (puntoActual + 1) == puntos.size()
+	method puntoAlcanzado(tipoDeMovimiento) {
+		if ((puntoActual + 1) == puntos.size()) {
+			if (tipoDeMovimiento == "ciclico") {
+				puntoActual = 0
+			} else {
+				game.removeTickEvent(self.toString())
+			}
+		} else {
+			puntoActual += 1
+		}
 	}
 
 	method colisionoConJugador(jugadores) {
@@ -93,24 +109,22 @@ class EnteMalvado inherits EnteBot {
 
 }
 
-class Camioneta inherits Bloque {
-
-   override  method teEncontro(alguien) {
-		if (alguien.herramientas().size() == 4) {
-			game.say(self, "GANASTE")
-			game.schedule(1000, { game.stop()})
-		}else{super(alguien)}
-	// nivel2.iniciar() estamos viendo como 
-	}
-}
-
 class Bloque inherits Ente {
-
 	method teEncontro(alguien) {
 		alguien.direccion().direccionOpuesta().girar(alguien)
 		alguien.direccion().mover(1, alguien)
 	}
+}
 
+class Camioneta inherits Bloque {
+   override  method teEncontro(alguien) {
+		if (alguien.herramientas().size() == 4) {
+			game.say(self, "GANASTE")
+			game.schedule(1000, { game.stop()})
+		} else {
+			super(alguien)
+		}
+	}
 }
 
 class Herramienta inherits Ente {

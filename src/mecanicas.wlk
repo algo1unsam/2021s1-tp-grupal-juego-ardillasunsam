@@ -47,14 +47,8 @@ object teclado {
 }
 
 object fisicas {
-
 	method colisiones(jugadores) {
 		jugadores.forEach({ unJugador => game.onCollideDo(unJugador, { algo => algo.teEncontro(unJugador)})})
 	}
-
-	method DetenerEventosTiempo(evento) {
-		game.removeTickEvent(evento)
-	}
-
 }
 
