@@ -5,19 +5,67 @@ import niveles.*
 import direcciones.*
 
 class Ente {
-
 	var property muerto = false
 	var property position
 	var property direccion = derecha
 	var property grafico
-	var property tiempo = 500
-	var property limitesMovimiento = [0,10]
 
 	method image() = grafico
-
 }
 
-class EnteMalvado inherits Ente {
+class EnteBot inherits Ente {
+	var property tiempo = 500
+	var property puntoActual = 0
+	var property puntos = []
+	
+	override method image() = (self.grafico() + "_" + self.direccion() + ".png")
+
+	method agregarPunto(coordenadaX, coordenadaY) {
+		puntos.add([coordenadaX, coordenadaY])
+	}
+	
+	method iniciarMovimiento() {
+		game.onTick(self.tiempo(), "MOVIMIENTO", { self.movimiento() })
+	}
+	
+	method puntoX(numeroDepPunto) {
+		return puntos.get(numeroDepPunto).first()
+	}
+	
+	method puntoY(numeroDepPunto) {
+		return puntos.get(numeroDepPunto).last()
+	}
+	
+	method movimiento() {
+		if (self.position().x() < self.puntoX(puntoActual)) {
+			derecha.girar(self)
+		} else if (self.position().x() > self.puntoX(puntoActual)) {
+			izquierda.girar(self)
+		} else {
+			if (self.position().y() > self.puntoY(puntoActual)) {
+				abajo.girar(self)
+			} else if (self.position().y() < self.puntoY(puntoActual)) {
+				arriba.girar(self)
+			} else {
+				if ((puntoActual+1) == puntos.size()) {
+					puntoActual = 0
+				} else {
+					puntoActual += 1
+				}
+			}
+		}
+		
+		if (not self.colisionoConJugador(nivel1.jugadores())) {
+			self.direccion().mover(1, self)
+		}
+	}
+	
+	method colisionoConJugador(jugadores) {
+		return jugadores.all({ unJugador => position == unJugador.position() })
+	}
+}
+
+class EnteMalvado inherits EnteBot {
 
 	method teEncontro(alguien) {
 		if (alguien.vidas() > 0) {
@@ -33,54 +81,7 @@ class EnteMalvado inherits Ente {
 
 }
 
-class Enemigo inherits EnteMalvado {
-
-	method movimientoX() {
-		if (not self.colisionoConJugador(nivel1.jugadores())) {
-			self.direccion().mover(1, self)
-			if (limitesMovimiento.any({ unLimite => unLimite == position.x() })) {
-				self.direccion().direccionOpuesta().girar(self)
-			}
-		}
-	}
-//---------------------------------------------new------------------------------
-	method movimientoY() {
-		if (not self.colisionoConJugador(nivel1.jugadores())) {
-			self.direccion().mover(1, self)
-			if (limitesMovimiento.any({ unLimite => unLimite == position.y() })) {
-				self.direccion().direccionOpuesta().girar(self)
-			}
-		}
-	}
-//---------------------------------------------------------------------------
-
-	override method image() = ( self.grafico() + "_" + self.direccion() + ".png")
-
-//------------------------------------------------------------se podra unificar en uno solo?¡?¡
-	method eventoMovimientoX() {
-		self.direccion(derecha)
-		game.onTick(self.tiempo(), "MOVIMIENTO", { self.movimientoX()})
-	}
-
-	method eventoMovimientoY() {
-		self.direccion(abajo)
-		game.onTick(self.tiempo(), "MOVIMIENTO", { self.movimientoY()})
-	}
-
-	/*
-	 *  	method eventoMovimiento(eje,direccion){
-	 * 		self.direccion(direcion)
-	 * 		game.onTick(self.tiempo(),"MOVIMIENTO",{self.movimiento.eje()})
-	 * 	}?¡?¡
-	 */
-//----------------------------------------------------------------------------------------------------
-	method colisionoConJugador(jugadores) {
-		return jugadores.all({ unJugador => position == unJugador.position() })
-	}
-
-}
-
-class Camioneta inherits Ente {
+class Camioneta inherits EnteBot {
 
 	method teEncontro(alguien) {
 		if (alguien.herramientas().size() == 4){

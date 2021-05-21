@@ -41,15 +41,11 @@ class Niveles {
 		teclado.hablar(jugadores.last())
 	}
 
-//---------------------------------------new-------------------------------------	
-	method agregarZombie(zombiePosicion, zombieGrafico, zombieTick, zombieLimites,eje) {
-		zombies.add(new Enemigo(position = zombiePosicion, grafico = zombieGrafico, tiempo = zombieTick, limitesMovimiento = zombieLimites))
+	method agregarZombie(zombiePosicion, zombieGrafico, zombieTick) {
+		zombies.add(new EnteMalvado(position = zombiePosicion, grafico = zombieGrafico, tiempo = zombieTick))
 		game.addVisual(zombies.last())
-		if(eje=="x"){zombies.last().eventoMovimientoX()}else{zombies.last().eventoMovimientoY()}
 		
 	}
-//--------------------------------------------------------------------------
-
 }
 
 
@@ -60,16 +56,22 @@ object nivel1 inherits Niveles {
 			// Con esta linea, funciona bien el multijugador,
 			// pero se bugea el mensaje.
 			// self.agregarJugador(game.origin(), "george")
-		
-			
-//----------------------------new-------------------------------------------			
+
+
+		self.agregarZombie(game.at(2,2),'zombie', 700)
+		zombies.last().agregarPunto(2,2)
+		zombies.last().agregarPunto(6,6)
+
+		zombies.last().iniciarMovimiento()
+
+		/*
 		self.agregarZombie(game.center(),'zombie', 100,[0,9],"x")
 		self.agregarZombie(game.at(2,7), 'blanca', 300,[0,9],"x")
 		self.agregarZombie(game.at(5,8), 'zombie', 500,[2,9],"x")
 		self.agregarZombie(game.at(5,6), 'blanca', 150,[2,9],"y")
 		self.agregarZombie(game.at(5,6), 'blanca', 150,[3,8],"x")
 		self.agregarZombie(game.at(8,9), 'zombie', 350,[5,8],"y")
-//-----------------------------------------------------------------------
+
 		const trampa1 = new EnteMalvado(position = game.at(3, 8), grafico = "Slime.png",tiempo=300,limitesMovimiento=[0,0])
 		const trampa2 = new EnteMalvado(position = game.at(6, 3), grafico = "Slime.png",tiempo=300,limitesMovimiento=[0,0])
 		const camioneta = new Camioneta(position = game.at(7, 9), grafico = "camioneta.png",tiempo=300,limitesMovimiento=[0,0])
@@ -86,7 +88,6 @@ object nivel1 inherits Niveles {
 		const bidon = new Herramienta(position = game.at(5,8), grafico = 'bidon.png')
 		const tuerca = new Herramienta(position = game.at(9,3), grafico = 'tuerca.png')
 		
-	 	
 	 	game.addVisual(trampa1)
 		game.addVisual(trampa2)
 		game.addVisual(camioneta)
@@ -101,9 +102,8 @@ object nivel1 inherits Niveles {
 		game.addVisual(rueda)
 		game.addVisual(herramienta)
 		game.addVisual(bidon)
-		game.addVisual(tuerca)
-		
-
+		game.addVisual(tuerca) 
+ 		*/
 
 		self.agregarJugador(game.origin(), "george")
 		fisicas.colisiones(jugadores)
