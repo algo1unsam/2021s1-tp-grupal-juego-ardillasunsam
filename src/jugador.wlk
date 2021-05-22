@@ -5,7 +5,7 @@ import direcciones.*
 
 class Jugador inherits objetos.Ente {
 
-	var property vidas = 3
+	var property vidas = 4
 	var property herramientas = []
 
 	override method image() {
