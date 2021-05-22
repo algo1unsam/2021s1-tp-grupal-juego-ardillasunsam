@@ -111,8 +111,7 @@ class EnteMalvado inherits EnteBot {
 
 class Bloque inherits Ente {
 	method teEncontro(alguien) {
-		alguien.direccion().direccionOpuesta().girar(alguien)
-		alguien.direccion().mover(1, alguien)
+		alguien.direccion().direccionOpuesta().mover(1, alguien)
 	}
 }
 
