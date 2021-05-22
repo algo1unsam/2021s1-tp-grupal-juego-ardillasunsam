@@ -144,4 +144,8 @@ class BarraVida inherits Ente {
 	var property jugador
 	
 	override method image() = (self.grafico() + jugador.vidas().toString() + ".png")
+	
+	method teEncontro(alguien){
+		
+	}
 }
