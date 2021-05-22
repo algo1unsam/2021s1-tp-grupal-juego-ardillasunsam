@@ -94,19 +94,17 @@ class EnteBot inherits Ente {
 }
 
 class EnteMalvado inherits EnteBot {
-
 	method teEncontro(alguien) {
+		alguien.bajarVida()
 		if (alguien.vidas() > 0) {
-			alguien.bajarVida()
 			alguien.gritar()
 			alguien.position(game.origin())
 		} else {
 			alguien.muerto(true)
 			game.say(self, "¡¡GAME OVER JAJAJAJAJ!!")
-			game.schedule(3500, { game.stop()})
+			game.schedule(3500, {game.stop()})
 		}
 	}
-
 }
 
 class Bloque inherits Ente {
@@ -142,43 +140,8 @@ class Herramienta inherits Ente {
 			
 //}
 
-class BarraVida inherits Ente{
+class BarraVida inherits Ente {
+	var property jugador
 	
-	var property personaje ="george"
-	
-	
-	method mostrarVida(unPersonaje){
-		if (unPersonaje.vidas() == 3){			
-			self.grafico("barra_red1")
-			
-			}
-	    if (unPersonaje.vidas() == 2){
-	    	//game.removeVisual("barra_red1")
-	    	self.primerDanio()
-			
-			}
-		if (unPersonaje.vidas() == 1){
-			//game.removeVisual("barra_red2")
-			self.segundoDanio()
-			
-			}
-			
-		if (unPersonaje.vidas() == 0){
-			//game.removeVisual("barra_red3")
-			self.tercerDanio()
-			
-			}
-		
-	}
-	method primerDanio(){
-		self.grafico("barra_red2")
-	}
-	
-	method segundoDanio(){
-		self.grafico("barra_red3")
-	}
-	
-	method tercerDanio(){
-		self.grafico("barra_muerto")
-	}
+	override method image() = (self.grafico() + jugador.vidas().toString() + ".png")
 }

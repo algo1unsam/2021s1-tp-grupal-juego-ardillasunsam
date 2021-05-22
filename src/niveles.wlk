@@ -102,7 +102,6 @@ object nivel1 inherits Niveles {
 						
 		zombies.forEach({unZombie => unZombie.iniciarMovimiento("ciclico",100.randomUpTo(400))})				
 
-		const barraVida = new BarraVida(position = game.at(14,0),grafico = "barra_red.png") 
 		const camioneta = new Camioneta(position = game.at(7, 9), grafico = "camioneta.png")
 		const bloque    = new Bloque(position = game.at(0, 4), grafico = "valla.png")
 		const bloque1   = new Bloque(position = game.at(1, 4), grafico = "valla.png")
@@ -121,7 +120,6 @@ object nivel1 inherits Niveles {
 		const herramienta = new Herramienta(position = game.at(18,6), grafico = 'Herramienta.png')
 		const bidon = new Herramienta(position = game.at(15,11), grafico = 'bidon.png')
 		const tuerca = new Herramienta(position = game.at(3,11), grafico = 'tuerca.png')
-		game.addVisual(barraVida)
 		game.addVisual(bloqueCamion)
 		game.addVisual(camioneta)
 		game.addVisual(bloque)
@@ -143,6 +141,10 @@ object nivel1 inherits Niveles {
 
 		self.agregarJugador(game.origin(), "george")
 		self.asignarModoEditorA(jugadores.last())
+		
+		const barraVida = new BarraVida(jugador = jugadores.last(), position = game.at(14,0), grafico = "barra_red")
+		game.addVisual(barraVida)
+		
 		fisicas.colisiones(jugadores)
 	}
 
