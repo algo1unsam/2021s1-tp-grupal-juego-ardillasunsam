@@ -7,31 +7,31 @@ object teclado {
 
 	method asignarFlechasPara(jugadorN) {
 		keyboard.left().onPressDo({ izquierda.girar(jugadorN)
-			izquierda.mover(1, jugadorN)
+			izquierda.mover(jugadorN)
 		})
 		keyboard.right().onPressDo({ derecha.girar(jugadorN)
-			derecha.mover(1, jugadorN)
+			derecha.mover(jugadorN)
 		})
 		keyboard.up().onPressDo({ arriba.girar(jugadorN)
-			arriba.mover(1, jugadorN)
+			arriba.mover(jugadorN)
 		})
 		keyboard.down().onPressDo({ abajo.girar(jugadorN)
-			abajo.mover(1, jugadorN)
+			abajo.mover(jugadorN)
 		})
 	}
 
 	method asignarWASDPara(jugadorN) {
 		keyboard.a().onPressDo({ izquierda.girar(jugadorN)
-			izquierda.mover(1, jugadorN)
+			izquierda.mover(jugadorN)
 		})
 		keyboard.d().onPressDo({ derecha.girar(jugadorN)
-			derecha.mover(1, jugadorN)
+			derecha.mover(jugadorN)
 		})
 		keyboard.w().onPressDo({ arriba.girar(jugadorN)
-			arriba.mover(1, jugadorN)
+			arriba.mover(jugadorN)
 		})
 		keyboard.s().onPressDo({ abajo.girar(jugadorN)
-			abajo.mover(1, jugadorN)
+			abajo.mover(jugadorN)
 		})
 	}
 

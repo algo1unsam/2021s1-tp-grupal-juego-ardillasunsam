@@ -5,10 +5,12 @@ import jugador.*
 
 class Direccion 
 {
-	method girar(alguien)
+	var property distanciaPorPaso = 1
+	
+	method girar(objeto)
 	{
-		if (not alguien.muerto()) {
-			alguien.direccion(self)
+		if (not objeto.muerto()) {
+			objeto.direccion(self)
 		}	
 	}
 }
@@ -16,10 +18,10 @@ class Direccion
 
 object arriba inherits Direccion 
 {
-	method mover(distanciaY, alguien) 
+	method mover(objeto) 
 	{
-		if ((alguien.position().y() < (game.height()-1)) and (not alguien.muerto())) {
-			alguien.position(alguien.position().up(distanciaY))
+		if ((objeto.position().y() < (game.height()-1)) and (not objeto.muerto())) {
+			objeto.position(objeto.position().up(self.distanciaPorPaso()))
 		} 
 	}
 
@@ -29,10 +31,10 @@ object arriba inherits Direccion
 
 object abajo inherits Direccion 
 {
-	method mover(distanciaY,alguien)
+	method mover(objeto)
 	{
-		if ((alguien.position().y() > 0) and (not alguien.muerto())) {
-			alguien.position(alguien.position().down(distanciaY)) 
+		if ((objeto.position().y() > 0) and (not objeto.muerto())) {
+			objeto.position(objeto.position().down(self.distanciaPorPaso()))
 		} 
 	}
 	
@@ -42,10 +44,10 @@ object abajo inherits Direccion
 
 object derecha inherits Direccion 
 {
-	method mover(distanciaX,alguien)
+	method mover(objeto)
 	{
-		if ( (( alguien.position().x() < (game.width()-1) ) and (not alguien.muerto()) )) {
-			 alguien.position(alguien.position().right(distanciaX))
+		if ((objeto.position().x() < (game.width()-1)) and (not objeto.muerto())) {
+			 objeto.position(objeto.position().right(self.distanciaPorPaso()))
 		} 
 	}
 	
@@ -55,10 +57,10 @@ object derecha inherits Direccion
 
 object izquierda inherits Direccion 
 {
-	method mover(distanciaX,alguien)
+	method mover(objeto)
 	{
-		if ((alguien.position().x() > 0) and ( not alguien.muerto())) {
-			 alguien.position(alguien.position().left(distanciaX))
+		if ((objeto.position().x() > 0) and ( not objeto.muerto())) {
+			 objeto.position(objeto.position().left(self.distanciaPorPaso()))
 		} 
 	}
 

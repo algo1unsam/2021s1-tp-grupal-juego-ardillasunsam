@@ -47,7 +47,7 @@ class EnteBot inherits Ente {
 			}
 		}
 		if (not self.colisionoConJugador(nivel1.jugadores())) {
-			self.direccion().mover(1, self)
+			self.direccion().mover(self)
 		}
 	}
 	
@@ -109,7 +109,7 @@ class EnteMalvado inherits EnteBot {
 
 class Bloque inherits Ente {
 	method teEncontro(alguien) {
-		alguien.direccion().direccionOpuesta().mover(1, alguien)
+		alguien.direccion().direccionOpuesta().mover(alguien)
 	}
 }
 
