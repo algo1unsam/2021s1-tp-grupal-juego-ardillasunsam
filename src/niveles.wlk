@@ -56,6 +56,7 @@ object nivel1 inherits Niveles {
 
 	 method iniciar() {
 		game.boardGround("fondo_carretera.png")
+
 			// Con esta linea, funciona bien el multijugador,
 			// pero se bugea el mensaje.
 			// self.agregarJugador(game.origin(), "george")

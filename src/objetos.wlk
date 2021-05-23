@@ -13,8 +13,7 @@ class Ente {
 
 	method image() = grafico
 
-	method teEncontro() {
-	}
+	method teEncontro(alguien) {}
 
 }
 
@@ -97,7 +96,7 @@ class EnteBot inherits Ente {
 
 class EnteMalvado inherits EnteBot {
 
-	method teEncontro(alguien) {
+	override method teEncontro(alguien) {
 		alguien.bajarVida()
 		if (alguien.vidas() > 0) {
 			alguien.gritar()
@@ -113,7 +112,7 @@ class EnteMalvado inherits EnteBot {
 
 class Bloque inherits Ente {
 
-	method teEncontro(alguien) {
+	override method teEncontro(alguien) {
 		alguien.direccion().direccionOpuesta().mover(alguien)
 	}
 
@@ -134,7 +133,7 @@ class Camioneta inherits Bloque {
 
 class Herramienta inherits Ente {
 
-	method teEncontro(alguien) {
+	override method teEncontro(alguien) {
 		alguien.agarrar(self)
 		game.removeVisual(self)
 	}
@@ -151,10 +150,6 @@ class BarraVida inherits Ente {
 	var property jugador
 
 	override method image() = (self.grafico() + jugador.vidas().toString() + ".png")
-
-	method teEncontro(alguien) {
-	}
-
 }
 
 class Bala inherits Ente {
@@ -170,7 +165,7 @@ class Bala inherits Ente {
 		})
 	}
 
-	method teEncontro(alguien) {
+	override method teEncontro(alguien) {
 		if (self.position() != alguien.position()) {
 			game.removeVisual(alguien)
 		}
