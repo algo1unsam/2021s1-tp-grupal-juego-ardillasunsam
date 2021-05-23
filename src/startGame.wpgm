@@ -10,7 +10,7 @@ program Escenario {
 	game.title("ZOMBIES AND DEMONS")
 	game.height(12)
 	game.width(20)
-	nivel1.iniciar()// CAMBIAR ACA poner inicio o nivel1
+	nivel2.iniciar()// CAMBIAR ACA poner inicio o nivel1
 	
 	//game.showAttributes(jugador) 
 	//game.showAttributes(enemigo)

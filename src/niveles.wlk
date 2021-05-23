@@ -150,6 +150,88 @@ object nivel1 inherits Niveles {
 
 }
 
+
+
+object nivel2 inherits Niveles {
+
+	// player1 uno se mueve con flechas izquierda y derecha y dispara con control
+	// player2 se mueve con A y D y dispara con G
+	override method agregarJugador(jugadorPosicion, jugadorGrafico) {
+		if (jugadores.size() > 2) {
+			self.error("maxima cantidad de jugadores alcanzado.")
+		}
+		jugadores.add(new Jugador(position = jugadorPosicion, grafico = jugadorGrafico))
+		game.addVisual(jugadores.last())
+		if (jugadores.size() == 1) {
+			teclado.asignarMovPlayer1Nivel2(jugadores.first()) // agrego nueva mecanica restringe movimiento
+		} else {
+			teclado.asignarMovPlayer2Nivel2(jugadores.last()) // agrego nueva mecanica restringe movimiento
+		}
+	// teclado.hablar(jugadores.last()) se podria sacar este porque hablan los dos al mismo tiempo
+	}
+
+	method crearZombie() { // aca creo el visual del zombie aleatoriamente
+		const zombie = new EnteMalvado(position = randomZombie.position(), grafico = randomZombie.image())
+		game.addVisual(zombie)
+		self.movimientoZombie(zombie)
+	}
+
+	method crearBala() { // hay que lograr que acepte los dos jugadores
+		const bala = new Bala(position = jugadores.first().position(), grafico = "bullet.png")
+		game.addVisual(bala)
+		if (bala.position().y() == game.height() - 1) {
+			game.removeVisual(bala)
+		}
+		bala.mover(bala)
+	}
+
+	method movimientoZombie(unZombie) {
+		game.onTick(500, self.toString(), { if (unZombie.position().y() == 0) {
+				game.removeVisual(unZombie)
+				game.removeTickEvent(self.toString())
+			}
+			unZombie.position(unZombie.position().down(1))
+		})
+	}
+
+	method movimientoZombieSinFreno(unZombie) { // puede fallar porque siguende largo			
+		game.onTick(500, "MOV_ZOMBIE_NIVEL2", { unZombie.position(unZombie.position().down(1))})
+	}
+
+	method movimientoBala(unaBala) {
+		game.onTick(500, "MOV_BALA_NIVEL2", { if (unaBala.position().y() > game.height()) {
+				game.removeVisual(unaBala)
+			}
+			unaBala.position(unaBala.position().up(1))
+		}) //
+	}
+
+	method iniciarHorda() {
+		game.onTick(500, "CREAR_ZOMBIE", { self.crearZombie()})
+	}
+
+	method iniciar() {
+		self.iniciarHorda()
+			// aca inicio la creacion de los zombies
+		const camioneta = new Camioneta(position = game.at(7, 9), grafico = "camioneta.png")
+		const bloqueCamion = new Bloque(position = game.at(8, 9), grafico = "autoTracero.png")
+		game.addVisual(bloqueCamion)
+		game.addVisual(camioneta)
+		game.boardGround("fondo_carretera.png")
+		self.agregarJugador(game.origin(), "george")
+		self.asignarModoEditorA(jugadores.last())
+		fisicas.colisiones(jugadores)
+		
+	// colisionNivel2(unaBala,unZombie) ARME ESTE METODO PERO NOSE COMO PASAR EL OBJETO BALA Y ZOMBIE
+	/* PLAYER 2 NO TESTEADO
+	 * self.agregarJugador(game.at(14,0), "george")
+	 * self.asignarModoEditorA(jugadores.last())
+	 * fisicas.colisiones(jugadores)
+	 */
+	}
+	
+	}
+
 /*object nivel2 {   estamos viendo como imitar a estonoescocapapi
  *       
  * 	    method iniciar() {
