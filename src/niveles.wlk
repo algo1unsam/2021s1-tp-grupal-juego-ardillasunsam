@@ -178,7 +178,7 @@ object nivel2 inherits Niveles {
 	}
 
 	method crearBala() { // hay que lograr que acepte los dos jugadores
-		const bala = new Bala(position = jugadores.first().position(), grafico = "bullet.png")
+		const bala = new Bala(position = jugadores.first().position().up(1), grafico = "bullet.png")
 		game.addVisual(bala)
 		if (bala.position().y() == game.height() - 1) {
 			game.removeVisual(bala)
