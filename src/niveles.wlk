@@ -183,7 +183,7 @@ object nivel2 inherits Niveles {
 		if (bala.position().y() == game.height() - 1) {
 			game.removeVisual(bala)
 		}
-		bala.mover(bala)
+		bala.mover()
 	}
 
 	method movimientoZombie(unZombie) {
@@ -199,13 +199,13 @@ object nivel2 inherits Niveles {
 		game.onTick(500, "MOV_ZOMBIE_NIVEL2", { unZombie.position(unZombie.position().down(1))})
 	}
 
-	method movimientoBala(unaBala) {
-		game.onTick(500, "MOV_BALA_NIVEL2", { if (unaBala.position().y() > game.height()) {
-				game.removeVisual(unaBala)
-			}
-			unaBala.position(unaBala.position().up(1))
-		}) //
-	}
+	//method movimientoBala(unaBala) {
+		//game.onTick(500, "MOV_BALA_NIVEL2", { if (unaBala.position().y() > game.height()) {
+			//	game.removeVisual(unaBala)
+			//}
+			//unaBala.position(unaBala.position().up(1))
+		//}) //
+	//}
 
 	method iniciarHorda() {
 		game.onTick(500, "CREAR_ZOMBIE", { self.crearZombie()})

@@ -156,12 +156,12 @@ class Bala inherits Ente {
 
 	override method image() = "bullet.png"
 
-	method mover(unaBala) {
-		game.onTick(500, self.toString(), { if (unaBala.position().y() == game.height()) {
-				game.removeVisual(unaBala)
+	method mover() {
+		game.onTick(500, self.toString(), { if (self.position().y() == game.height()) {
+				game.removeVisual(self)
 				game.removeTickEvent(self.toString())
 			}
-			unaBala.position(unaBala.position().up(1))
+			self.position(self.position().up(1))
 		})
 	}
 
