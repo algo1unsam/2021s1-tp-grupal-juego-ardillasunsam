@@ -8,7 +8,7 @@ class Direccion
 	var property distanciaPorPaso = 1	
 	method girar(objeto)
 	{
-		if (not objeto.muerto()) {
+		if (objeto.estaVivo()) {
 			objeto.direccion(self)
 		}	
 	}
@@ -19,7 +19,7 @@ object arriba inherits Direccion
 {
 	method mover(objeto) 
 	{
-		if ((objeto.position().y() < (game.height()-1)) and (not objeto.muerto())) {
+		if ((objeto.position().y() < (game.height()-1)) and objeto.estaVivo()) {
 			objeto.position(objeto.position().up(self.distanciaPorPaso()))
 		} 
 	}
@@ -32,7 +32,7 @@ object abajo inherits Direccion
 {
 	method mover(objeto)
 	{
-		if ((objeto.position().y() > 0) and (not objeto.muerto())) {
+		if ((objeto.position().y() > 0) and objeto.estaVivo()) {
 			objeto.position(objeto.position().down(self.distanciaPorPaso()))
 		} 
 	}
@@ -45,7 +45,7 @@ object derecha inherits Direccion
 {
 	method mover(objeto)
 	{
-		if ((objeto.position().x() < (game.width()-1)) and (not objeto.muerto())) {
+		if ((objeto.position().x() < (game.width()-1)) and objeto.estaVivo()) {
 			 objeto.position(objeto.position().right(self.distanciaPorPaso()))
 		} 
 	}
@@ -58,7 +58,7 @@ object izquierda inherits Direccion
 {
 	method mover(objeto)
 	{
-		if ((objeto.position().x() > 0) and ( not objeto.muerto())) {
+		if ((objeto.position().x() > 0) and objeto.estaVivo()) {
 			 objeto.position(objeto.position().left(self.distanciaPorPaso()))
 		} 
 	}
