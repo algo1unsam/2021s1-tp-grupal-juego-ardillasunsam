@@ -6,7 +6,7 @@ import niveles.*
 
 object teclado {
 
-	method asignarFlechasPara(jugadorN) {
+	method asignarFlechasPara(jugadorN) {//<------------jugador 1
 		keyboard.left().onPressDo({ izquierda.girar(jugadorN)
 			izquierda.mover(jugadorN)
 		})
@@ -21,7 +21,7 @@ object teclado {
 		})
 	}
 
-	method asignarWASDPara(jugadorN) {
+	method asignarWASDPara(jugadorN) {//<-------multi jugador
 		keyboard.a().onPressDo({ izquierda.girar(jugadorN)
 			izquierda.mover(jugadorN)
 		})

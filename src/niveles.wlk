@@ -26,8 +26,8 @@ class Niveles {
 
 	const jugadores = []
 	const zombies = []
+	//const cantidadDeBalas =[]<---------------------------------ver cantiadd de de balas
 
-	// const cosasDelJuego=[]
 	method jugadores() {
 		return jugadores
 	}
@@ -61,11 +61,11 @@ object nivel1 inherits Niveles {
 
 	method iniciar() {
 		game.boardGround("fondo_carretera.png")
-			// Con esta linea, funciona bien el multijugador,
-			// pero se bugea el mensaje.
-			// self.agregarJugador(game.origin(), "george")
-			// self.agregarZombie(game.at(3,8),'Slime')<------hayq ue buscar como añadir una clase por el tema de las trampas( que no se muevan)
-			// self.agregarZombie(game.at(7,7),'Slime')
+		// Con esta linea, funciona bien el multijugador,
+		// pero se bugea el mensaje.
+		// self.agregarJugador(game.origin(), "george")
+		// self.agregarZombie(game.at(3,8),'Slime')<------hayq ue buscar como añadir una clase por el tema de las trampas(que no se muevan)
+		// self.agregarZombie(game.at(7,7),'Slime')
 		self.agregarZombie(game.at(5, 9)) // camina recto eje y
 		zombies.last().agregarPunto(5, 5)
 		self.agregarZombie(game.at(7, 6)) // camina cuadrado
@@ -84,7 +84,7 @@ object nivel1 inherits Niveles {
 		zombies.last().agregarPunto(17, 3)
 		self.agregarZombie(game.at(6, 11)) // camina recto eje x
 		zombies.last().agregarPunto(13, 11)
-		zombies.forEach({ unZombie => unZombie.iniciarMovimiento("ciclico", 100.randomUpTo(400))})
+		zombies.forEach({ unZombie => unZombie.iniciarMovimiento("ciclico1", 100.randomUpTo(400))})
 		const camioneta = new Camioneta(position = game.at(7, 9), grafico = "camioneta.png")
 		const bloque = new Bloque(position = game.at(0, 4), grafico = "valla.png")
 		const bloque1 = new Bloque(position = game.at(1, 4), grafico = "valla.png")
@@ -124,6 +124,31 @@ object nivel1 inherits Niveles {
 		const barraVida = new BarraVida(jugador = jugadores.last(), position = game.at(14, 0), grafico = "barra_red")
 		game.addVisual(barraVida)
 		fisicas.colisiones(jugadores)
+	// //////////////////////////////ROBAMOS PARA PROBAR(DE ESTO no e SCoOOOCApPAI)
+	/* method mostrarPiso(){
+	 * 	    20.times({n=>piso.add(new PisoDeTierra(position=game.at(n-1,0)))})
+	 * 	    20.times({n=>piso.add(new  PisoDePasto(position=game.at(n-1,1)))})
+	 * 	    30.times({n=>piso.add(new         Agua(position=game.at(n+19,0)))})
+	 * 	    7.times({n=>piso.add(new  PisoDePasto(position=game.at(n+42,16)))})
+	 * 	    8.times({n=>piso.add(new  PisoDePasto(position=game.at(n+17,7)))})
+	 * 	    5.times({n=>piso.add(new  PisoDePasto(position=game.at(n+23,13)))})
+	 * 	    14.times({n=>piso.add(new  PisoDePasto(position=game.at(n-1,14)))})
+	 * 	    26.times({n=>piso.add(new  PisoDePasto(position=game.at(n+5,23)))})
+	 * 	    18.times({n=>piso.add(new  PisoDePasto(position=game.at(n+23,28)))})
+	 * 	    piso.forEach({unPiso=>game.addVisual(unPiso)})}
+	 * 	    method mostrarEscaleras(){
+	 * 	    4.times({n=>escaleras.add(new Escalera(position=game.at(18,1+n),indice=0))})
+	 *      	2.times({n=>escaleras.add(new Escalera(position=game.at(18,5+n),indice=1))})
+	 *      	4.times({n=>escaleras.add(new Escalera(position=game.at(24,7+n)))})
+	 * 	    2.times({n=>escaleras.add(new Escalera(position=game.at(24,11+n),indice=1))})
+	 * 	    8.times({n=>escaleras.add(new Escalera(position=game.at(27,13+n)))})
+	 * 	    2.times({n=>escaleras.add(new Escalera(position=game.at(27,21+n),indice=1))})
+	 * 	    3.times({n=>escaleras.add(new Escalera(position=game.at(24,23+n)))})
+	 * 	    2.times({n=>escaleras.add(new Escalera(position=game.at(24,26+n),indice=1))})
+	 * 	    7.times({n=>escaleras.add(new Escalera(position=game.at(12,14+n)))})
+	 * 	    2.times({n=>escaleras.add(new Escalera(position=game.at(12,21+n),indice=1))})
+	 escaleras.forEach({unaEscalera=>game.addVisual(unaEscalera)})}*/
+	// //////////////////////////////////////////////////FIN ESTO NO ES COCA	
 	}
 
 }
@@ -157,23 +182,12 @@ object nivel2 inherits Niveles {
 
 	method movimientoZombie(unZombie) {
 		game.onTick(1000, self.toString(), { if (unZombie.position().y() == 0) {
-				//game.removeVisual(unZombie)
-				//game.removeTickEvent(self.toString())
-				unZombie.position(randomZombie.position())//<---------------------new
+				unZombie.position(randomZombie.position()) // <---------------------new
 			}
 			unZombie.position(unZombie.position().down(1))
 		})
 	}
 
-
-
-	// method movimientoBala(unaBala) {
-	// game.onTick(500, "MOV_BALA_NIVEL2", { if (unaBala.position().y() > game.height()) {
-	// game.removeVisual(unaBala)
-	// }
-	// unaBala.position(unaBala.position().up(1))
-	// }) //
-	// }
 	method iniciarHorda() {
 		game.onTick(400, "CREAR_ZOMBIE", { self.agregarZombie(randomZombie.position())
 			self.movimientoZombie(zombies.last())
@@ -183,7 +197,7 @@ object nivel2 inherits Niveles {
 
 	method iniciar() {
 		self.iniciarHorda()
-	    // aca inicio la creacion de los zombies
+			// aca inicio la creacion de los zombies
 		const camioneta = new Camioneta(position = game.at(7, 9), grafico = "camioneta.png")
 		const bloqueCamion = new Bloque(position = game.at(8, 9), grafico = "autoTracero.png")
 		game.addVisual(bloqueCamion)
@@ -192,34 +206,6 @@ object nivel2 inherits Niveles {
 		self.agregarJugador(game.origin(), "george")
 		self.asignarModoEditorA(jugadores.last())
 		fisicas.colisiones(jugadores)
-	// colisionNivel2(unaBala,unZombie) ARME ESTE METODO PERO NOSE COMO PASAR EL OBJETO BALA Y ZOMBIE
-	/* PLAYER 2 NO TESTEADO
-	 * self.agregarJugador(game.at(14,0), "george")
-	 * self.asignarModoEditorA(jugadores.last())
-	 * fisicas.colisiones(jugadores)
-	 */
 	}
-
 }
 
-/*object nivel2 {   estamos viendo como imitar a estonoescocapapi
- *       
- * 	    method iniciar() {
- * 		game.boardGround("fondoEspacial.png")
- * 		game.addVisual(jugador)
- * 		config.configurarTeclas()
- * 		config.configurarColisiones()
- * 		const dragon1 = new Enemigo(position = game.center(), grafico = "zombie.png")
- * 		const dragon2 = new Enemigo(position = game.at(2, 7), grafico = "devil.png")
- * 		const trampa1 = new Trampa(position = game.at(3, 8), grafico = "Slime.png")
- * 		const trampa2 = new Trampa(position = game.at(6, 3), grafico = "Slime.png")
- * 		const navePortal = new NavePortal(position = game.at(9, 9), grafico = "navePortal.png")
- * 		game.addVisual(trampa1)
- * 		game.addVisual(trampa2)
- * 		game.addVisual(dragon1)
- * 		game.addVisual(dragon2)
- * 		game.addVisual(navePortal)
- * 		dragon1.eventoMovimiento() // este esta fallando
- * 		dragon2.eventoMovimiento()
- * 	}
- }*/

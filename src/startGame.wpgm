@@ -15,6 +15,7 @@ program Escenario {
 	game.start()
 	
 	
+	
 	// CAMBIAR ACA poner inicio o nivel1
 	//game.showAttributes(jugador) 
 	//game.showAttributes(enemigo)
