@@ -246,12 +246,3 @@ object randomZombie {
 	}
 
 }
-class Fondo{
-	const imagen
-
-	method image() = imagen
-
-	method position() = game.origin()
-	method teEncontro(alguien){}
-}
-
