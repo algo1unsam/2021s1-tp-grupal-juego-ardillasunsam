@@ -169,7 +169,7 @@ class BarraVida inherits Ente {
 
 class Bala inherits EnteBot {
 
-	override method image() = "bullet.png"
+	override method image() = grafico
 
 	override method prioridadColiciones() = 2
 
