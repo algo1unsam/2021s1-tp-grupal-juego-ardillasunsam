@@ -3,7 +3,7 @@ import objetos.*
 import mecanicas.*
 import direcciones.*
 
-class Jugador inherits objetos.Ente {
+class Jugador inherits Ente {
 	var property herramientas = []
 	
 	override method image() {
