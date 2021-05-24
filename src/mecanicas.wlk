@@ -73,8 +73,16 @@ object teclado {
 object fisicas {
 
 	method colisiones(jugadores) {
-		jugadores.forEach({ unJugador => game.onCollideDo(unJugador, { algo => algo.teEncontro(unJugador)})})
+		jugadores.forEach({unJugador => game.onCollideDo(unJugador, {algo => algo.teEncontro(unJugador)})})
 	}
+
+	method colisionesBala(zombies){
+		//zombies.forEach({unZombie => game.onCollideDo(unZombie,{bala=>bala.mayorPrioridadColiciones(zombies)})})
+		game.onCollideDo(zombies,{bala=>bala.mayorPrioridadColiciones(zombies)})
+		
+	}
+		
+		
 
 	method colisionNivel2(unaBala, unZombie) {
 		if (unaBala.position() == unZombie.position()) {

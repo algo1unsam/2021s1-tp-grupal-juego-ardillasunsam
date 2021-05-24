@@ -8,12 +8,21 @@ class Ente {
 
 	var property muerto = false
 	var property position
-	var property direccion = abajo  // cambio esta variable para que no falle graficos lvl 2
+	var property direccion = abajo // cambio esta variable para que no falle graficos lvl 2
 	var property grafico
+
+	method mayorPrioridadColiciones(alguien) {
+		if (alguien.prioridadColiciones() < self.prioridadColiciones()) {
+			self.teEncontro(alguien)
+		}
+	}
+
+	method prioridadColiciones() = 0
 
 	method image() = grafico
 
-	method teEncontro(alguien) {}
+	method teEncontro(alguien) {
+	}
 
 }
 
@@ -96,6 +105,8 @@ class EnteBot inherits Ente {
 
 class EnteMalvado inherits EnteBot {
 
+	override method prioridadColiciones() = 1
+
 	override method teEncontro(alguien) {
 		alguien.bajarVida()
 		if (alguien.vidas() > 0) {
@@ -150,14 +161,17 @@ class BarraVida inherits Ente {
 	var property jugador
 
 	override method image() = (self.grafico() + jugador.vidas().toString() + ".png")
+
 }
 
-class Bala inherits Ente {
+class Bala inherits EnteBot {
 
 	override method image() = "bullet.png"
 
+	override method prioridadColiciones() = 2
+
 	method mover() {
-		game.onTick(500, self.toString(), { if (self.position().y() == game.height()) {
+		game.onTick(10, self.toString(), { if (self.position().y() == game.height()) {
 				game.removeVisual(self)
 				game.removeTickEvent(self.toString())
 			}
@@ -166,8 +180,11 @@ class Bala inherits Ente {
 	}
 
 	override method teEncontro(alguien) {
-		if (self.position() != alguien.position()) {
+		if (self.position() == alguien.position()) {
 			game.removeVisual(alguien)
+			game.removeVisual(self)
+			game.removeTickEvent(alguien)
+			game.removeTickEvent(self.toString())
 		}
 	}
 
