@@ -9,7 +9,7 @@ class Ente {
 	var property muerto = false
 	var property position
 	var property direccion = abajo // cambio esta variable para que no falle graficos lvl 2
-	var property grafico
+	var property grafico = ""
 
 	method mayorPrioridadColiciones(alguien) {
 		if (alguien.prioridadColiciones() < self.prioridadColiciones()) {
@@ -199,13 +199,19 @@ class Bala inherits EnteBot {
 
 }
 
-object randomZombie {
-
-	const horda = [ "zombie1", "zombie2", "zombie3", "zombie4", "devil1", "devil2", "devil3", "devil4" ]
-
-	method image() {
-		return horda.anyOne()
+class Zombie inherits EnteMalvado {
+	const diferentesImagenes = [ "zombie", "zombie1", "zombie2", "zombie3", "zombie4", "devil1", "devil2", "devil3", "devil4" ]
+	
+	override method image() {
+		if (self.grafico() == "") {
+			self.grafico(diferentesImagenes.anyOne())
+		}
+		return (self.grafico() + "_" + self.direccion() + ".png")
 	}
+
+}
+
+object randomZombie {
 
 	method position() {
 		return game.at((0 .. game.width() - 1 ).anyOne(), game.height() - 1)
