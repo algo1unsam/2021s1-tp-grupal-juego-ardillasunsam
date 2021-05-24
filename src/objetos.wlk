@@ -203,8 +203,7 @@ class Bala inherits EnteBot {
 
 class Zombie inherits EnteMalvado {
 
-	const diferentesImagenes = [ "zombie", 
-								 "zombie1", 
+	const diferentesImagenes = [ "zombie1", 
 								 "zombie2", 
 	  							 "zombie3", 
 								 "zombie4", 
@@ -215,8 +214,8 @@ class Zombie inherits EnteMalvado {
 
 	override method image() {
 		if (self.grafico() == "") {
-			self.grafico(diferentesImagenes.get(0))
-		// self.grafico(diferentesImagenes.anyOne())
+			//self.grafico(diferentesImagenes.get(0))
+		 self.grafico(diferentesImagenes.anyOne())
 		}
 		return (self.grafico() + "_" + self.direccion() + ".png")
 	}
