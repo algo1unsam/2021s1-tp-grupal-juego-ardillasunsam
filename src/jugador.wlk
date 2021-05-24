@@ -17,6 +17,7 @@ class Jugador inherits Ente {
 	override method bajarVida() {
 		vidas -= 1
 		self.gritar()
+		self.position(game.origin())
 	}
 
 	method gritar() {
