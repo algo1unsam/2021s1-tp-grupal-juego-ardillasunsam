@@ -15,8 +15,9 @@ class Jugador inherits objetos.Ente {
 		}
 	}
 
-	method bajarVida() {
+	override method bajarVida() {
 		vidas -= 1
+		self.gritar()
 	}
 
 	method gritar() {
