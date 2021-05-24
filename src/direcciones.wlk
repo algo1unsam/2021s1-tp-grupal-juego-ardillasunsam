@@ -5,8 +5,7 @@ import jugador.*
 
 class Direccion 
 {
-	var property distanciaPorPaso = 1
-	
+	var property distanciaPorPaso = 1	
 	method girar(objeto)
 	{
 		if (not objeto.muerto()) {

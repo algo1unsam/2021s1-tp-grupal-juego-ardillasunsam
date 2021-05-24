@@ -10,7 +10,6 @@ class Presentacion {
 		game.stop() // aca deberia pasar a la proxima pantalla
 		// por ahora finaliza el juego
 	}
-
 }
 
 object inicio inherits Presentacion {
@@ -26,8 +25,8 @@ class Niveles {
 
 	const jugadores = []
 	const zombies = []
-	//const cantidadDeBalas =[]<---------------------------------ver cantiadd de de balas
 
+	// const cantidadDeBalas =[]-----------ver cantiad de de balas
 	method jugadores() {
 		return jugadores
 	}
@@ -61,11 +60,11 @@ object nivel1 inherits Niveles {
 
 	method iniciar() {
 		game.boardGround("fondo_carretera.png")
-		// Con esta linea, funciona bien el multijugador,
-		// pero se bugea el mensaje.
-		// self.agregarJugador(game.origin(), "george")
-		// self.agregarZombie(game.at(3,8),'Slime')<------hayq ue buscar como añadir una clase por el tema de las trampas(que no se muevan)
-		// self.agregarZombie(game.at(7,7),'Slime')
+			// Con esta linea, funciona bien el multijugador,
+			// pero se bugea el mensaje.
+			// self.agregarJugador(game.origin(), "george")
+			// self.agregarZombie(game.at(3,8),'Slime')<------hayq ue buscar como añadir una clase por el tema de las trampas(que no se muevan)
+			// self.agregarZombie(game.at(7,7),'Slime')
 		self.agregarZombie(game.at(5, 9)) // camina recto eje y
 		zombies.last().agregarPunto(5, 5)
 		self.agregarZombie(game.at(7, 6)) // camina cuadrado
@@ -207,5 +206,6 @@ object nivel2 inherits Niveles {
 		self.asignarModoEditorA(jugadores.last())
 		fisicas.colisiones(jugadores)
 	}
+
 }
 

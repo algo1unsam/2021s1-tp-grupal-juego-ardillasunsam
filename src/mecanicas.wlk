@@ -81,8 +81,6 @@ object fisicas {//<-------------new
 		game.onCollideDo(zombies,{bala=>bala.mayorPrioridadColiciones(zombies)})
 		
 	}
-		
-		
 
 	method colisionNivel2(unaBala, unZombie) {
 		if (unaBala.position() == unZombie.position()) {

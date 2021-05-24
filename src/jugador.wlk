@@ -29,23 +29,20 @@ class Jugador inherits objetos.Ente {
 		}
 	}
 
-	method mensajeRandom() {
+	method mensajeRandom(){
 		const random = new Range(start = 1, end = 3).anyOne()
-		if (random == 1) {
+		if (random == 1){
 			game.say(self, "MALDITOS DEMONIOS")
 		}
-		if (random == 2) {
+		if (random == 2){
 			game.say(self, "ME PARECE QUE TENGO HAMBRE")
 		}
-		if (random == 3) {
+		if (random == 3){
 			game.say(self, "ESTOY MUY ASUSTADO")
 		}
 	}
 	method agarrar(algo){
 		herramientas.add(algo)
 	}
-
-	
-
 }
 
