@@ -173,15 +173,6 @@ class Bala inherits EnteBot {
 
 	override method prioridadColiciones() = 2
 
-	method mover() {
-		game.onTick(15, self.identity().toString(), { if (self.position().y() == game.height()) {
-				game.removeVisual(self)
-				game.removeTickEvent(self.identity().toString())
-			}
-			self.position(self.position().up(1))
-		})
-	}
-
 	override method teEncontro(alguien) {
 		if (self.position() == alguien.position()) { 
 			alguien.position(randomZombie.position())
@@ -190,7 +181,8 @@ class Bala inherits EnteBot {
 	}
 
 	method movimientoZombie(unZombie) {
-		game.onTick(500, self.identity().toString(), { if (unZombie.position().y() == 0) {
+		game.onTick(500, self.identity().toString(), {
+			if (unZombie.position().y() == 0) {
 				game.removeVisual(unZombie)
 				game.removeTickEvent(self.identity().toString())
 			}

@@ -192,18 +192,25 @@ object nivel2 inherits Niveles {
 	// teclado.hablar(jugadores.last()) se podria sacar este porque hablan los dos al mismo tiempo
 	}
 
-	method crearBala() { // hay que lograr que acepte los dos jugadores
+	// hay que lograr que acepte los dos jugadores
+	// hay que reemplazar por las mecanicas existentes de puntos.
+	method crearBala() {
 		const bala = new Bala(position = jugadores.first().position().up(1), grafico = "bullet.png")
 		game.addVisual(bala)
-		if (bala.position().y() == game.height() - 1) {
-			game.removeVisual(bala)
-		}
-		bala.mover()
+		
+		game.onTick(15, bala.identity().toString(), {
+			if (bala.position().y() == game.height()) {
+				game.removeVisual(bala)
+				game.removeTickEvent(bala.identity().toString())
+			}
+			bala.position(bala.position().up(1))
+		})
 	}
 
 	method movimientoZombie(unZombie) {
-		game.onTick(1000, self.identity().toString(), { if (unZombie.position().y() == 0) {
-				unZombie.position(randomZombie.position()) // <---------------------new
+		game.onTick(1000, self.identity().toString(), {
+			if (unZombie.position().y() == 0) {
+				unZombie.position(randomZombie.position())
 			}
 			unZombie.position(unZombie.position().down(1))
 		})
