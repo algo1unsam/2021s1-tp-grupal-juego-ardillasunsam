@@ -138,7 +138,7 @@ class Camioneta inherits Bloque {
 	override method teEncontro(alguien) {
 		if (alguien.herramientas().size() == 4) {
 			game.say(self, "GANASTE")
-			game.schedule(1000, { game.stop()})
+			game.schedule(1000, { nivel2.presentacion()})
 		} else {
 			super(alguien)
 		}
@@ -246,5 +246,13 @@ object randomZombie {
 		}
 	}
 
+}
+class Fondo{
+	const imagen
+
+	method image() = imagen
+
+	method position() = game.origin()
+	method teEncontro(alguien){}
 }
 

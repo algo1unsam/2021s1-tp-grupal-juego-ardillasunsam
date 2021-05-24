@@ -65,7 +65,7 @@ object teclado {
 	}
 
 	method presionarEnter(presentacion) {
-		keyboard.enter().onPressDo({ presentacion.continuar()})
+		keyboard.enter().onPressDo({ nivel1.presentacion()})
 	}
 
 }
