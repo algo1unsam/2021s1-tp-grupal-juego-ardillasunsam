@@ -38,7 +38,7 @@ class Niveles {
 			self.error("maxima cantidad de 
                         jugadores alcanzado.")
 		}
-		jugadores.add(new Jugador(position = jugadorPosicion, grafico = jugadorGrafico))
+		jugadores.add(new Jugador(position = jugadorPosicion, grafico = jugadorGrafico, vidas = 3))
 		game.addVisual(jugadores.last())
 		if (jugadores.size() == 1) {
 			teclado.asignarFlechasPara(jugadores.first())
