@@ -6,7 +6,7 @@ import direcciones.*
 
 class Ente {
 
-	var property muerto = false
+	var property vidas = 1
 	var property position
 	var property direccion = abajo // cambio esta variable para que no falle graficos lvl 2
 	var property grafico = ""
