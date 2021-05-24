@@ -222,6 +222,16 @@ class Zombie inherits EnteMalvado {
 
 }
 
+class Alcantarilla inherits Ente {
+	// En un futuro resolver que funcione pasandole otra alcantarilla
+	// en vez de las coordenadas [X, Y] de la salida.
+	var property salida
+
+	override method teEncontro(alguien) {
+		alguien.position(game.at(salida.first(), salida.last()))
+	}
+}
+
 object randomZombie {
 
 	method position() {
