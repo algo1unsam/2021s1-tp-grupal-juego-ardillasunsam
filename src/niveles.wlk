@@ -202,7 +202,7 @@ object nivel2 inherits Niveles {
 	}
 
 	method movimientoZombie(unZombie) {
-		game.onTick(1000, self.toString(), { if (unZombie.position().y() == 0) {
+		game.onTick(1000, self.identity().toString(), { if (unZombie.position().y() == 0) {
 				unZombie.position(randomZombie.position()) // <---------------------new
 			}
 			unZombie.position(unZombie.position().down(1))
