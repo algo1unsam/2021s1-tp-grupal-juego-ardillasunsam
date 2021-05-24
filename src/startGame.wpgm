@@ -17,8 +17,6 @@ program Escenario {
 	
 	
 	// CAMBIAR ACA poner inicio o nivel1
-    //prueba git1
-    //prueba git1cualquierfruta
 	//game.showAttributes(jugador) 
 	//game.showAttributes(enemigo)
 	
