@@ -96,17 +96,13 @@ class EnteBot inherits Ente {
 			puntoActual += 1
 		}
 	}
-
 	method colisionoConJugador(jugadores) {
 		return jugadores.all({ unJugador => position == unJugador.position() })
 	}
-
 }
 
 class EnteMalvado inherits EnteBot {
-
 	override method prioridadColiciones() = 1
-
 	override method teEncontro(alguien) {
 		alguien.bajarVida()
 		if (alguien.vidas() > 0) {
@@ -122,7 +118,6 @@ class EnteMalvado inherits EnteBot {
 }
 
 class Bloque inherits Ente {
-
 	override method teEncontro(alguien) {
 		alguien.direccion().direccionOpuesta().mover(alguien)
 	}
@@ -130,7 +125,6 @@ class Bloque inherits Ente {
 }
 
 class Camioneta inherits Bloque {
-
 	override method teEncontro(alguien) {
 		if (alguien.herramientas().size() == 4) {
 			game.say(self, "GANASTE")
@@ -139,7 +133,6 @@ class Camioneta inherits Bloque {
 			super(alguien)
 		}
 	}
-
 }
 
 class Herramienta inherits Ente {
@@ -170,7 +163,7 @@ class Bala inherits EnteBot {
 
 	override method prioridadColiciones() = 2
 
-	method mover() {
+	method mover(){
 		game.onTick(10, self.toString(), { if (self.position().y() == game.height()) {
 				game.removeVisual(self)
 				game.removeTickEvent(self.toString())
@@ -179,17 +172,18 @@ class Bala inherits EnteBot {
 		})
 	}
 
-	override method teEncontro(alguien) {
+	override method teEncontro(alguien) {//<-----------------------new
 		if (self.position() == alguien.position()) {
-			game.removeVisual(alguien)
+			/*game.removeVisual(alguien)
 			game.removeVisual(self)
 			game.removeTickEvent(alguien)
-			game.removeTickEvent(self.toString())
+			game.removeTickEvent(self.toString())*/
+			alguien.position(randomZombie.position())//<-----------------new						
 		}
 	}
 
 	method movimientoZombie(unZombie) {
-		game.onTick(500, self.toString(), { if (unZombie.position().y() == 0) {
+		game.onTick(500, self.toString(),{ if (unZombie.position().y() == 0) {
 				game.removeVisual(unZombie)
 				game.removeTickEvent(self.toString())
 			}
@@ -200,15 +194,15 @@ class Bala inherits EnteBot {
 }
 
 class Zombie inherits EnteMalvado {
-	const diferentesImagenes = [ "zombie", "zombie1", "zombie2", "zombie3", "zombie4", "devil1", "devil2", "devil3", "devil4" ]
-	
+
+	const diferentesImagenes = [ "zombie", "zombie1", "zombie2", "zombie3", "zombie4", "devil1", "devil2", "devil3", "devil4" ]                                                                       
+
 	override method image() {
 		if (self.grafico() == "") {
 			self.grafico(diferentesImagenes.anyOne())
 		}
 		return (self.grafico() + "_" + self.direccion() + ".png")
 	}
-
 }
 
 object randomZombie {
@@ -216,8 +210,8 @@ object randomZombie {
 	method position() {
 		return game.at((0 .. game.width() - 1 ).anyOne(), game.height() - 1)
 	}
-
-	method emptyPosition() {
+	
+	method emptyPosition(){
 		const position = self.position()
 		if (game.getObjectsIn(position).isEmpty()) {
 			return position
@@ -225,6 +219,8 @@ object randomZombie {
 			return self.emptyPosition()
 		}
 	}
-
 }
+
+
+
 

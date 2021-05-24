@@ -70,7 +70,7 @@ object teclado {
 
 }
 
-object fisicas {
+object fisicas {//<-------------new
 
 	method colisiones(jugadores) {
 		jugadores.forEach({unJugador => game.onCollideDo(unJugador, {algo => algo.teEncontro(unJugador)})})

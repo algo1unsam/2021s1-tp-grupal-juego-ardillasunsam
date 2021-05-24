@@ -156,17 +156,16 @@ object nivel2 inherits Niveles {
 	}
 
 	method movimientoZombie(unZombie) {
-		game.onTick(500, self.toString(), { if (unZombie.position().y() == 0) {
-				game.removeVisual(unZombie)
-				game.removeTickEvent(self.toString())
+		game.onTick(1000, self.toString(), { if (unZombie.position().y() == 0) {
+				//game.removeVisual(unZombie)
+				//game.removeTickEvent(self.toString())
+				unZombie.position(randomZombie.position())//<---------------------new
 			}
 			unZombie.position(unZombie.position().down(1))
 		})
 	}
 
-	method movimientoZombieSinFreno(unZombie) { // puede fallar porque siguende largo			
-		game.onTick(500, "MOV_ZOMBIE_NIVEL2", { unZombie.position(unZombie.position().down(1))})
-	}
+
 
 	// method movimientoBala(unaBala) {
 	// game.onTick(500, "MOV_BALA_NIVEL2", { if (unaBala.position().y() > game.height()) {
@@ -176,7 +175,7 @@ object nivel2 inherits Niveles {
 	// }) //
 	// }
 	method iniciarHorda() {
-		game.onTick(500, "CREAR_ZOMBIE", { self.agregarZombie(randomZombie.position())
+		game.onTick(400, "CREAR_ZOMBIE", { self.agregarZombie(randomZombie.position())
 			self.movimientoZombie(zombies.last())
 			fisicas.colisionesBala(zombies.last())
 		})
@@ -184,7 +183,7 @@ object nivel2 inherits Niveles {
 
 	method iniciar() {
 		self.iniciarHorda()
-			// aca inicio la creacion de los zombies
+	    // aca inicio la creacion de los zombies
 		const camioneta = new Camioneta(position = game.at(7, 9), grafico = "camioneta.png")
 		const bloqueCamion = new Bloque(position = game.at(8, 9), grafico = "autoTracero.png")
 		game.addVisual(bloqueCamion)
