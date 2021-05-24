@@ -208,7 +208,7 @@ class Zombie inherits EnteMalvado {
 								 "zombie4", 
 								 "devil1", 
 								 "devil2", 
-								 "devil3", 
+								 "devil3",
 								 "devil4" ]
 
 	override method image() {
