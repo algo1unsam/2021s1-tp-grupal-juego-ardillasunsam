@@ -214,7 +214,6 @@ class Zombie inherits EnteMalvado {
 
 	override method image() {
 		if (self.grafico() == "") {
-			//self.grafico(diferentesImagenes.get(0))
 		 self.grafico(diferentesImagenes.anyOne())
 		}
 		return (self.grafico() + "_" + self.direccion() + ".png")
