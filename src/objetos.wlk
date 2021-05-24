@@ -15,7 +15,7 @@ class Ente {
 
 	method estaVivo() = (vidas > 0)
 	
-	method bajarVida() {vidas -= 1}
+	method bajarVida() { self.vidas(self.vidas()-1) }
 	
 	method prioridadColiciones() = 0
 	

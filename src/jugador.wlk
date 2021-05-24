@@ -15,7 +15,7 @@ class Jugador inherits Ente {
 	}
 
 	override method bajarVida() {
-		vidas -= 1
+		self.vidas(self.vidas()-1)
 		self.gritar()
 		if (self.estaVivo()) {
 			self.position(game.origin())
@@ -23,10 +23,10 @@ class Jugador inherits Ente {
 	}
 
 	method gritar() {
-		if (vidas == 2) {
+		if (self.vidas() == 2) {
 			game.say(self, "ME QUEDAN 2 VIDAS")
 		}
-		if (vidas == 1) {
+		if (self.vidas() == 1) {
 			game.say(self, "ME QUEDAN 1 VIDA. CUIDADOOO")
 		}
 	}
