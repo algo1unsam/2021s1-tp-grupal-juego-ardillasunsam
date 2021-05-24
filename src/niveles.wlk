@@ -17,7 +17,7 @@ object inicio {
 		game.title("ZOMBIES AND DEMONS")
 		game.height(12)
 		game.width(20)
-		const principal = new Fondo(imagen = "principal1.jpg")
+		const principal = new Ente(grafico = "principal1.jpg")
 		game.addVisual(principal)
 	}
 
@@ -62,13 +62,13 @@ class Niveles {
 object nivel1 inherits Niveles {
 	method presentacion(){
 		game.clear()
-		const introNiv1 = new Fondo(imagen = "nivel1.jpg")
+		const introNiv1 = new Ente(grafico = "nivel1.jpg")
 		game.addVisual(introNiv1)
 		game.schedule(5000, { self.iniciar()})
 	}
 	method iniciar() {
 		game.clear()
-		const nivel1 = new Fondo(imagen = "fondo_nivel1.jpg")
+		const nivel1 = new Ente(grafico = "fondo_nivel1.jpg")
 		game.addVisual(nivel1)
 			// Con esta linea, funciona bien el multijugador,
 			// pero se bugea el mensaje.
@@ -172,7 +172,7 @@ object nivel2 inherits Niveles {
 	
 	method presentacion(){
 		game.clear()
-		const introNiv2 = new Fondo(imagen = "nivel2.jpg")
+		const introNiv2 = new Ente(grafico = "nivel2.jpg")
 		game.addVisual(introNiv2)
 		game.schedule(5000, { self.iniciar()})
 	}
@@ -218,7 +218,7 @@ object nivel2 inherits Niveles {
 
 	method iniciar() {
 		game.clear()
-		const nivel2 = new Fondo(imagen = "fondo_nivel2.jpg")
+		const nivel2 = new Ente(grafico = "fondo_nivel2.jpg")
 		game.addVisual(nivel2)
 		self.iniciarHorda()
 			// aca inicio la creacion de los zombies
