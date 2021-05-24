@@ -8,21 +8,24 @@ class Ente {
 
 	var property vidas = 1
 	var property position
-	var property direccion = abajo // cambio esta variable para que no falle graficos lvl 2
+	var property direccion = abajo
 	var property grafico = ""
 
+	method image() = grafico
+
+	method estaVivo() = (vidas > 0)
+	
+	method bajarVida() {vidas -= 1}
+	
+	method prioridadColiciones() = 0
+	
 	method mayorPrioridadColiciones(alguien) {
 		if (alguien.prioridadColiciones() < self.prioridadColiciones()) {
 			self.teEncontro(alguien)
 		}
 	}
 
-	method prioridadColiciones() = 0
-
-	method image() = grafico
-
-	method teEncontro(alguien) {
-	}
+	method teEncontro(alguien) {}
 
 }
 
@@ -39,12 +42,12 @@ class EnteBot inherits Ente {
 
 	method iniciarMovimiento(tipoDeMovimiento, tiempo) {
 		const aux = []
-		aux.add([ self.position().x(), self.position().y() ]) // <------------------
-		aux.addAll(puntos) // <-------------------
+		aux.add([ self.position().x(), self.position().y() ])
+		aux.addAll(puntos)
 		puntos.clear()
 		self.puntos(aux)
 		game.onTick(tiempo, self.identity().toString(), { self.movimiento(tipoDeMovimiento)})
-	} // self.identity()?????
+	}
 
 	method puntoX(numeroDePunto) {
 		return puntos.get(numeroDePunto).first()
