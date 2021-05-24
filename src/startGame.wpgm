@@ -11,7 +11,7 @@ program Escenario {
 	game.height(12)
 	game.width(20)
 	nivel1.iniciar()
-	nivel2.iniciar()
+	//nivel2.iniciar()
 	game.start()
 	
 	
