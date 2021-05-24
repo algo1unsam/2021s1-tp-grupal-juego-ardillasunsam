@@ -114,10 +114,8 @@ class EnteMalvado inherits EnteBot {
 	override method teEncontro(alguien) {
 		alguien.bajarVida()
 		if (alguien.vidas() > 0) {
-			alguien.gritar()
 			alguien.position(game.origin())
 		} else {
-			alguien.muerto(true)
 			game.say(self, "¡¡GAME OVER JAJAJAJAJ!!")
 			game.schedule(3500, { game.stop()})
 		}
