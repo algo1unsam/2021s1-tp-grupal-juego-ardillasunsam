@@ -7,10 +7,10 @@ class Jugador inherits objetos.Ente {
 	var property herramientas = []
 	
 	override method image() {
-		if(not muerto){
-		return(self.grafico()+"_"+self.direccion()+".png")
-		}else{
-		return ("sangre.png")
+		if (self.estaVivo()) {
+			return(self.grafico()+"_"+self.direccion()+".png")
+		} else {
+			return ("sangre.png")
 		}
 	}
 
@@ -20,12 +20,12 @@ class Jugador inherits objetos.Ente {
 	}
 
 	method gritar() {
-	if (vidas == 2) {
-	game.say(self, "ME QUEDAN 2 VIDAS")
-	}
-	if (vidas == 1) {
-	game.say(self, "ME QUEDAN 1 VIDA. CUIDADOOO")
-	}
+		if (vidas == 2) {
+			game.say(self, "ME QUEDAN 2 VIDAS")
+		}
+		if (vidas == 1) {
+			game.say(self, "ME QUEDAN 1 VIDA. CUIDADOOO")
+		}
 	}
 
 	method mensajeRandom() {
