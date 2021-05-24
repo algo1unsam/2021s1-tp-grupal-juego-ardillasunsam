@@ -7,9 +7,11 @@ import direcciones.*
 class Presentacion {
 
 	method continuar() {
-		game.stop() // aca deberia pasar a la proxima pantalla
-		// por ahora finaliza el juego
+		game.stop()
+	// aca deberia pasar a la proxima pantalla
+	// por ahora finaliza el juego
 	}
+
 }
 
 object inicio inherits Presentacion {
@@ -26,14 +28,15 @@ class Niveles {
 	const jugadores = []
 	const zombies = []
 
-	// const cantidadDeBalas =[]-----------ver cantiad de de balas
+	// const cantidadDeBalas =[]----ver cantiad de de balas
 	method jugadores() {
 		return jugadores
 	}
 
 	method agregarJugador(jugadorPosicion, jugadorGrafico) {
 		if (jugadores.size() > 2) {
-			self.error("maxima cantidad de jugadores alcanzado.")
+			self.error("maxima cantidad de 
+                        jugadores alcanzado.")
 		}
 		jugadores.add(new Jugador(position = jugadorPosicion, grafico = jugadorGrafico))
 		game.addVisual(jugadores.last())
@@ -51,7 +54,7 @@ class Niveles {
 	}
 
 	method asignarModoEditorA(ente) {
-		keyboard.space().onPressDo({ game.say(ente, "xy = (" + ente.position().x().toString() + ", " + ente.position().y().toString() + ")")})
+		keyboard.space().onPressDo({ game.say(ente, "xy = (" + ente.position().x().toString() + "," + ente.position().y().toString() + ")")})
 	}
 
 }
@@ -63,25 +66,27 @@ object nivel1 inherits Niveles {
 			// Con esta linea, funciona bien el multijugador,
 			// pero se bugea el mensaje.
 			// self.agregarJugador(game.origin(), "george")
-			// self.agregarZombie(game.at(3,8),'Slime')<------hayq ue buscar como añadir una clase por el tema de las trampas(que no se muevan)
+			// self.agregarZombie(game.at(3,8),'Slime')
+			// arriba<------hayq ue buscar como añadir una clase
+			// por el tema de las trampas(que no se muevan)
 			// self.agregarZombie(game.at(7,7),'Slime')
-		self.agregarZombie(game.at(5, 9)) // camina recto eje y
+		self.agregarZombie(game.at(5, 9)) // recto eje y
 		zombies.last().agregarPunto(5, 5)
-		self.agregarZombie(game.at(7, 6)) // camina cuadrado
+		self.agregarZombie(game.at(7, 6)) // cuadrado
 		zombies.last().agregarPunto(6, 7)
-		self.agregarZombie(game.at(10, 8)) // camina recto eje y
+		self.agregarZombie(game.at(10, 8)) // recto eje y
 		zombies.last().agregarPunto(10, 2)
-		self.agregarZombie(game.at(13, 8)) // camina recto eje y
+		self.agregarZombie(game.at(13, 8)) // recto eje y
 		zombies.last().agregarPunto(13, 3)
-		self.agregarZombie(game.at(15, 10)) // camina cuadrado
+		self.agregarZombie(game.at(15, 10)) // cuadrado
 		zombies.last().agregarPunto(11, 5)
-		self.agregarZombie(game.at(10, 3)) // camina recto eje x
+		self.agregarZombie(game.at(10, 3)) // recto eje x
 		zombies.last().agregarPunto(16, 3)
-		self.agregarZombie(game.at(1, 6)) // camina cuadrado		
+		self.agregarZombie(game.at(1, 6)) // cuadrado		
 		zombies.last().agregarPunto(3, 11)
-		self.agregarZombie(game.at(17, 11)) // camina recto eje y
+		self.agregarZombie(game.at(17, 11)) // recto eje y
 		zombies.last().agregarPunto(17, 3)
-		self.agregarZombie(game.at(6, 11)) // camina recto eje x
+		self.agregarZombie(game.at(6, 11)) // recto eje x
 		zombies.last().agregarPunto(13, 11)
 		zombies.forEach({ unZombie => unZombie.iniciarMovimiento("ciclico1", 100.randomUpTo(400))})
 		const camioneta = new Camioneta(position = game.at(7, 9), grafico = "camioneta.png")

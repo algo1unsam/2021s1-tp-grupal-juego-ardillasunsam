@@ -77,7 +77,6 @@ object fisicas {//<-------------new
 	}
 
 	method colisionesBala(zombies){
-		//zombies.forEach({unZombie => game.onCollideDo(unZombie,{bala=>bala.mayorPrioridadColiciones(zombies)})})
 		game.onCollideDo(zombies,{bala=>bala.mayorPrioridadColiciones(zombies)})
 		
 	}

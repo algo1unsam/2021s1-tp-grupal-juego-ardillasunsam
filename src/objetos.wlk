@@ -23,6 +23,7 @@ class Ente {
 
 	method teEncontro(alguien) {
 	}
+
 }
 
 class EnteBot inherits Ente {
@@ -38,12 +39,12 @@ class EnteBot inherits Ente {
 
 	method iniciarMovimiento(tipoDeMovimiento, tiempo) {
 		const aux = []
-		aux.add([self.position().x(), self.position().y()]) // <------------------
-		aux.addAll(puntos) //<-------------------
+		aux.add([ self.position().x(), self.position().y() ]) // <------------------
+		aux.addAll(puntos) // <-------------------
 		puntos.clear()
 		self.puntos(aux)
-		game.onTick(tiempo,self.identity().toString(),{self.movimiento(tipoDeMovimiento)})
-	}//self.identity()?????
+		game.onTick(tiempo, self.identity().toString(), { self.movimiento(tipoDeMovimiento)})
+	} // self.identity()?????
 
 	method puntoX(numeroDePunto) {
 		return puntos.get(numeroDePunto).first()
@@ -103,10 +104,13 @@ class EnteBot inherits Ente {
 	method colisionoConJugador(jugadores) {
 		return jugadores.all({ unJugador => position == unJugador.position() })
 	}
+
 }
 
 class EnteMalvado inherits EnteBot {
+
 	override method prioridadColiciones() = 1
+
 	override method teEncontro(alguien) {
 		alguien.bajarVida()
 		if (alguien.vidas() > 0) {
@@ -118,15 +122,19 @@ class EnteMalvado inherits EnteBot {
 			game.schedule(3500, { game.stop()})
 		}
 	}
+
 }
 
 class Bloque inherits Ente {
+
 	override method teEncontro(alguien) {
 		alguien.direccion().direccionOpuesta().mover(alguien)
 	}
+
 }
 
 class Camioneta inherits Bloque {
+
 	override method teEncontro(alguien) {
 		if (alguien.herramientas().size() == 4) {
 			game.say(self, "GANASTE")
@@ -135,13 +143,16 @@ class Camioneta inherits Bloque {
 			super(alguien)
 		}
 	}
+
 }
 
 class Herramienta inherits Ente {
+
 	override method teEncontro(alguien) {
 		alguien.agarrar(self)
 		game.removeVisual(self)
 	}
+
 }
 
 //object fotograma inherits Ente{<-------------------------------JAJAJAJAJAJ
@@ -149,16 +160,21 @@ class Herramienta inherits Ente {
 // game.onTick(tiempo,self.identity().toString(),{ self.movimiento(banderaMovimiento)})
 //}
 //}
-
 class BarraVida inherits Ente {
+
 	var property jugador
+
 	override method image() = (self.grafico() + jugador.vidas().toString() + ".png")
+
 }
 
 class Bala inherits EnteBot {
+
 	override method image() = "bullet.png"
+
 	override method prioridadColiciones() = 2
-	method mover(){
+
+	method mover() {
 		game.onTick(15, self.identity().toString(), { if (self.position().y() == game.height()) {
 				game.removeVisual(self)
 				game.removeTickEvent(self.identity().toString())
@@ -167,37 +183,45 @@ class Bala inherits EnteBot {
 		})
 	}
 
-	override method teEncontro(alguien){
-		if(self.position() == alguien.position()){//<---------------------old
+	override method teEncontro(alguien) {
+		if (self.position() == alguien.position()) { 
 			alguien.position(randomZombie.position())
+			self.position(game.at(game.width(),game.height()))// <---------new
 		}
 	}
 
-	method movimientoZombie(unZombie){
-		game.onTick(500, self.identity().toString(), { if(unZombie.position().y() == 0) {
+	method movimientoZombie(unZombie) {
+		game.onTick(500, self.identity().toString(), { if (unZombie.position().y() == 0) {
 				game.removeVisual(unZombie)
 				game.removeTickEvent(self.identity().toString())
 			}
 			unZombie.position(unZombie.position().down(1))
 		})
 	}
+
 }
 
 class Zombie inherits EnteMalvado {
 
-	const diferentesImagenes = [ "zombie", "zombie1", "zombie2", "zombie3", "zombie4", "devil1", "devil2", "devil3", "devil4" ]
+	const diferentesImagenes = [ "zombie", 
+								 "zombie1", 
+								 "zombie2", 
+	  							 "zombie3", 
+								 "zombie4", 
+								 "devil1", 
+								 "devil2", 
+								 "devil3", 
+								 "devil4" ]
 
 	override method image() {
 		if (self.grafico() == "") {
 			self.grafico(diferentesImagenes.get(0))
 		// self.grafico(diferentesImagenes.anyOne())
 		}
-		return(self.grafico() + "_" + self.direccion() + ".png")
+		return (self.grafico() + "_" + self.direccion() + ".png")
 	}
+
 }
-
-
-
 
 object randomZombie {
 
