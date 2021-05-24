@@ -7,7 +7,7 @@ import direcciones.*
 class Ente {
 
 	var property vidas = 1
-	var property position
+	var property position = game.origin()
 	var property direccion = abajo
 	var property grafico = ""
 
