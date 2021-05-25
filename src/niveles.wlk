@@ -185,7 +185,7 @@ object nivel2 inherits Niveles {
 		if (jugadores.size() > 2) {
 			self.error("maxima cantidad de jugadores alcanzado.")
 		}
-		jugadores.add(new Jugador(position = jugadorPosicion, grafico = jugadorGrafico))
+		jugadores.add(new Jugador(position = jugadorPosicion, grafico = jugadorGrafico, vidas = 3))
 		game.addVisual(jugadores.last())
 		if (jugadores.size() == 1) {
 			teclado.asignarMovPlayer1Nivel2(jugadores.first()) // agrego nueva mecanica restringe movimiento
