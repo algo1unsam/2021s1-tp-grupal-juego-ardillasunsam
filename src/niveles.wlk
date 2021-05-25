@@ -113,7 +113,7 @@ object nivel1 inherits Niveles {
 	}
 
 	override method iniciarZombies() {
-		var zombies = []
+		const zombies = []
 		
 		zombies.add(new Zombie(position = game.at(5, 9)))
 		zombies.last().agregarPunto(5, 5) // recto eje y
@@ -207,7 +207,7 @@ object nivel2 inherits Niveles {
 	}
 
 	override method iniciarZombies() {
-		var zombies = []
+		const zombies = []
 		
 		game.onTick(400, "CREAR_ZOMBIE", {
 			zombies.add(new Zombie(position = randomZombie.position()))
