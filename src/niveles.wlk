@@ -77,6 +77,7 @@ object nivel1 inherits Niveles {
 			// arriba<------hayq ue buscar como añadir una clase
 			// por el tema de las trampas(que no se muevan)
 			// self.agregarZombie(game.at(7,7),'Slime')
+		/* 	
 		self.agregarZombie(game.at(5, 9)) // recto eje y
 		zombies.last().agregarPunto(5, 5)
 		self.agregarZombie(game.at(7, 6)) // cuadrado
@@ -95,7 +96,9 @@ object nivel1 inherits Niveles {
 		zombies.last().agregarPunto(17, 3)
 		self.agregarZombie(game.at(6, 11)) // recto eje x
 		zombies.last().agregarPunto(13, 11)
+		
 		zombies.forEach({ unZombie => unZombie.iniciarMovimiento("ciclico", 100.randomUpTo(400))})
+		*/
 		const camioneta = new Camioneta(position = game.at(7, 9), grafico = "camioneta.png")
 		const bloque = new Bloque(position = game.at(0, 4), grafico = "valla.png")
 		const bloque1 = new Bloque(position = game.at(1, 4), grafico = "valla.png")

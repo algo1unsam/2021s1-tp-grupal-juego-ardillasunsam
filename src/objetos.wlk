@@ -168,8 +168,16 @@ class BarraVida inherits Ente {
 }
 
 class Bala inherits EnteBot {
+	
+	const diferentesImagenes = ["bullet_azul.png",
+								"bullet_celeste.png",
+								"bullet_gris.png",
+								"bullet_naranja.png",
+								"bullet_roja.png",
+								"bullet_verde.png",
+								"bullet_violeta.png"]
 
-	override method image() = grafico
+	override method image() = diferentesImagenes.anyOne()
 
 	override method prioridadColiciones() = 2
 
