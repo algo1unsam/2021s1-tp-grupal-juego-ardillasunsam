@@ -58,11 +58,6 @@ class Niveles {
 		zombies.add(new Zombie(position = zombiePosicion))
 		game.addVisual(zombies.last())
 	}
-
-	method modoEditorTeclaH(objeto) {
-		keyboard.h().onPressDo({ game.say(objeto, "xy = (" + objeto.position().x().toString() + "," + objeto.position().y().toString() + ")")})
-	}
-
 }
 
 object nivel1 inherits Niveles {
@@ -146,7 +141,7 @@ object nivel1 inherits Niveles {
 		game.addVisual(alcantarilla1)
 		game.addVisual(alcantarilla2)
 		self.agregarJugador(game.origin(), "george")
-		self.modoEditorTeclaH(jugadores.last())
+		teclado.mostrarCoordenadaTeclaH(jugadores.last())
 		const barraVida = new BarraVida(jugador = jugadores.last(), position = game.at(14, 0), grafico = "barra_red")
 		game.addVisual(barraVida)
 		fisicas.colisiones(jugadores)
@@ -243,7 +238,7 @@ object nivel2 inherits Niveles {
 		game.addVisual(camioneta)
 		game.boardGround("fondo_carretera.png")
 		self.agregarJugador(game.origin(), "george")
-		self.modoEditorTeclaH(jugadores.last())
+		teclado.mostrarCoordenadaTeclaH(jugadores.last())
 		fisicas.colisiones(jugadores)
 	}
 

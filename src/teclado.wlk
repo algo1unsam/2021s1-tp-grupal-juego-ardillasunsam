@@ -62,6 +62,10 @@ object teclado {
 		})
 	}
 
+	method mostrarCoordenadaTeclaH(objeto) {
+		keyboard.h().onPressDo({ game.say(objeto, "xy = (" + objeto.position().x().toString() + "," + objeto.position().y().toString() + ")")})
+	}
+
 	method hablarTeclaX(objeto) {
 		keyboard.x().onPressDo({ objeto.mensajeRandom() })
 	}
