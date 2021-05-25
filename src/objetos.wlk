@@ -137,7 +137,7 @@ class Camioneta inherits Bloque {
 	override method teEncontro(alguien) {
 		if (alguien.herramientas().size() == 4) {
 			game.say(self, "GANASTE")
-			game.schedule(1000, { nivel2.presentacion()})
+			game.schedule(1000, { nivel2.iniciar()})
 		} else {
 			super(alguien)
 		}
