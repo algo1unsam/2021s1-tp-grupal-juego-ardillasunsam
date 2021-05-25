@@ -177,7 +177,14 @@ class Bala inherits EnteBot {
 								"bullet_verde.png",
 								"bullet_violeta.png"]
 
-	override method image() = diferentesImagenes.anyOne()
+	override method image() {
+	     if (self.grafico() == "") {
+		   self.grafico(diferentesImagenes.anyOne())		  
+		  }	
+		  
+		  return self.grafico()
+		  }	  
+	 
 
 	override method prioridadColiciones() = 2
 

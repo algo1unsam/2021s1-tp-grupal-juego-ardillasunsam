@@ -198,7 +198,7 @@ object nivel2 inherits Niveles {
 	// hay que lograr que acepte los dos jugadores
 	// hay que reemplazar por las mecanicas existentes de puntos.
 	method crearBala() {
-		const bala = new Bala(position = jugadores.first().position().up(1), grafico = "bullet.png")
+		const bala = new Bala(position = jugadores.first().position().up(1))
 		game.addVisual(bala)
 		
 		game.onTick(15, bala.identity().toString(), {
