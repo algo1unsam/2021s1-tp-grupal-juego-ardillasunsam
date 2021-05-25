@@ -187,17 +187,6 @@ class Bala inherits EnteBot {
 			self.position(game.at(game.width(),game.height()))// <---------new
 		}
 	}
-
-	method movimientoZombie(unZombie) {
-		game.onTick(500, self.identity().toString(), {
-			if (unZombie.position().y() == 0) {
-				game.removeVisual(unZombie)
-				game.removeTickEvent(self.identity().toString())
-			}
-			unZombie.position(unZombie.position().down(1))
-		})
-	}
-
 }
 
 class Zombie inherits EnteMalvado {
