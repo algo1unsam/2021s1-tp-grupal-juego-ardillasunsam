@@ -53,11 +53,6 @@ class Niveles {
 		}
 		teclado.hablarTeclaX(jugadores.last())
 	}
-	
-	method agregarZombie(zombiePosicion) {
-		zombies.add(new Zombie(position = zombiePosicion))
-		game.addVisual(zombies.last())
-	}
 }
 
 object nivel1 inherits Niveles {
@@ -80,28 +75,37 @@ object nivel1 inherits Niveles {
 			// arriba<------hayq ue buscar como añadir una clase
 			// por el tema de las trampas(que no se muevan)
 			// self.agregarZombie(game.at(7,7),'Slime')
-		/* 	
-		self.agregarZombie(game.at(5, 9)) // recto eje y
-		zombies.last().agregarPunto(5, 5)
-		self.agregarZombie(game.at(7, 6)) // cuadrado
-		zombies.last().agregarPunto(6, 7)
-		self.agregarZombie(game.at(10, 8)) // recto eje y
-		zombies.last().agregarPunto(10, 2)
-		self.agregarZombie(game.at(13, 8)) // recto eje y
-		zombies.last().agregarPunto(13, 3)
-		self.agregarZombie(game.at(15, 10)) // cuadrado
-		zombies.last().agregarPunto(11, 5)
-		self.agregarZombie(game.at(10, 3)) // recto eje x
-		zombies.last().agregarPunto(16, 3)
-		self.agregarZombie(game.at(1, 6)) // cuadrado		
-		zombies.last().agregarPunto(3, 11)
-		self.agregarZombie(game.at(17, 11)) // recto eje y
-		zombies.last().agregarPunto(17, 3)
-		self.agregarZombie(game.at(6, 11)) // recto eje x
-		zombies.last().agregarPunto(13, 11)
-		
+
+		zombies.add(new Zombie(position = game.at(5, 9)))
+		zombies.last().agregarPunto(5, 5) // recto eje y
+
+		zombies.add(new Zombie(position = game.at(7, 6)))
+		zombies.last().agregarPunto(6, 7) // cuadrado
+
+		zombies.add(new Zombie(position = game.at(10, 8)))
+		zombies.last().agregarPunto(10, 2) // recto eje y
+
+		zombies.add(new Zombie(position = game.at(13, 8)))
+		zombies.last().agregarPunto(13, 3) // recto eje y
+
+		zombies.add(new Zombie(position = game.at(15, 10)))
+		zombies.last().agregarPunto(11, 5) // cuadrado
+
+		zombies.add(new Zombie(position = game.at(10, 3)))
+		zombies.last().agregarPunto(16, 3) // recto eje x
+
+		zombies.add(new Zombie(position = game.at(1, 6)))	
+		zombies.last().agregarPunto(3, 11) // cuadrado
+
+		zombies.add(new Zombie(position = game.at(17, 11)))
+		zombies.last().agregarPunto(17, 3) // recto eje y
+
+		zombies.add(new Zombie(position = game.at(6, 11)))
+		zombies.last().agregarPunto(13, 11) // recto eje x
+
+		zombies.forEach({ unZombie => game.addVisual(unZombie) })
 		zombies.forEach({ unZombie => unZombie.iniciarMovimiento("ciclico", 100.randomUpTo(400))})
-		*/
+
 		const camioneta = new Camioneta(position = game.at(7, 9), grafico = "camioneta.png")
 		const bloque = new Bloque(position = game.at(0, 4), grafico = "valla.png")
 		const bloque1 = new Bloque(position = game.at(1, 4), grafico = "valla.png")
@@ -220,7 +224,9 @@ object nivel2 inherits Niveles {
 	}
 
 	method iniciarHorda() {
-		game.onTick(400, "CREAR_ZOMBIE", { self.agregarZombie(randomZombie.position())
+		game.onTick(400, "CREAR_ZOMBIE", {
+			zombies.add(new Zombie(position = randomZombie.position()))
+			game.addVisual(zombies.last())
 			self.movimientoZombie(zombies.last())
 			fisicas.colisionesBala(zombies.last())
 		})
@@ -228,17 +234,23 @@ object nivel2 inherits Niveles {
 
 	method iniciar() {
 		game.clear()
+
 		const nivel2 = new Ente(grafico = "fondo_nivel2.jpg")
 		game.addVisual(nivel2)
+
 		self.iniciarHorda()
-			// aca inicio la creacion de los zombies
+
 		const camioneta = new Camioneta(position = game.at(7, 9), grafico = "camioneta.png")
 		const bloqueCamion = new Bloque(position = game.at(8, 9), grafico = "autoTracero.png")
 		game.addVisual(bloqueCamion)
 		game.addVisual(camioneta)
+		
 		game.boardGround("fondo_carretera.png")
+
 		self.agregarJugador(game.origin(), "george")
+
 		teclado.mostrarCoordenadaTeclaH(jugadores.last())
+
 		fisicas.colisiones(jugadores)
 	}
 
