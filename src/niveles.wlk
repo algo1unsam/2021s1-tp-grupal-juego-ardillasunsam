@@ -10,7 +10,7 @@ object inicio {
 
 	method iniciar() {
 		self.configurarPantalla()
-		teclado.presentacionTeclaEnter(nivel2)
+		teclado.presentacionTeclaEnter(nivel1)
 		game.start()
 	}
 
@@ -27,7 +27,7 @@ object inicio {
 class Niveles {
 
 	const jugadores = []
-	const zombies = []
+	const objetos = []
 
 	method jugadores() = jugadores
 
@@ -53,29 +53,68 @@ class Niveles {
 		}
 		teclado.hablarTeclaX(jugadores.last())
 	}
+	
+	method iniciar() {
+		game.clear()
+		self.iniciarPresentacion()
+		game.schedule(5000, {
+			game.clear()
+			
+			// Iniciado de los elementos del nivel por capas.
+			self.iniciarFondo()
+			self.iniciarBloques()
+			self.iniciarZombies()
+			self.iniciarJugadores()
+			self.iniciarOtrosElementos()
+			self.iniciarAnimaciones()
+			
+			objetos.addAll(jugadores)
+			objetos.forEach({ unObjeto => game.addVisual(unObjeto) })
+			fisicas.colisiones(objetos)
+		})
+	}
+	
+	method iniciarPresentacion() {}
+	method iniciarFondo() {}
+	method iniciarBloques() {}
+	method iniciarZombies() {}
+	method iniciarJugadores() {}
+	method iniciarOtrosElementos() {}
+	method iniciarAnimaciones() {}
 }
 
 object nivel1 inherits Niveles {
 
-	method presentacion(){
-		game.clear()
-		const introNiv1 = new Ente(grafico = "nivel1.jpg")
-		game.addVisual(introNiv1)
-		game.schedule(5000, { self.iniciar()})
+	override method iniciarPresentacion() {
+		const presentacionNivel1 = new Ente(grafico = "nivel1.jpg")
+		game.addVisual(presentacionNivel1)
 	}
 
-	method iniciar() {
-		game.clear()
-		const nivel1 = new Ente(grafico = "fondo_nivel1.jpg")
-		game.addVisual(nivel1)
-			// Con esta linea, funciona bien el multijugador,
-			// pero se bugea el mensaje.
-			// self.agregarJugador(game.origin(), "george")
-			// self.agregarZombie(game.at(3,8),'Slime')
-			// arriba<------hayq ue buscar como añadir una clase
-			// por el tema de las trampas(que no se muevan)
-			// self.agregarZombie(game.at(7,7),'Slime')
+	override method iniciarFondo() {
+		objetos.add(new Ente(grafico = "fondo_nivel1.jpg"))
+	}
 
+	override method iniciarBloques() {
+		objetos.add(new Bloque(position = game.at(0, 4), grafico = "valla.png"))
+		objetos.add(new Bloque(position = game.at(1, 4), grafico = "valla.png"))
+		objetos.add(new Bloque(position = game.at(2, 4), grafico = "valla.png"))
+		objetos.add(new Bloque(position = game.at(3, 4), grafico = "valla.png"))
+		objetos.add(new Bloque(position = game.at(4, 4), grafico = "valla.png"))
+		objetos.add(new Bloque(position = game.at(7, 4), grafico = "valla.png"))
+		objetos.add(new Bloque(position = game.at(8, 4), grafico = "valla.png"))
+		objetos.add(new Bloque(position = game.at(9, 4), grafico = "valla.png"))
+		objetos.add(new Bloque(position = game.at(9, 2), grafico = "muro.png"))
+		objetos.add(new Bloque(position = game.at(9, 1), grafico = "muro.png"))
+		objetos.add(new Bloque(position = game.at(9, 0), grafico = "muro.png"))
+		objetos.add(new Bloque(position = game.at(8, 9), grafico = "autoTracero.png"))
+
+		objetos.add(new Alcantarilla(position = game.at(2, 2), grafico = "alcantarilla.png", salida = [6, 6]))
+		objetos.add(new Alcantarilla(position = game.at(6, 6), grafico = "alcantarilla.png", salida = [2, 2]))
+	}
+
+	override method iniciarZombies() {
+		var zombies = []
+		
 		zombies.add(new Zombie(position = game.at(5, 9)))
 		zombies.last().agregarPunto(5, 5) // recto eje y
 
@@ -103,52 +142,28 @@ object nivel1 inherits Niveles {
 		zombies.add(new Zombie(position = game.at(6, 11)))
 		zombies.last().agregarPunto(13, 11) // recto eje x
 
-		zombies.forEach({ unZombie => game.addVisual(unZombie) })
 		zombies.forEach({ unZombie => unZombie.iniciarMovimiento("ciclico", 100.randomUpTo(400))})
+		
+		objetos.addAll(zombies)
+	}
 
-		const camioneta = new Camioneta(position = game.at(7, 9), grafico = "camioneta.png")
-		const bloque = new Bloque(position = game.at(0, 4), grafico = "valla.png")
-		const bloque1 = new Bloque(position = game.at(1, 4), grafico = "valla.png")
-		const bloque2 = new Bloque(position = game.at(2, 4), grafico = "valla.png")
-		const bloque3 = new Bloque(position = game.at(3, 4), grafico = "valla.png")
-		const bloque4 = new Bloque(position = game.at(4, 4), grafico = "valla.png")
-		const bloque5 = new Bloque(position = game.at(7, 4), grafico = "valla.png")
-		const bloque6 = new Bloque(position = game.at(8, 4), grafico = "valla.png")
-		const bloque7 = new Bloque(position = game.at(9, 4), grafico = "valla.png")
-		const bloque8 = new Bloque(position = game.at(9, 2), grafico = "muro.png")
-		const bloque9 = new Bloque(position = game.at(9, 1), grafico = "muro.png")
-		const bloque10 = new Bloque(position = game.at(9, 0), grafico = "muro.png")
-		const bloqueCamion = new Bloque(position = game.at(8, 9), grafico = "autoTracero.png")
-		const rueda = new Herramienta(position = game.at(15, 1), grafico = 'rueda.png')
-		const herramienta = new Herramienta(position = game.at(18, 6), grafico = 'Herramienta.png')
-		const bidon = new Herramienta(position = game.at(15, 11), grafico = 'bidon.png')
-		const tuerca = new Herramienta(position = game.at(3, 11), grafico = 'tuerca.png')
-		const alcantarilla1 = new Alcantarilla(position = game.at(2, 2), grafico = 'alcantarilla.png', salida = [6, 6])
-		const alcantarilla2 = new Alcantarilla(position = game.at(6, 6), grafico = 'alcantarilla.png', salida = [2, 2])
-		game.addVisual(bloqueCamion)
-		game.addVisual(camioneta)
-		game.addVisual(bloque)
-		game.addVisual(bloque1)
-		game.addVisual(bloque2)
-		game.addVisual(bloque3)
-		game.addVisual(bloque4)
-		game.addVisual(bloque5)
-		game.addVisual(bloque6)
-		game.addVisual(bloque7)
-		game.addVisual(bloque8)
-		game.addVisual(bloque9)
-		game.addVisual(bloque10)
-		game.addVisual(rueda)
-		game.addVisual(herramienta)
-		game.addVisual(bidon)
-		game.addVisual(tuerca)
-		game.addVisual(alcantarilla1)
-		game.addVisual(alcantarilla2)
+	override method iniciarJugadores() {
 		self.agregarJugador(game.origin(), "george")
 		teclado.mostrarCoordenadaTeclaH(jugadores.last())
-		const barraVida = new BarraVida(jugador = jugadores.last(), position = game.at(14, 0), grafico = "barra_red")
-		game.addVisual(barraVida)
-		fisicas.colisiones(jugadores)
+	}
+	
+	override method iniciarOtrosElementos() {
+		objetos.add(new Camioneta(position = game.at(7, 9), grafico = "camioneta.png"))
+		objetos.add(new Herramienta(position = game.at(15, 1), grafico = 'rueda.png'))
+		objetos.add(new Herramienta(position = game.at(18, 6), grafico = 'Herramienta.png'))
+		objetos.add(new Herramienta(position = game.at(15, 11), grafico = 'bidon.png'))
+		objetos.add(new Herramienta(position = game.at(3, 11), grafico = 'tuerca.png'))
+	}
+
+	override method iniciarAnimaciones() {
+		objetos.add(new BarraVida(jugador = jugadores.last(), position = game.at(14, 0), grafico = "barra_red"))
+	}
+
 	// //////////////////////////////ROBAMOS PARA PROBAR(DE ESTO no e SCoOOOCApPAI)
 	/* method mostrarPiso(){
 	 * 	    20.times({n=>piso.add(new PisoDeTierra(position=game.at(n-1,0)))})
@@ -163,8 +178,8 @@ object nivel1 inherits Niveles {
 	 * 	    piso.forEach({unPiso=>game.addVisual(unPiso)})}
 	 * 	    method mostrarEscaleras(){
 	 * 	    4.times({n=>escaleras.add(new Escalera(position=game.at(18,1+n),indice=0))})
-	 *      	2.times({n=>escaleras.add(new Escalera(position=game.at(18,5+n),indice=1))})
-	 *      	4.times({n=>escaleras.add(new Escalera(position=game.at(24,7+n)))})
+	 *      2.times({n=>escaleras.add(new Escalera(position=game.at(18,5+n),indice=1))})
+	 *      4.times({n=>escaleras.add(new Escalera(position=game.at(24,7+n)))})
 	 * 	    2.times({n=>escaleras.add(new Escalera(position=game.at(24,11+n),indice=1))})
 	 * 	    8.times({n=>escaleras.add(new Escalera(position=game.at(27,13+n)))})
 	 * 	    2.times({n=>escaleras.add(new Escalera(position=game.at(27,21+n),indice=1))})
@@ -173,18 +188,47 @@ object nivel1 inherits Niveles {
 	 * 	    7.times({n=>escaleras.add(new Escalera(position=game.at(12,14+n)))})
 	 * 	    2.times({n=>escaleras.add(new Escalera(position=game.at(12,21+n),indice=1))})
 	 escaleras.forEach({unaEscalera=>game.addVisual(unaEscalera)})}*/
-	// //////////////////////////////////////////////////FIN ESTO NO ES COCA	
-	}
-
+	////////////////////////////////////////////////////FIN ESTO NO ES COCA	
 }
 
 object nivel2 inherits Niveles {
 	
-	method presentacion(){
-		game.clear()
-		const introNiv2 = new Ente(grafico = "nivel2.jpg")
-		game.addVisual(introNiv2)
-		game.schedule(5000, { self.iniciar()})
+	override method iniciarPresentacion() {
+		const presentacionNivel2 = new Ente(grafico = "nivel2.jpg")
+		game.addVisual(presentacionNivel2)
+	}
+	
+	override method iniciarFondo() {
+		objetos.add(new Ente(grafico = "fondo_nivel2.jpg"))
+	}
+	
+	override method iniciarBloques() {
+		objetos.add(new Bloque(position = game.at(8, 9), grafico = "autoTracero.png"))
+	}
+
+	override method iniciarZombies() {
+		var zombies = []
+		
+		game.onTick(400, "CREAR_ZOMBIE", {
+			zombies.add(new Zombie(position = randomZombie.position()))
+			game.addVisual(zombies.last())
+			self.movimientoZombie(zombies.last())
+		})
+		
+		objetos.addAll(zombies)
+	}
+	
+	override method iniciarJugadores() {
+		self.agregarJugador(game.origin(), "george")
+		teclado.mostrarCoordenadaTeclaH(jugadores.last())
+	}
+	
+	override method iniciarOtrosElementos() {
+		objetos.add(new Camioneta(position = game.at(7, 9), grafico = "camioneta.png"))
+	}
+	
+	override method iniciarAnimaciones() {
+		// En construccion.
 	}
 
 	override method asignarTeclas() {
@@ -197,7 +241,6 @@ object nivel2 inherits Niveles {
 		}
 		teclado.hablarTeclaX(jugadores.last())
 	}
-
 
 	// hay que lograr que acepte los dos jugadores
 	// hay que reemplazar por las mecanicas existentes de puntos.
@@ -222,37 +265,4 @@ object nivel2 inherits Niveles {
 			abajo.mover(unZombie)
 		})
 	}
-
-	method iniciarHorda() {
-		game.onTick(400, "CREAR_ZOMBIE", {
-			zombies.add(new Zombie(position = randomZombie.position()))
-			game.addVisual(zombies.last())
-			self.movimientoZombie(zombies.last())
-			fisicas.colisionesBala(zombies.last())
-		})
-	}
-
-	method iniciar() {
-		game.clear()
-
-		const nivel2 = new Ente(grafico = "fondo_nivel2.jpg")
-		game.addVisual(nivel2)
-
-		self.iniciarHorda()
-
-		const camioneta = new Camioneta(position = game.at(7, 9), grafico = "camioneta.png")
-		const bloqueCamion = new Bloque(position = game.at(8, 9), grafico = "autoTracero.png")
-		game.addVisual(bloqueCamion)
-		game.addVisual(camioneta)
-		
-		game.boardGround("fondo_carretera.png")
-
-		self.agregarJugador(game.origin(), "george")
-
-		teclado.mostrarCoordenadaTeclaH(jugadores.last())
-
-		fisicas.colisiones(jugadores)
-	}
-
 }
-
