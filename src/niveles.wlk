@@ -5,14 +5,14 @@ import jugador.*
 import direcciones.*
 
 
-
 object inicio {
 
 	method iniciar() {
 		self.configurarPantalla()
-		teclado.presionarEnter(self)
+		teclado.presentacionTeclaEnter(nivel2)
 		game.start()
 	}
+
 	method configurarPantalla(){
 		game.title("ZOMBIES AND DEMONS")
 		game.height(12)
@@ -28,44 +28,51 @@ class Niveles {
 	const jugadores = []
 	const zombies = []
 
-	// const cantidadDeBalas =[]----ver cantiad de de balas
-	method jugadores() {
-		return jugadores
-	}
+	method jugadores() = jugadores
 
 	method agregarJugador(jugadorPosicion, jugadorGrafico) {
 		if (jugadores.size() > 2) {
 			self.error("maxima cantidad de 
                         jugadores alcanzado.")
 		}
+
 		jugadores.add(new Jugador(position = jugadorPosicion, grafico = jugadorGrafico, vidas = 3))
 		game.addVisual(jugadores.last())
-		if (jugadores.size() == 1) {
-			teclado.asignarFlechasPara(jugadores.first())
-		} else {
-			teclado.asignarWASDPara(jugadores.last())
-		}
-		teclado.hablar(jugadores.last())
-	}
 
+		self.asignarTeclas()
+	}
+	
+	method asignarTeclas() {
+		if (jugadores.size() == 1) {
+			teclado.moverXFlechaDerechaIzquierda(jugadores.first())
+			teclado.moverYFlechaArribaAbajo(jugadores.first())
+		} else {
+			teclado.moverXTeclaAD(jugadores.last())
+			teclado.moverYTeclaWS(jugadores.last())
+		}
+		teclado.hablarTeclaX(jugadores.last())
+	}
+	
 	method agregarZombie(zombiePosicion) {
 		zombies.add(new Zombie(position = zombiePosicion))
 		game.addVisual(zombies.last())
 	}
 
-	method asignarModoEditorA(ente) {
-		keyboard.space().onPressDo({ game.say(ente, "xy = (" + ente.position().x().toString() + "," + ente.position().y().toString() + ")")})
+	method modoEditorTeclaH(objeto) {
+		keyboard.h().onPressDo({ game.say(objeto, "xy = (" + objeto.position().x().toString() + "," + objeto.position().y().toString() + ")")})
 	}
 
 }
 
 object nivel1 inherits Niveles {
+
 	method presentacion(){
 		game.clear()
 		const introNiv1 = new Ente(grafico = "nivel1.jpg")
 		game.addVisual(introNiv1)
 		game.schedule(5000, { self.iniciar()})
 	}
+
 	method iniciar() {
 		game.clear()
 		const nivel1 = new Ente(grafico = "fondo_nivel1.jpg")
@@ -138,7 +145,7 @@ object nivel1 inherits Niveles {
 		game.addVisual(alcantarilla1)
 		game.addVisual(alcantarilla2)
 		self.agregarJugador(game.origin(), "george")
-		self.asignarModoEditorA(jugadores.last())
+		self.modoEditorTeclaH(jugadores.last())
 		const barraVida = new BarraVida(jugador = jugadores.last(), position = game.at(14, 0), grafico = "barra_red")
 		game.addVisual(barraVida)
 		fisicas.colisiones(jugadores)
@@ -179,21 +186,18 @@ object nivel2 inherits Niveles {
 		game.addVisual(introNiv2)
 		game.schedule(5000, { self.iniciar()})
 	}
-	// player1 uno se mueve con flechas izquierda y derecha y dispara con control
-	// player2 se mueve con A y D y dispara con G
-	override method agregarJugador(jugadorPosicion, jugadorGrafico) {
-		if (jugadores.size() > 2) {
-			self.error("maxima cantidad de jugadores alcanzado.")
-		}
-		jugadores.add(new Jugador(position = jugadorPosicion, grafico = jugadorGrafico, vidas = 3))
-		game.addVisual(jugadores.last())
+
+	override method asignarTeclas() {
 		if (jugadores.size() == 1) {
-			teclado.asignarMovPlayer1Nivel2(jugadores.first()) // agrego nueva mecanica restringe movimiento
+			teclado.moverXFlechaDerechaIzquierda(jugadores.first())
+			teclado.dispararTeclaCTRL(jugadores.first())
 		} else {
-			teclado.asignarMovPlayer2Nivel2(jugadores.last()) // agrego nueva mecanica restringe movimiento
+			teclado.moverXTeclaAD(jugadores.last())
+			teclado.dispararTeclaG(jugadores.first())
 		}
-	// teclado.hablar(jugadores.last()) se podria sacar este porque hablan los dos al mismo tiempo
+		teclado.hablarTeclaX(jugadores.last())
 	}
+
 
 	// hay que lograr que acepte los dos jugadores
 	// hay que reemplazar por las mecanicas existentes de puntos.
@@ -238,7 +242,7 @@ object nivel2 inherits Niveles {
 		game.addVisual(camioneta)
 		game.boardGround("fondo_carretera.png")
 		self.agregarJugador(game.origin(), "george")
-		self.asignarModoEditorA(jugadores.last())
+		self.modoEditorTeclaH(jugadores.last())
 		fisicas.colisiones(jugadores)
 	}
 
