@@ -68,8 +68,8 @@ class Niveles {
 			self.iniciarOtrosElementos()
 			self.iniciarAnimaciones()
 			
-			objetos.addAll(jugadores)
 			objetos.forEach({ unObjeto => game.addVisual(unObjeto) })
+			objetos.addAll(jugadores)
 			fisicas.colisiones(objetos)
 		})
 	}
