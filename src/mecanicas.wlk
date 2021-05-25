@@ -6,80 +6,70 @@ import niveles.*
 
 object teclado {
 
-	method asignarFlechasPara(jugadorN) {
-		keyboard.left().onPressDo({
-			izquierda.girar(jugadorN)
-			izquierda.moverLimitado(jugadorN)
-		})
-		keyboard.right().onPressDo({
-			derecha.girar(jugadorN)
-			derecha.moverLimitado(jugadorN)
-		})
+	method moverYFlechaArribaAbajo(jugador) {
 		keyboard.up().onPressDo({
-			arriba.girar(jugadorN)
-			arriba.moverLimitado(jugadorN)
+			arriba.girar(jugador)
+			arriba.moverLimitado(jugador)
 		})
 		keyboard.down().onPressDo({
-			abajo.girar(jugadorN)
-			abajo.moverLimitado(jugadorN)
+			abajo.girar(jugador)
+			abajo.moverLimitado(jugador)
 		})
 	}
-
-	method asignarWASDPara(jugadorN) {
-		keyboard.a().onPressDo({
-			izquierda.girar(jugadorN)
-			izquierda.moverLimitado(jugadorN)
-		})
-		keyboard.d().onPressDo({
-			derecha.girar(jugadorN)
-			derecha.moverLimitado(jugadorN)
-		})
-		keyboard.w().onPressDo({
-			arriba.girar(jugadorN)
-			arriba.moverLimitado(jugadorN)
-		})
-		keyboard.s().onPressDo({
-			abajo.girar(jugadorN)
-			abajo.moverLimitado(jugadorN)
-		})
-	}
-
-	method asignarMovPlayer1Nivel2(jugadorN) {
+	
+	method moverXFlechaDerechaIzquierda(jugador) {
 		keyboard.left().onPressDo({
-			izquierda.girar(jugadorN)
-			izquierda.moverLimitado(jugadorN)
+			izquierda.girar(jugador)
+			izquierda.moverLimitado(jugador)
 		})
 		keyboard.right().onPressDo({
-			derecha.girar(jugadorN)
-			derecha.moverLimitado(jugadorN)
-		})
-		keyboard.control().onPressDo({
-			arriba.girar(jugadorN)
-			nivel2.crearBala()
+			derecha.girar(jugador)
+			derecha.moverLimitado(jugador)
 		})
 	}
-
-	method asignarMovPlayer2Nivel2(jugadorN) {
+	
+	method moverYTeclaWS(jugador) {
+		keyboard.w().onPressDo({
+			arriba.girar(jugador)
+			arriba.moverLimitado(jugador)
+		})
+		keyboard.s().onPressDo({
+			abajo.girar(jugador)
+			abajo.moverLimitado(jugador)
+		})
+	}
+	
+	method moverXTeclaAD(jugador) {
 		keyboard.a().onPressDo({
-			izquierda.girar(jugadorN)
-			izquierda.moverLimitado(jugadorN)
+			izquierda.girar(jugador)
+			izquierda.moverLimitado(jugador)
 		})
 		keyboard.d().onPressDo({
-			derecha.girar(jugadorN)
-			derecha.moverLimitado(jugadorN)
+			derecha.girar(jugador)
+			derecha.moverLimitado(jugador)
 		})
+	}
+	
+	method dispararTeclaCTRL(jugador) {
+		keyboard.control().onPressDo({
+			arriba.girar(jugador)
+			nivel2.crearBala()
+		})
+	}
+	
+	method dispararTeclaG(jugador) {
 		keyboard.g().onPressDo({
-			arriba.girar(jugadorN)
+			arriba.girar(jugador)
 			nivel2.crearBala()
 		})
 	}
 
-	method hablar(ente) {
-		keyboard.x().onPressDo({ ente.mensajeRandom() })
+	method hablarTeclaX(objeto) {
+		keyboard.x().onPressDo({ objeto.mensajeRandom() })
 	}
 
-	method presionarEnter(presentacion) {
-		keyboard.enter().onPressDo({ nivel2.presentacion() })
+	method presentacionTeclaEnter(nivel) {
+		keyboard.enter().onPressDo({ nivel.presentacion() })
 	}
 
 }
