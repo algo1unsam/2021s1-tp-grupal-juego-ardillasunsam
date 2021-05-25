@@ -1,8 +1,9 @@
-import mecanicas.*
+import fisicas.*
 import wollok.game.*
 import objetos.*
 import jugador.*
 import direcciones.*
+import teclado.*
 
 
 object inicio {

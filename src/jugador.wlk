@@ -1,6 +1,6 @@
 import wollok.game.*
 import objetos.*
-import mecanicas.*
+import fisicas.*
 import direcciones.*
 
 class Jugador inherits Ente {
