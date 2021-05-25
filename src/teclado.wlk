@@ -71,7 +71,7 @@ object teclado {
 	}
 
 	method presentacionTeclaEnter(nivel) {
-		keyboard.enter().onPressDo({ nivel.presentacion() })
+		keyboard.enter().onPressDo({ nivel.iniciar() })
 	}
 
 }
