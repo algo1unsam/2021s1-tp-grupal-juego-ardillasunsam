@@ -206,7 +206,7 @@ object nivel2 inherits Niveles {
 				game.removeVisual(bala)
 				game.removeTickEvent(bala.identity().toString())
 			}
-			bala.position(bala.position().up(1))
+			arriba.mover(bala)
 		})
 	}
 
@@ -215,7 +215,7 @@ object nivel2 inherits Niveles {
 			if (unZombie.position().y() == 0) {
 				unZombie.position(randomZombie.position())
 			}
-			unZombie.position(unZombie.position().down(1))
+			abajo.mover(unZombie)
 		})
 	}
 
