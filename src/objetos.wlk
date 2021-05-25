@@ -112,8 +112,6 @@ class EnteBot inherits Ente {
 
 class EnteMalvado inherits EnteBot {
 
-	override method prioridadColiciones() = 1
-
 	override method teEncontro(alguien) {
 		alguien.bajarVida()
 		if (not alguien.estaVivo()) {
@@ -125,6 +123,8 @@ class EnteMalvado inherits EnteBot {
 }
 
 class Bloque inherits Ente {
+	
+	override method prioridadColiciones() = 4
 
 	override method teEncontro(alguien) {
 		alguien.direccion().direccionOpuesta().mover(alguien)
@@ -163,6 +163,8 @@ class BarraVida inherits Ente {
 
 	var property jugador
 
+	override method prioridadColiciones() = 2
+
 	override method image() = (self.grafico() + jugador.vidas().toString() + ".png")
 
 }
@@ -178,15 +180,13 @@ class Bala inherits EnteBot {
 								"bullet_violeta.png"]
 
 	override method image() {
-	     if (self.grafico() == "") {
-		   self.grafico(diferentesImagenes.anyOne())		  
-		  }	
-		  
-		  return self.grafico()
-		  }	  
+		if (self.grafico() == "") {
+			self.grafico(diferentesImagenes.anyOne())		  
+		}
+		return self.grafico()
+	}
 	 
-
-	override method prioridadColiciones() = 2
+	override method prioridadColiciones() = 3
 
 	override method teEncontro(alguien) {
 		if (self.position() == alguien.position()) { 
@@ -206,6 +206,8 @@ class Zombie inherits EnteMalvado {
 								 "devil2", 
 								 "devil3",
 								 "devil4" ]
+								 
+	override method prioridadColiciones() = 2
 
 	override method image() {
 		if (self.grafico() == "") {
@@ -220,6 +222,8 @@ class Alcantarilla inherits Ente {
 	// En un futuro resolver que funcione pasandole otra alcantarilla
 	// en vez de las coordenadas [X, Y] de la salida.
 	var property salida
+
+	override method prioridadColiciones() = 4
 
 	override method teEncontro(alguien) {
 		alguien.position(game.at(salida.first(), salida.last()))
