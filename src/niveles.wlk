@@ -91,7 +91,7 @@ object nivel1 inherits Niveles {
 	}
 
 	override method iniciarFondo() {
-		objetos.add(new Ente(grafico = "fondo_nivel1.jpg"))
+		objetos.add(new Fondo(grafico = "fondo_nivel1.jpg"))
 	}
 
 	override method iniciarBloques() {
@@ -199,7 +199,7 @@ object nivel2 inherits Niveles {
 	}
 	
 	override method iniciarFondo() {
-		objetos.add(new Ente(grafico = "fondo_nivel2.jpg"))
+		objetos.add(new Fondo(grafico = "fondo_nivel2.jpg"))
 	}
 	
 	override method iniciarBloques() {

@@ -236,3 +236,7 @@ object randomZombie {
 	}
 
 }
+
+class Fondo inherits Ente {
+	override method prioridadColiciones() = 100
+}
