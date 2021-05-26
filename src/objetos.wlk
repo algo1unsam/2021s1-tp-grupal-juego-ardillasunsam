@@ -169,11 +169,18 @@ class Bala inherits EnteBot {
 		return self.grafico()
 	}
 	 
-	override method prioridadColiciones() = 70
+	override method prioridadColiciones() = 100
 
 	override method teEncontro(alguien) {
-		alguien.position(randomZombie.position())
-		self.position(game.at(game.width(),game.height()))
+		alguien.bajarVida()
+		self.bajarVida()
+	}
+
+	override method bajarVida() {
+		self.vidas(self.vidas()-1)
+		if (not self.estaVivo()) {
+			self.position(game.at(game.width(),game.height()))
+		}
 	}
 }
 
@@ -195,6 +202,13 @@ class Zombie inherits EnteMalvado {
 		 self.grafico(diferentesImagenes.anyOne())
 		}
 		return (self.grafico() + "_" + self.direccion() + ".png")
+	}
+	
+	override method bajarVida() {
+		self.vidas(self.vidas()-1)
+		if (not self.estaVivo()) {
+			self.position(randomZombie.position())
+		}
 	}
 
 }

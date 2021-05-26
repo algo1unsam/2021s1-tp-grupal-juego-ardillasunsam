@@ -10,7 +10,7 @@ object inicio {
 
 	method iniciar() {
 		self.configurarPantalla()
-		teclado.presentacionTeclaEnter(nivel1)
+		teclado.presentacionTeclaEnter(nivel2)
 		game.start()
 	}
 
@@ -207,15 +207,12 @@ object nivel2 inherits Niveles {
 	}
 
 	override method iniciarZombies() {
-		const zombies = []
-		
 		game.onTick(400, "CREAR_ZOMBIE", {
-			zombies.add(new Zombie(position = randomZombie.position()))
-			game.addVisual(zombies.last())
-			self.movimientoZombie(zombies.last())
+			const zombie = new Zombie(position = randomZombie.position())
+			game.addVisual(zombie)
+			self.movimientoZombie(zombie)
+			fisicas.colisiones(zombie)
 		})
-		
-		objetos.addAll(zombies)
 	}
 	
 	override method iniciarJugadores() {
@@ -245,18 +242,18 @@ object nivel2 inherits Niveles {
 	// hay que lograr que acepte los dos jugadores
 	// hay que reemplazar por las mecanicas existentes de puntos.
 	method crearBala() {
-		objetos.add(new Bala(position = jugadores.first().position().up(1)))
-		game.addVisual(objetos.last())
+		const bala = new Bala(position = jugadores.first().position().up(1))
+		game.addVisual(bala)
 		
-		game.onTick(15, objetos.last().identity().toString(), {
-			if (objetos.last().position().y() == game.height()) {
-				game.removeVisual(objetos.last())
-				game.removeTickEvent(objetos.last().identity().toString())
+		game.onTick(15, bala.identity().toString(), {
+			if (bala.position().y() == game.height()) {
+				game.removeVisual(bala)
+				game.removeTickEvent(bala.identity().toString())
 			}
-			arriba.mover(objetos.last())
+			arriba.mover(bala)
 		})
 		
-		fisicas.colisiones(objetos.last())
+		fisicas.colisiones(bala)
 	}
 
 	method movimientoZombie(unZombie) {
