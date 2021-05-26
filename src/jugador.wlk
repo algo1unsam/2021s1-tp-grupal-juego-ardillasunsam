@@ -7,7 +7,7 @@ class Jugador inherits Ente {
 
 	var property herramientas = []
 	
-	override method prioridadColiciones() = 1
+	override method prioridadColiciones() = 40
 	
 	override method image() {
 		if (self.estaVivo()) {
