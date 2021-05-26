@@ -116,7 +116,6 @@ class EnteMalvado inherits EnteBot {
 		alguien.bajarVida()
 		if (not alguien.estaVivo()) {
 			game.say(self, "¡¡GAME OVER JAJAJAJAJ!!")
-			game.schedule(3500, {game.stop()})
 		}
 	}
 
