@@ -70,7 +70,7 @@ class Niveles {
 			objetos.addAll(jugadores)
 			objetos.forEach({ unObjeto => game.addVisual(unObjeto) })
 			
-			fisicas.colisiones(objetos)
+			fisicas.colisionesEntreTodos(objetos)
 		})
 	}
 	
