@@ -6,8 +6,12 @@ import niveles.*
 
 object fisicas {
 
-	method colisiones(objetos) {
-		objetos.forEach({ unObjeto => game.onCollideDo(unObjeto, {algo => algo.mayorPrioridadColiciones(unObjeto)}) })
+	method colisiones(objeto) {
+		game.onCollideDo(objeto, {algo => algo.mayorPrioridadColiciones(objeto)})
+	}
+
+	method colisionesEntreTodos(objetos) {
+		objetos.forEach({ unObjeto => self.colisiones(unObjeto) })
 	}
 
 }
