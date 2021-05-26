@@ -172,10 +172,8 @@ class Bala inherits EnteBot {
 	override method prioridadColiciones() = 70
 
 	override method teEncontro(alguien) {
-		if (self.position() == alguien.position()) { 
-			alguien.position(randomZombie.position())
-			self.position(game.at(game.width(),game.height()))// <---------new
-		}
+		alguien.position(randomZombie.position())
+		self.position(game.at(game.width(),game.height()))
 	}
 }
 
