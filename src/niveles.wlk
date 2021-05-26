@@ -245,16 +245,18 @@ object nivel2 inherits Niveles {
 	// hay que lograr que acepte los dos jugadores
 	// hay que reemplazar por las mecanicas existentes de puntos.
 	method crearBala() {
-		const bala = new Bala(position = jugadores.first().position().up(1))
-		game.addVisual(bala)
+		objetos.add(new Bala(position = jugadores.first().position().up(1)))
+		game.addVisual(objetos.last())
 		
-		game.onTick(15, bala.identity().toString(), {
-			if (bala.position().y() == game.height()) {
-				game.removeVisual(bala)
-				game.removeTickEvent(bala.identity().toString())
+		game.onTick(15, objetos.last().identity().toString(), {
+			if (objetos.last().position().y() == game.height()) {
+				game.removeVisual(objetos.last())
+				game.removeTickEvent(objetos.last().identity().toString())
 			}
-			arriba.mover(bala)
+			arriba.mover(objetos.last())
 		})
+		
+		fisicas.colisiones(objetos.last())
 	}
 
 	method movimientoZombie(unZombie) {
