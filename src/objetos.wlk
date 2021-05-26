@@ -144,15 +144,6 @@ class Camioneta inherits Bloque {
 
 }
 
-class Herramienta inherits Ente {
-
-	override method teEncontro(alguien) {
-		alguien.agarrar(self)
-		game.removeVisual(self)
-	}
-
-}
-
 //object fotograma inherits Ente{<-------------------------------JAJAJAJAJAJ
 // method iniciarAnimacion(imagen){
 // game.onTick(tiempo,self.identity().toString(),{ self.movimiento(banderaMovimiento)})

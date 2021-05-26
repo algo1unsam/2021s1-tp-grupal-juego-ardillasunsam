@@ -154,10 +154,10 @@ object nivel1 inherits Niveles {
 	
 	override method iniciarOtrosElementos() {
 		objetos.add(new Camioneta(position = game.at(7, 9), grafico = "camioneta.png"))
-		objetos.add(new Herramienta(position = game.at(15, 1), grafico = 'rueda.png'))
-		objetos.add(new Herramienta(position = game.at(18, 6), grafico = 'Herramienta.png'))
-		objetos.add(new Herramienta(position = game.at(14, 10), grafico = 'bidon.png'))
-		objetos.add(new Herramienta(position = game.at(4, 11), grafico = 'tuerca.png'))
+		objetos.add(new Ente(position = game.at(15, 1), grafico = 'rueda.png'))
+		objetos.add(new Ente(position = game.at(18, 6), grafico = 'Herramienta.png'))
+		objetos.add(new Ente(position = game.at(14, 10), grafico = 'bidon.png'))
+		objetos.add(new Ente(position = game.at(4, 11), grafico = 'tuerca.png'))
 	}
 
 	override method iniciarAnimaciones() {
