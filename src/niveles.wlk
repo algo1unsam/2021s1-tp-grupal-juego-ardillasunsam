@@ -38,7 +38,6 @@ class Niveles {
 		}
 
 		jugadores.add(new Jugador(position = jugadorPosicion, grafico = jugadorGrafico, vidas = 3))
-		game.addVisual(jugadores.last())
 
 		self.asignarTeclas()
 	}
@@ -68,8 +67,9 @@ class Niveles {
 			self.iniciarOtrosElementos()
 			self.iniciarAnimaciones()
 			
-			objetos.forEach({ unObjeto => game.addVisual(unObjeto) })
 			objetos.addAll(jugadores)
+			objetos.forEach({ unObjeto => game.addVisual(unObjeto) })
+			
 			fisicas.colisiones(objetos)
 		})
 	}
