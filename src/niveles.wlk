@@ -221,7 +221,8 @@ object nivel2 inherits Niveles {
 	}
 	
 	override method iniciarOtrosElementos() {
-		objetos.add(new Camioneta(position = game.at(7, 9), grafico = "camioneta.png"))
+		// La camioneta bloquea a los zombies y envia un mensaje de error.
+		//objetos.add(new Camioneta(position = game.at(7, 9), grafico = "camioneta.png"))
 	}
 	
 	override method iniciarAnimaciones() {
