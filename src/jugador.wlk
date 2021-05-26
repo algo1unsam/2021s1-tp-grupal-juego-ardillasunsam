@@ -4,7 +4,10 @@ import fisicas.*
 import direcciones.*
 
 class Jugador inherits Ente {
+
 	var property herramientas = []
+	
+	override method prioridadColiciones() = 40
 	
 	override method image() {
 		if (self.estaVivo()) {
@@ -19,6 +22,8 @@ class Jugador inherits Ente {
 		self.gritar()
 		if (self.estaVivo()) {
 			self.position(game.origin())
+		} else {
+			game.schedule(3500, {game.stop()})
 		}
 	}
 
@@ -44,9 +49,10 @@ class Jugador inherits Ente {
 		}
 	}
 
-	method agarrar(algo) {
-		herramientas.add(algo)
+	override method teEncontro(objeto) {
+		herramientas.add(objeto)
+		game.removeVisual(objeto)
 	}
-
+	
 }
 

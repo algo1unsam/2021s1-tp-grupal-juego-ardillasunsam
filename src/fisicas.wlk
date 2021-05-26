@@ -6,21 +6,12 @@ import niveles.*
 
 object fisicas {
 
-	method colisiones(jugadores) {
-		jugadores.forEach({unJugador => game.onCollideDo(unJugador, {algo => algo.teEncontro(unJugador)})})
+	method colisiones(objeto) {
+		game.onCollideDo(objeto, {algo => algo.mayorPrioridadColiciones(objeto)})
 	}
 
-	method colisionesBala(zombies){
-		game.onCollideDo(zombies,{bala=>bala.mayorPrioridadColiciones(zombies)})
-		
-	}
-
-	method colisionNivel2(unaBala, unZombie) {
-		if (unaBala.position() == unZombie.position()) {
-			game.removeVisual(unaBala)
-			game.removeVisual(unZombie)
-		}
+	method colisionesEntreTodos(objetos) {
+		objetos.forEach({ unObjeto => self.colisiones(unObjeto) })
 	}
 
 }
-
