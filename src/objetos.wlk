@@ -63,9 +63,7 @@ class EnteBot inherits Ente {
 				self.puntoAlcanzado(tipoDeMovimiento)
 			}
 		}
-		if (not self.colisionoConJugador(nivel1.jugadores())) {
-			self.direccion().mover(self)
-		}
+		self.direccion().mover(self)
 	}
 
 	method girarEnEjeX() {
@@ -103,11 +101,6 @@ class EnteBot inherits Ente {
 			puntoActual += 1
 		}
 	}
-
-	method colisionoConJugador(jugadores) {
-		return jugadores.all({ unJugador => position == unJugador.position() })
-	}
-
 }
 
 class EnteMalvado inherits EnteBot {
