@@ -15,7 +15,11 @@ class Ente {
 
 	method estaVivo() = (vidas > 0)
 	
-	method bajarVida() { self.vidas(self.vidas()-1) }
+	method bajarVida() { 
+		if (self.estaVivo()) {
+			self.vidas(self.vidas()-1)
+		}
+	}
 	
 	method prioridadColiciones() = 0
 	
@@ -177,11 +181,15 @@ class Bala inherits EnteBot {
 	}
 
 	override method bajarVida() {
-		self.vidas(self.vidas()-1)
+		// Estos IF deben permanecer separados.
+		if (self.estaVivo()) {
+			self.vidas(self.vidas()-1)
+		}
 		if (not self.estaVivo()) {
 			self.position(game.at(game.width(),game.height()))
 		}
 	}
+
 }
 
 class Zombie inherits EnteMalvado {
@@ -205,7 +213,10 @@ class Zombie inherits EnteMalvado {
 	}
 	
 	override method bajarVida() {
-		self.vidas(self.vidas()-1)
+		// Estos IF deben permanecer separados.
+		if (self.estaVivo()) {
+			self.vidas(self.vidas()-1)
+		}
 		if (not self.estaVivo()) {
 			self.position(randomZombie.position())
 		}

@@ -18,10 +18,15 @@ class Jugador inherits Ente {
 	}
 
 	override method bajarVida() {
-		self.vidas(self.vidas()-1)
-		self.gritar()
+		// Este IF aunque tenga la misma condicion,
+		// debe permanecer separado del siguiente IF,
+		// ya que evalua si aun sigue vivo luego de
+		// cumplirse este IF.
+		if (self.estaVivo()) {self.vidas(self.vidas()-1)}
+
 		if (self.estaVivo()) {
 			self.position(game.origin())
+			self.gritar()
 		} else {
 			game.schedule(3500, {game.stop()})
 		}
