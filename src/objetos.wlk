@@ -232,6 +232,7 @@ class Alcantarilla inherits Ente {
 	override method prioridadColiciones() = 60
 
 	override method teEncontro(alguien) {
+		abajo.girar(alguien)
 		alguien.position(game.at(salida.first(), salida.last()))
 	}
 }
