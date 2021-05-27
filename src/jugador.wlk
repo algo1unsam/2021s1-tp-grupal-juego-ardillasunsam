@@ -4,6 +4,7 @@ import fisicas.*
 import direcciones.*
 
 class Jugador inherits Ente {
+	
 
 	var property herramientas = []
 	

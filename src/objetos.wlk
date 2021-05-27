@@ -112,7 +112,8 @@ class EnteMalvado inherits EnteBot {
 	override method teEncontro(alguien) {
 		alguien.bajarVida()
 		if (not alguien.estaVivo()) {
-			game.say(self, "¡¡GAME OVER JAJAJAJAJ!!")
+			//game.say(self, "¡¡GAME OVER JAJAJAJAJ!!")
+			perdiste.iniciar()
 		}
 	}
 
@@ -133,12 +134,40 @@ class Camioneta inherits Bloque {
 	override method teEncontro(alguien) {
 		if (alguien.herramientas().size() == 4) {
 			game.say(self, "GANASTE")
-			game.schedule(1000, { nivel2.iniciar()})
+			//game.schedule(1000, { nivel2.iniciar()})
+			game.removeVisual(alguien)
+			self.movimientoCamioneta()
 		} else {
 			super(alguien)
 		}
 	}
+	method movimientoCamioneta(){
+		game.onTick(500,'mover', {
+			if (self.position().x() == 0){
+				game.schedule(2000, { nivel2.iniciar()} ) 
+			}
+			izquierda.mover(self)
+		} )
+	}
 
+}
+class Avion inherits Camioneta{
+	
+	override method teEncontro(alguien){
+		if (alguien.prioridadColiciones() == 40) {
+			game.say(self, "Llegaste!!!")
+			game.removeVisual(alguien)
+			self.movimientoAvion()
+		}
+	}
+	method movimientoAvion(){
+		game.onTick(500,'mover Avion', {
+			if (self.position().y() == 10){
+				game.schedule(2000, { final.iniciar()} ) 
+			}
+			arriba.mover(self)
+		} )
+	}
 }
 
 //object fotograma inherits Ente{<-------------------------------JAJAJAJAJAJ

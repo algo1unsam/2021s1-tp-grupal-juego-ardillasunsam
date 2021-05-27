@@ -71,7 +71,9 @@ class Niveles {
 			objetos.forEach({ unObjeto => game.addVisual(unObjeto) })
 			
 			fisicas.colisionesEntreTodos(objetos)
+			game.schedule(10000, {self.iniciarExtras()})
 		})
+		
 	}
 	
 	method iniciarPresentacion() {}
@@ -81,6 +83,7 @@ class Niveles {
 	method iniciarJugadores() {}
 	method iniciarOtrosElementos() {}
 	method iniciarAnimaciones() {}
+	method iniciarExtras(){}
 }
 
 object nivel1 inherits Niveles {
@@ -193,6 +196,11 @@ object nivel1 inherits Niveles {
 
 object nivel2 inherits Niveles {
 	
+	override method iniciarExtras(){
+		const avion = new Avion(position = game.at(12, 0), grafico = "avion.png")
+		game.addVisual(avion)
+	}
+	
 	override method iniciarPresentacion() {
 		const presentacionNivel2 = new Ente(grafico = "nivel2.jpg")
 		game.addVisual(presentacionNivel2)
@@ -221,6 +229,7 @@ object nivel2 inherits Niveles {
 	}
 	
 	override method iniciarOtrosElementos() {
+		//const avion = new Avion(position = game.at(1, 2), grafico = "avion.png")
 		// La camioneta bloquea a los zombies y envia un mensaje de error.
 		//objetos.add(new Camioneta(position = game.at(7, 9), grafico = "camioneta.png"))
 	}
@@ -264,5 +273,21 @@ object nivel2 inherits Niveles {
 			}
 			abajo.mover(unZombie)
 		})
+	}
+}
+object final{
+	method iniciar(){
+		game.clear()
+		const final = new Ente(grafico = "final.jpg")
+		game.addVisual(final)
+		game.schedule(5000, {game.stop()})
+	}
+}
+object perdiste{
+	method iniciar(){
+		game.clear()
+		const perdiste = new Ente(grafico = "perdiste.jpg")
+		game.addVisual(perdiste)
+		game.schedule(5000, {game.stop()})
 	}
 }
