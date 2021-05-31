@@ -1,0 +1,54 @@
+import wollok.game.*
+import direcciones.*
+import fisicas.*
+import jugador.*
+import niveles.*
+import objetos.*
+import teclado.*
+
+
+describe "Giro/Cambio de direccion de un objeto o jugador." {
+
+	const nivel = new Niveles()
+	var jugador
+	
+	fixture {
+		nivel.agregarJugador(game.origin(), "george")
+		jugador = nivel.jugadores().first()
+	}
+	
+	test "arriba.girar(objeto) cambia la direccion de un objeto hacia arriba." {
+		arriba.girar(jugador)
+		assert.equals(arriba, jugador.direccion())
+	}
+	
+	test "abajo.girar(objeto) cambia la direccion de un objeto hacia abajo." {
+		abajo.girar(jugador)
+		assert.equals(abajo, jugador.direccion())
+	}
+	
+	test "derecha.girar(objeto) cambia la direccion de un objeto hacia la derecha." {
+		derecha.girar(jugador)
+		assert.equals(derecha, jugador.direccion())
+	}
+	
+	test "izquierda.girar(objeto) cambia la direccion de un objeto hacia la izquierda." {
+		izquierda.girar(jugador)
+		assert.equals(izquierda, jugador.direccion())
+	}
+}
+
+
+describe "Movimiento de un objeto o jugador." {
+	// En construccion.
+}
+
+
+describe "Fisicas/Colisiones y sistema de prioridades." {
+	// En construccion.
+}
+
+
+describe "Movimientos automatas de zombies." {
+	// En construccion.
+}
