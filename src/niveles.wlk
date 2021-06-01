@@ -18,7 +18,7 @@ object inicio {
 		game.title("ZOMBIES AND DEMONS")
 		game.height(12)
 		game.width(20)
-		const principal = new Ente(grafico = "principal1.jpg")
+		const principal = new Ente(grafico = "principal1.png")
 		game.addVisual(principal)
 	}
 
@@ -89,7 +89,7 @@ class Niveles {
 object nivel1 inherits Niveles {
 
 	override method iniciarPresentacion() {
-		const presentacionNivel1 = new Ente(grafico = "nivel1.jpg")
+		const presentacionNivel1 = new Ente(grafico = "nivel1.png")
 		game.addVisual(presentacionNivel1)
 	}
 
@@ -202,7 +202,7 @@ object nivel2 inherits Niveles {
 	}
 	
 	override method iniciarPresentacion() {
-		const presentacionNivel2 = new Ente(grafico = "nivel2.jpg")
+		const presentacionNivel2 = new Ente(grafico = "nivel2.png")
 		game.addVisual(presentacionNivel2)
 	}
 	
@@ -278,7 +278,7 @@ object nivel2 inherits Niveles {
 object final{
 	method iniciar(){
 		game.clear()
-		const final = new Ente(grafico = "final.jpg")
+		const final = new Ente(grafico = "final.png")
 		game.addVisual(final)
 		game.schedule(5000, {game.stop()})
 	}
@@ -286,7 +286,7 @@ object final{
 object perdiste{
 	method iniciar(){
 		game.clear()
-		const perdiste = new Ente(grafico = "perdiste.jpg")
+		const perdiste = new Ente(grafico = "gameover.png")
 		game.addVisual(perdiste)
 		game.schedule(5000, {game.stop()})
 	}
