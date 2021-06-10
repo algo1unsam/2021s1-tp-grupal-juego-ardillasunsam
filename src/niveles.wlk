@@ -24,7 +24,7 @@ object inicio {
 
 }
 
-class Niveles {
+class Nivel {
 
 	const jugadores = []
 	const objetos = []
@@ -86,7 +86,7 @@ class Niveles {
 	method iniciarExtras(){}
 }
 
-object nivel1 inherits Niveles {
+object nivel1 inherits Nivel {
 
 	override method iniciarPresentacion() {
 		const presentacionNivel1 = new Ente(grafico = "nivel1.png")
@@ -194,7 +194,7 @@ object nivel1 inherits Niveles {
 	////////////////////////////////////////////////////FIN ESTO NO ES COCA	
 }
 
-object nivel2 inherits Niveles {
+object nivel2 inherits Nivel {
 	
 	override method iniciarExtras(){
 		const avion = new Avion(position = game.at(12, 0), grafico = "avion.png")
