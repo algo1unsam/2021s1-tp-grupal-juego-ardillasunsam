@@ -28,8 +28,6 @@ class Jugador inherits Ente {
 		if (self.estaVivo()) {
 			self.position(game.origin())
 			self.gritar()
-		} else {
-			game.schedule(3500, {game.stop()})
 		}
 	}
 
