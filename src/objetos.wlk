@@ -136,12 +136,12 @@ class Camioneta inherits Bloque {
 			game.say(self, "GANASTE")
 			//game.schedule(1000, { nivel2.iniciar()})
 			game.removeVisual(alguien)
-			self.movimientoCamioneta()
+			self.movimiento()
 		} else {
 			super(alguien)
 		}
 	}
-	method movimientoCamioneta(){
+	method movimiento(){
 		game.onTick(500,'mover', {
 			if (self.position().x() == 0){
 				game.schedule(2000, { nivel2.iniciar()} ) 
@@ -157,10 +157,10 @@ class Avion inherits Camioneta{
 		if (alguien.prioridadColiciones() == 40) {
 			game.say(self, "Llegaste!!!")
 			game.removeVisual(alguien)
-			self.movimientoAvion()
+			self.movimiento()
 		}
 	}
-	method movimientoAvion(){
+	override method movimiento(){
 		game.onTick(500,'mover Avion', {
 			if (self.position().y() == 10){
 				game.schedule(2000, { final.iniciar()} ) 
