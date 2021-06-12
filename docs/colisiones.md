@@ -39,19 +39,8 @@ Cuando un elemento1 colisiona con otro elemento2, se ejecutan el metodos `elemen
 Como habiamos mencionado, es necesario implementar un sistema semejante al de los semaforos en un cruze de trafico, para ello podemos aplicar una logica secilla: darles diferentes prioridades a los elementos del juego y al colisionarse, se ejecuta el metodo `colisionar()` del elemento que tenga mayor prioridad y no se ejecuta completamente el metodo del otro elemento:
 
 ``` wollok
-class Elemento {
-	/* agregamos este metodo al ejemplo anterior. */
-	method mayorPrioridadColiciones(otroElementoDelJuego) {
-		if (otroElementoDelJuego.prioridadColiciones() < self.prioridadColiciones()) {
-			self.colisionar(otroElementoDelJuego)
-		}
-	}
-  
-	/* mantenemos este metodo del ejemplo anterior. */
-	method colisionar(otroElementoDelJuego) {}
-}
-
-object zombie1 inherits Elemento{
+object zombie1 {
+	/* establecemos que la prioridad del zombie1 es 40. */
 	method prioridad() = 40
 
 	override method colisionar(otroElementoDelJuego) {
@@ -59,7 +48,8 @@ object zombie1 inherits Elemento{
 	}
 }
 
-object muro inherits Elemento {
+object muro {
+	/* establecemos que la prioridad del muro es 70. */
 	method prioridad() = 70
  
 	override method colisionar(otroElementoDelJuego) {
@@ -71,9 +61,21 @@ object muro inherits Elemento {
 Tambien debemos hacer el siguiente cambio en el objeto fisicas:
 ``` wollok
 object fisicas {
-	method colisiones(objeto) {                    /**********************/
-		game.onCollideDo(objeto, {algo => algo.mayorPrioridadColiciones(objeto)})
-	}                                              /**********************/
+	method colisiones(objeto) {
+		game.onCollideDo(objeto, {otroObjeto =>
+		
+			/* Si ambos objetos tienen el mismo nivel de prioridad, no se "colisionan" */
+			if (objeto.prioridadColisiones() != otroObjeto.prioridadColisiones()) {
+				/* se ejecuta el colisionar del objeto con mayor prioridad. */
+				if (objeto.prioridadColisiones() > otroObjeto.prioridadColisiones()) { 
+					objeto.colisionar(otroObjeto)
+				} else {
+					otroObjeto.colisionar(objeto)
+				}
+			}
+
+		})
+	}
 
 	method colisionesEntreTodos(objetos) {
 		objetos.forEach({ unObjeto => self.colisiones(unObjeto) })
@@ -81,6 +83,6 @@ object fisicas {
 }
 ```
 
-Y uala, ¡¡ya tenemos nuestro Sistema de Prioridades funcionando!!, esto no solo nos permite que un elemento tenga mayor prioridad a la hora de colisionarse con otro, sino que tambien nos permite hacer que un objeto ignore a otro poniendoles el mismo nivel de prioridad.
+Y uala, ¡¡ya tenemos nuestro Sistema de Prioridades funcionando!!, como el muro tiene 70 de prioridad y el zombie1 tiene 40, se ejecutara `muro.colisionar(zombie1)`, esto no solo nos permite que un elemento tenga mayor prioridad a la hora de colisionarse con otro, sino que tambien nos permite hacer que un objeto ignore a otro poniendoles el mismo nivel de prioridad.
 
 __Disclaimer: los codigos mostrados en este documento son simplificados y pueden estar un poco diferentes en el juego ya que solo tienen el objetivo de lograr que el lector tenga un mejor entendimiento de las mecanicas.__
