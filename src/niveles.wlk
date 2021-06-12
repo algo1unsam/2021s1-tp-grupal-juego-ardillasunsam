@@ -111,8 +111,14 @@ object nivel1 inherits Nivel {
 		objetos.add(new Bloque(position = game.at(9, 0), grafico = "muro.png"))
 		objetos.add(new Bloque(position = game.at(8, 9), grafico = "autoTracero.png"))
 
-		objetos.add(new Alcantarilla(position = game.at(2, 2), grafico = "alcantarilla.png", salida = [6, 6]))
-		objetos.add(new Alcantarilla(position = game.at(6, 6), grafico = "alcantarilla.png", salida = [2, 2]))
+		const alcantarilla1 = new Alcantarilla(position = game.at(2, 2), grafico = "alcantarilla.png")
+		const alcantarilla2 = new Alcantarilla(position = game.at(6, 6), grafico = "alcantarilla.png")
+		
+		alcantarilla1.salida(alcantarilla2)
+		alcantarilla2.salida(alcantarilla1)
+		
+		objetos.add(alcantarilla1)
+		objetos.add(alcantarilla2)
 	}
 
 	override method iniciarZombies() {

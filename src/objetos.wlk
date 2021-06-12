@@ -254,15 +254,13 @@ class Zombie inherits EnteMalvado {
 }
 
 class Alcantarilla inherits Ente {
-	// En un futuro resolver que funcione pasandole otra alcantarilla
-	// en vez de las coordenadas [X, Y] de la salida.
-	var property salida
+	var property salida = self
 
 	override method prioridadColiciones() = 60
 
 	override method teEncontro(alguien) {
 		abajo.girar(alguien)
-		alguien.position(game.at(salida.first(), salida.last()))
+		alguien.position(salida.position())
 	}
 }
 
