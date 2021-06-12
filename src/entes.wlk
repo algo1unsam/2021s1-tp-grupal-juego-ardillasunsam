@@ -146,7 +146,7 @@ class Camioneta inherits Bloque {
 class Avion inherits Camioneta{
 	
 	override method colisionar(alguien){
-		if (alguien.prioridadColiciones() == 40) {
+		if (alguien.prioridadColisiones() == 40) {
 			game.say(self, "Llegaste!!!")
 			game.removeVisual(alguien)
 			self.movimiento()
