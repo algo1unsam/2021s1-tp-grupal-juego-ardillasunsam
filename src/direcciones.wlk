@@ -1,5 +1,5 @@
 import wollok.game.*
-import objetos.*
+import entes.*
 import jugador.*
 
 

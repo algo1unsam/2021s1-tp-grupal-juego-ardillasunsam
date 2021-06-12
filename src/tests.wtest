@@ -3,7 +3,7 @@ import direcciones.*
 import fisicas.*
 import jugador.*
 import niveles.*
-import objetos.*
+import entes.*
 import teclado.*
 
 

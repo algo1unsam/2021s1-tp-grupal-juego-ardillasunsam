@@ -1,10 +1,9 @@
 import wollok.game.*
-import objetos.*
+import entes.*
 import fisicas.*
 import direcciones.*
 
 class Jugador inherits Ente {
-	
 
 	var property herramientas = []
 	

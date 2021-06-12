@@ -1,5 +1,5 @@
 import wollok.game.*
-import objetos.*
+import entes.*
 import jugador.*
 import direcciones.*
 import niveles.*
@@ -7,7 +7,7 @@ import niveles.*
 object fisicas {
 
 	method colisiones(objeto) {
-		game.onCollideDo(objeto, {algo => algo.mayorPrioridadColiciones(objeto)})
+		game.onCollideDo(objeto, {algo => algo.mayorPrioridadColisiones(objeto)})
 	}
 
 	method colisionesEntreTodos(objetos) {

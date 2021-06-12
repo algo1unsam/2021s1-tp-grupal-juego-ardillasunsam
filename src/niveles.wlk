@@ -1,6 +1,6 @@
 import fisicas.*
 import wollok.game.*
-import objetos.*
+import entes.*
 import jugador.*
 import direcciones.*
 import teclado.*
@@ -281,6 +281,7 @@ object nivel2 inherits Nivel {
 		})
 	}
 }
+
 object final{
 	method iniciar(){
 		game.clear()
@@ -289,6 +290,7 @@ object final{
 		game.schedule(5000, {game.stop()})
 	}
 }
+
 object perdiste{
 	method iniciar(){
 		game.clear()

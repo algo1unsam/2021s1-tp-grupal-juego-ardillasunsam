@@ -1,6 +1,6 @@
 import wollok.game.*
 import fisicas.*
-import objetos.*
+import entes.*
 import jugador.*
 import niveles.*
 
