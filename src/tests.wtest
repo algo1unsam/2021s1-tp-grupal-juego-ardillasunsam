@@ -9,7 +9,7 @@ import teclado.*
 
 describe "Giro/Cambio de direccion de un objeto o jugador." {
 
-	const nivel = new Niveles()
+	const nivel = new Nivel()
 	var jugador
 	
 	fixture {
