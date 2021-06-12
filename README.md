@@ -19,7 +19,7 @@ Estos Malditos demonios iniciaron el apocalipsis. No te enfrentes a ellos son mu
 
 Estos monstruos alguna vez fueron humanos. Ahora tienen el mismo comportamiento que los demonios.
 
-![zombie1](assets/Zombie1.gif)        ![zombie2](assets/Zombie2.gif)       ! [zombie3](assets/Zombie3.gif)       ![zombie4](assets/Zombie4.gif)
+![zombie1](assets/Zombie1.gif)        ![zombie2](assets/Zombie2.gif)       ![zombie3](assets/Zombie3.gif)       ![zombie4](assets/Zombie4.gif)
 
 
 
