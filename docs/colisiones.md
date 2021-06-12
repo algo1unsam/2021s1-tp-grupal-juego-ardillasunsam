@@ -81,4 +81,6 @@ object fisicas {
 }
 ```
 
-Y uala, ¡¡ya tenemos nuestro Sistema de prioridades funcionando!!, esto no solo nos permite que un elemento tenga mayor prioridad a la hora de colisionarse con otro, sino que tambien nos permite hacer que un objeto ignore a otro poniendoles el mismo nivel de prioridad.
+Y uala, ¡¡ya tenemos nuestro Sistema de Prioridades funcionando!!, esto no solo nos permite que un elemento tenga mayor prioridad a la hora de colisionarse con otro, sino que tambien nos permite hacer que un objeto ignore a otro poniendoles el mismo nivel de prioridad.
+
+__Disclaimer: los codigos mostrados en este documento son simplificados y pueden estar un poco diferentes en el juego ya que solo tienen el objetivo de lograr que el lector tenga un mejor entendimiento de las mecanicas.__
