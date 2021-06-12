@@ -21,10 +21,10 @@ class Ente {
 		}
 	}
 	
-	method prioridadColiciones() = 0
+	method prioridadColisiones() = 0
 	
 	method mayorPrioridadColiciones(alguien) {
-		if (alguien.prioridadColiciones() < self.prioridadColiciones()) {
+		if (alguien.prioridadColiciones() < self.prioridadColisiones()) {
 			self.colisionar(alguien)
 		}
 	}
@@ -121,7 +121,7 @@ class EnteMalvado inherits EnteBot {
 
 class Bloque inherits Ente {
 	
-	override method prioridadColiciones() = 100
+	override method prioridadColisiones() = 100
 
 	override method colisionar(alguien) {
 		alguien.direccion().direccionOpuesta().mover(alguien)
@@ -179,7 +179,7 @@ class BarraVida inherits Ente {
 
 	var property jugador
 
-	override method prioridadColiciones() = 100
+	override method prioridadColisiones() = 100
 
 	override method image() = (self.grafico() + jugador.vidas().toString() + ".png")
 
@@ -202,7 +202,7 @@ class Bala inherits EnteBot {
 		return self.grafico()
 	}
 	 
-	override method prioridadColiciones() = 100
+	override method prioridadColisiones() = 100
 
 	override method colisionar(alguien) {
 		alguien.bajarVida()
@@ -232,7 +232,7 @@ class Zombie inherits EnteMalvado {
 								 "devil3",
 								 "devil4" ]
 								 
-	override method prioridadColiciones() = 60
+	override method prioridadColisiones() = 60
 
 	override method image() {
 		if (self.grafico() == "") {
@@ -256,7 +256,7 @@ class Zombie inherits EnteMalvado {
 class Alcantarilla inherits Ente {
 	var property salida = self
 
-	override method prioridadColiciones() = 60
+	override method prioridadColisiones() = 60
 
 	override method colisionar(alguien) {
 		abajo.girar(alguien)
@@ -282,5 +282,5 @@ object randomZombie {
 }
 
 class Fondo inherits Ente {
-	override method prioridadColiciones() = 100
+	override method prioridadColisiones() = 100
 }
