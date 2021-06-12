@@ -1,18 +1,19 @@
-# Colisiones
+# Colisiones y el Sistema de Prioridades
 
+## Un vistazo a las colisiones
 Dada la estructura del juego, donde cada elemento (jugador, valla, zombie, etc) es un objeto que se almacena en una coleccion en comun con todos los demas objetos, se puede hacer que todos estos "colisionen" mutuamente cuando sus posiciones son equivalentes, esto se puede lograr sencillamente como se muestra en el ejemplo a continuacion:
 
 ``` wollok
 object zombie1 {
-  method colisionar(otroElementoDelJuego) {
-    /* codigo a ejecutar cuando el zombie1 colisiona con otro elemento */
-  }
+	method colisionar(otroElementoDelJuego) {
+		/* codigo a ejecutar cuando el zombie1 colisiona con otro elemento */
+	}
 }
 ```
 
 ``` wollok
 /* almacenamos todos los elementos del nivel en objetos. */
-var objetos = [zombie1, zombie2, zombie3, jugador]
+var objetos = [zombie1, zombie2, muro, jugador]
 
 /* Llamamos al metodo para lograr que colisionen mutuamente entre todos. */
 fisicas.colisionesEntreTodos(objetos)
@@ -32,5 +33,52 @@ object fisicas {
 ```
 Cuando un elemento1 colisiona con otro elemento2, se ejecutan el metodos `elemento1.colisionar(elemento2)` y `elemento2.colisionar(elemento1)`, ¡¡Hemos logrado que se colisionen los elementos!!... pero peroo perooooo como te habras percatado esto tiene un problema, si no lo has visto te lo explico facil; supongamos que nuestro juego tiene zombies y muros, el metodo `zombie.colisionar()` hace que este mate al otro elemento y el metodo `muro.colisionar()` hace que el zombie no pueda seguir avanzando. Una solucion a este problema seria implementar una logica semejante al de un semaforo, el cual solo deje ejecutar el metodo `colisionar()` de un solo elemento de los dos que colisionaron (el de los muros, ya que frena al zombie).
 
+![semaforos en un cruze](./semaforos.jpg)
+
+## Adentrándonos en el Sistema de Prioridades
+Como habiamos mencionado, es necesario implementar un sistema semejante al de los semaforos en un cruze de trafico, para ello podemos aplicar una logica secilla: darles diferentes prioridades a los elementos del juego y al colisionarse, se ejecuta el metodo `colisionar()` del elemento que tenga mayor prioridad y no se ejecuta completamente el metodo del otro elemento:
+
 ``` wollok
+class Elemento {
+	/* agregamos este metodo al ejemplo anterior. */
+	method mayorPrioridadColiciones(otroElementoDelJuego) {
+		if (otroElementoDelJuego.prioridadColiciones() < self.prioridadColiciones()) {
+			self.colisionar(otroElementoDelJuego)
+		}
+	}
+  
+	/* mantenemos este metodo del ejemplo anterior. */
+	method colisionar(otroElementoDelJuego) {}
+}
+
+object zombie1 inherits Elemento{
+	method prioridad() = 40
+
+	override method colisionar(otroElementoDelJuego) {
+		/* codigo para hacer que otroElementoDelJuego muera */
+	}
+}
+
+object muro inherits Elemento {
+	method prioridad() = 70
+ 
+	override method colisionar(otroElementoDelJuego) {
+		/* codigo para hacer que otroElementoDelJuego se frene */
+	}
+}
+
 ```
+Tambien debemos hacer el siguiente cambio en el objeto fisicas:
+``` wollok
+object fisicas {
+	method colisiones(objeto) {                    /**********************/
+		game.onCollideDo(objeto, {algo => algo.mayorPrioridadColiciones(objeto)})
+	}                                              /**********************/
+
+	method colisionesEntreTodos(objetos) {
+		objetos.forEach({ unObjeto => self.colisiones(unObjeto) })
+	}
+}
+```
+
+Y uala, ¡¡ya tenemos nuestro Sistema de prioridades funcionando!!, esto no solo nos permite que un elemento tenga mayor prioridad a la hora de colisionarse con otro, sino que tambien nos permite hacer que un objeto ignore a otro poniendoles el mismo nivel de prioridad.
