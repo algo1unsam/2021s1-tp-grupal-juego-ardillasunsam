@@ -25,11 +25,11 @@ class Ente {
 	
 	method mayorPrioridadColiciones(alguien) {
 		if (alguien.prioridadColiciones() < self.prioridadColiciones()) {
-			self.teEncontro(alguien)
+			self.colisionar(alguien)
 		}
 	}
 
-	method teEncontro(alguien) {}
+	method colisionar(alguien) {}
 
 }
 
@@ -109,7 +109,7 @@ class EnteBot inherits Ente {
 
 class EnteMalvado inherits EnteBot {
 
-	override method teEncontro(alguien) {
+	override method colisionar(alguien) {
 		alguien.bajarVida()
 		if (not alguien.estaVivo()) {
 			//game.say(self, "¡¡GAME OVER JAJAJAJAJ!!")
@@ -123,7 +123,7 @@ class Bloque inherits Ente {
 	
 	override method prioridadColiciones() = 100
 
-	override method teEncontro(alguien) {
+	override method colisionar(alguien) {
 		alguien.direccion().direccionOpuesta().mover(alguien)
 	}
 
@@ -131,7 +131,7 @@ class Bloque inherits Ente {
 
 class Camioneta inherits Bloque {
 
-	override method teEncontro(alguien) {
+	override method colisionar(alguien) {
 		if (alguien.herramientas().size() == 4) {
 			game.say(self, "GANASTE")
 			//game.schedule(1000, { nivel2.iniciar()})
@@ -153,7 +153,7 @@ class Camioneta inherits Bloque {
 }
 class Avion inherits Camioneta{
 	
-	override method teEncontro(alguien){
+	override method colisionar(alguien){
 		if (alguien.prioridadColiciones() == 40) {
 			game.say(self, "Llegaste!!!")
 			game.removeVisual(alguien)
@@ -204,7 +204,7 @@ class Bala inherits EnteBot {
 	 
 	override method prioridadColiciones() = 100
 
-	override method teEncontro(alguien) {
+	override method colisionar(alguien) {
 		alguien.bajarVida()
 		self.bajarVida()
 	}
@@ -258,7 +258,7 @@ class Alcantarilla inherits Ente {
 
 	override method prioridadColiciones() = 60
 
-	override method teEncontro(alguien) {
+	override method colisionar(alguien) {
 		abajo.girar(alguien)
 		alguien.position(salida.position())
 	}

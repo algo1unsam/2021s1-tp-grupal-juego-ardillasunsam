@@ -53,7 +53,7 @@ class Jugador inherits Ente {
 		}
 	}
 
-	override method teEncontro(objeto) {
+	override method colisionar(objeto) {
 		herramientas.add(objeto)
 		game.removeVisual(objeto)
 	}
