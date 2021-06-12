@@ -105,8 +105,7 @@ class EnteMalvado inherits EnteBot {
 
 	override method colisionar(alguien) {
 		alguien.bajarVida()
-		if (not alguien.estaVivo()) {
-			//game.say(self, "¡¡GAME OVER JAJAJAJAJ!!")
+		if (not alguien.estaVivo()) {			
 			perdiste.iniciar()
 		}
 	}
@@ -127,8 +126,7 @@ class Camioneta inherits Bloque {
 
 	override method colisionar(alguien) {
 		if (alguien.herramientas().size() == 4) {
-			game.say(self, "GANASTE")
-			//game.schedule(1000, { nivel2.iniciar()})
+			game.say(self, "GANASTE")			
 			game.removeVisual(alguien)
 			self.movimiento()
 		} else {
@@ -164,11 +162,7 @@ class Avion inherits Camioneta{
 	}
 }
 
-//object fotograma inherits Ente{<-------------------------------JAJAJAJAJAJ
-// method iniciarAnimacion(imagen){
-// game.onTick(tiempo,self.identity().toString(),{ self.movimiento(banderaMovimiento)})
-//}
-//}
+
 class BarraVida inherits Ente {
 
 	var property jugador

@@ -174,38 +174,7 @@ object nivel1 inherits Nivel {
 		objetos.add(new Ente(position = game.at(14, 10), grafico = 'bidon.png'))
 		objetos.add(new Ente(position = game.at(4, 11), grafico = 'tuerca.png'))
 	}
-    /*
-	override method iniciarAnimaciones() {
-		objetos.add(new BarraVida(jugador = jugadores.last(), position = game.at(14, 0), grafico = "barra_red"))
-	}
-	* 
-	*/
-
-	// //////////////////////////////ROBAMOS PARA PROBAR(DE ESTO no e SCoOOOCApPAI)
-	/* method mostrarPiso(){
-	 * 	    20.times({n=>piso.add(new PisoDeTierra(position=game.at(n-1,0)))})
-	 * 	    20.times({n=>piso.add(new  PisoDePasto(position=game.at(n-1,1)))})
-	 * 	    30.times({n=>piso.add(new         Agua(position=game.at(n+19,0)))})
-	 * 	    7.times({n=>piso.add(new  PisoDePasto(position=game.at(n+42,16)))})
-	 * 	    8.times({n=>piso.add(new  PisoDePasto(position=game.at(n+17,7)))})
-	 * 	    5.times({n=>piso.add(new  PisoDePasto(position=game.at(n+23,13)))})
-	 * 	    14.times({n=>piso.add(new  PisoDePasto(position=game.at(n-1,14)))})
-	 * 	    26.times({n=>piso.add(new  PisoDePasto(position=game.at(n+5,23)))})
-	 * 	    18.times({n=>piso.add(new  PisoDePasto(position=game.at(n+23,28)))})
-	 * 	    piso.forEach({unPiso=>game.addVisual(unPiso)})}
-	 * 	    method mostrarEscaleras(){
-	 * 	    4.times({n=>escaleras.add(new Escalera(position=game.at(18,1+n),indice=0))})
-	 *      2.times({n=>escaleras.add(new Escalera(position=game.at(18,5+n),indice=1))})
-	 *      4.times({n=>escaleras.add(new Escalera(position=game.at(24,7+n)))})
-	 * 	    2.times({n=>escaleras.add(new Escalera(position=game.at(24,11+n),indice=1))})
-	 * 	    8.times({n=>escaleras.add(new Escalera(position=game.at(27,13+n)))})
-	 * 	    2.times({n=>escaleras.add(new Escalera(position=game.at(27,21+n),indice=1))})
-	 * 	    3.times({n=>escaleras.add(new Escalera(position=game.at(24,23+n)))})
-	 * 	    2.times({n=>escaleras.add(new Escalera(position=game.at(24,26+n),indice=1))})
-	 * 	    7.times({n=>escaleras.add(new Escalera(position=game.at(12,14+n)))})
-	 * 	    2.times({n=>escaleras.add(new Escalera(position=game.at(12,21+n),indice=1))})
-	 escaleras.forEach({unaEscalera=>game.addVisual(unaEscalera)})}*/
-	////////////////////////////////////////////////////FIN ESTO NO ES COCA	
+ 
 }
 
 object nivel2 inherits Nivel {
@@ -247,11 +216,7 @@ object nivel2 inherits Nivel {
 		// La camioneta bloquea a los zombies y envia un mensaje de error.
 		//objetos.add(new Camioneta(position = game.at(7, 9), grafico = "camioneta.png"))
 	}
-	/* 
-	override method iniciarAnimaciones() {
-		// En construccion.
-	}
-	*/
+
 	
 
 	override method asignarTeclas() {
