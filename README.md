@@ -6,6 +6,11 @@ El apocalipsis ha llegado repentinamente para arrasar con todo. Ninguna predicci
 Los días pasan y cada vez mas gente llega a los centros de trasbordo que han organizado los paises para resistir y ganar tiempo. Las potencias aeroespaciales coordinan sus fuerzas para evacuar a la mayor cantidad de personas posibles. 
 Es hora de sobrevivir a este caos ¿pero cómo?. Todavía no lo sé. Encima estoy rodeado por estos monstruos que deambulan sin rumbo por las cercanías de mi casa. Me queda poca comida y agua. Ya no hay electricidad hace una semana. Debo partir hacia la autopista para poder encontrar algun vehiculo.
 
+## Personaje principal
+
+Totalmente atemorizado deambulas sin saber a donde ir. Te espera una travesía muy dura en búsqueda de sobrevivir un día más.
+
+![principal](assets/George.gif)
 
 ## Enemigos
 
