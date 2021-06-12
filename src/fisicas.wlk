@@ -7,7 +7,14 @@ import niveles.*
 object fisicas {
 
 	method colisiones(objeto) {
-		game.onCollideDo(objeto, {algo => algo.mayorPrioridadColisiones(objeto)})
+		game.onCollideDo(objeto, {otroObjeto =>
+			if (objeto.prioridadColisiones() != otroObjeto.prioridadColisiones()) {
+				if (objeto.prioridadColisiones() > otroObjeto.prioridadColisiones()) { 
+					objeto.colisionar(otroObjeto)
+				} else {
+					otroObjeto.colisionar(objeto)
+				}
+			}})
 	}
 
 	method colisionesEntreTodos(objetos) {

@@ -22,12 +22,6 @@ class Ente {
 	}
 	
 	method prioridadColisiones() = 0
-	
-	method mayorPrioridadColisiones(alguien) {
-		if (alguien.prioridadColisiones() < self.prioridadColisiones()) {
-			self.colisionar(alguien)
-		}
-	}
 
 	method colisionar(alguien) {}
 
