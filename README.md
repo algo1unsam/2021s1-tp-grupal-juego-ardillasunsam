@@ -9,8 +9,17 @@ Es hora de sobrevivir a este caos ¿pero cómo?. Todavía no lo sé. Encima esto
 
 ## Enemigos
 
+### Demonios 
 
-![zombie](assets/Zombie1.gif)   ![zombie](assets/Zombie2.gif)  ![zombie](assets/Zombie3.gif)  ![zombie](assets/Zombie4.gif)
+Estos Malditos demonios iniciaron la plaga de Zombies. Son muy poderosos y tienen una fuerza inigualable
+
+![devil1](assets/devil1_abajo.png)    ![devil2](assets/devil1_abajo.png)    ![devil3](assets/devil1_abajo.png)   ![devil3](assets/devil1_abajo.png)
+
+### Zombies
+
+Estos monstruos alguna vez fueron humanos. Ahora tienen el mismo comportamiento que los demonios
+
+![zombie1](assets/Zombie1.gif)   ![zombie2](assets/Zombie2.gif)  ![zombie3](assets/Zombie3.gif)  ![zombie4](assets/Zombie4.gif)
 
 
 
