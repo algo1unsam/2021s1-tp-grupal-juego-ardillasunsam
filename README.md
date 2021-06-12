@@ -7,12 +7,13 @@ Los días pasan y cada vez mas gente llega a los centros de trasbordo que han or
 Es hora de sobrevivir a este caos ¿pero cómo?. Todavía no lo sé. Encima estoy rodeado por estos monstruos que deambulan sin rumbo por las cercanías de mi casa. Me queda poca comida y agua. Ya no hay electricidad hace una semana. Debo partir hacia la autopista para poder encontrar algun vehiculo.
 
 
-##Enemigos
+## Enemigos
 
-![zombie](assets/Zombie1.gif)
-![zombie](assets/Zombie2.gif)
-![zombie](assets/Zombie3.gif)
-![zombie](assets/Zombie4.gif)
+
+![zombie](assets/Zombie1.gif)   ![zombie](assets/Zombie2.gif)  ![zombie](assets/Zombie3.gif)  ![zombie](assets/Zombie4.gif)
+
+
+
 
 
 
