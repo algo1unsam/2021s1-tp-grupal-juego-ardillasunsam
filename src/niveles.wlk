@@ -82,7 +82,10 @@ class Nivel {
 	method iniciarZombies() {}
 	method iniciarJugadores() {}
 	method iniciarOtrosElementos() {}
-	method iniciarAnimaciones() {}
+	method iniciarAnimaciones() {
+	objetos.add(new BarraVida(jugador = jugadores.last(), position = game.at(14, 0), grafico = "barra_red"))
+	
+	}
 	method iniciarExtras(){}
 }
 
@@ -122,6 +125,7 @@ object nivel1 inherits Nivel {
 	}
 
 	override method iniciarZombies() {
+		 
 		const zombies = []
 		
 		zombies.add(new Zombie(position = game.at(5, 9)))
@@ -154,6 +158,8 @@ object nivel1 inherits Nivel {
 		zombies.forEach({ unZombie => unZombie.iniciarMovimiento("ciclico", 100.randomUpTo(400))})
 		
 		objetos.addAll(zombies)
+		
+		
 	}
 
 	override method iniciarJugadores() {
@@ -168,10 +174,12 @@ object nivel1 inherits Nivel {
 		objetos.add(new Ente(position = game.at(14, 10), grafico = 'bidon.png'))
 		objetos.add(new Ente(position = game.at(4, 11), grafico = 'tuerca.png'))
 	}
-
+    /*
 	override method iniciarAnimaciones() {
 		objetos.add(new BarraVida(jugador = jugadores.last(), position = game.at(14, 0), grafico = "barra_red"))
 	}
+	* 
+	*/
 
 	// //////////////////////////////ROBAMOS PARA PROBAR(DE ESTO no e SCoOOOCApPAI)
 	/* method mostrarPiso(){
@@ -239,10 +247,12 @@ object nivel2 inherits Nivel {
 		// La camioneta bloquea a los zombies y envia un mensaje de error.
 		//objetos.add(new Camioneta(position = game.at(7, 9), grafico = "camioneta.png"))
 	}
-	
+	/* 
 	override method iniciarAnimaciones() {
 		// En construccion.
 	}
+	*/
+	
 
 	override method asignarTeclas() {
 		if (jugadores.size() == 1) {
