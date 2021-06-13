@@ -12,7 +12,13 @@ Totalmente atemorizado deambulas sin saber a donde ir. Te espera una travesía m
 
 ![principal](assets/George.gif)
 
+        Vidas = 3
+        Ataque = Disparos (Nivel2)
+
 ## Enemigos
+
+        Vidas = 1
+        Ataque = cuerpo a cuerpo
 
 ### Demonios 
 
@@ -39,7 +45,7 @@ El objetivo del nivel es recolectar los elementos necesarios para poder reparar 
 
 ## Nivel 2
 
-El objetivo principal es sobrevivir a la horda de zombies y demonios que se acercan a tu posición. Podés disparar con CTRL para matar a los enemigos pero ahora solo podes deplazarte de izquierda a derecha. Para ganar el nivel hay que esperar a que llegue la nave de rescate y subirse a ella para escapar. 
+El objetivo principal es sobrevivir a la horda de zombies y demonios que se acercan a tu posición. Tenés un arma que encontraste en el auto y es tu única esperanza para poder ganar tiempo. Una nave de rescate se acerca a tu posicion. Debes esperarla y subirte a ella para lograr escapar.
 
 ### Movimientos
     desplazamiento  =  ← → 
