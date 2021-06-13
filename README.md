@@ -24,6 +24,7 @@ Totalmente atemorizado deambulas sin saber a donde ir. Te espera una travesía m
 ### Demonios 
 
 Estos Malditos demonios iniciaron el apocalipsis. Vienen del mas allá con muchas ganas de destruirlo todo.
+
 ¡¡No permitas que se acerquen a ti!!
 
 ![devil1](assets/devil1_abajo.png)    ![devil2](assets/devil2_abajo.png)    ![devil3](assets/devil3_abajo.png)   ![devil3](assets/devil4_abajo.png)
@@ -31,6 +32,7 @@ Estos Malditos demonios iniciaron el apocalipsis. Vienen del mas allá con mucha
 ### Zombies
 
 Estos monstruos alguna vez fueron humanos. Suelen rondar sin sentido pero casi siempre andan en grupo. 
+
 ¡¡Arrasan con todo lo que tienen a su paso!!
 
 ![zombie1](assets/Zombie1.gif)        ![zombie2](assets/Zombie2.gif)       ![zombie3](assets/Zombie3.gif)       ![zombie4](assets/Zombie4.gif)
