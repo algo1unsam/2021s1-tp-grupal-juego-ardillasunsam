@@ -269,6 +269,15 @@ object randomZombie {
 
 }
 
+object randomNave {
+	
+	method position(){
+		return game.at((0 .. 14 - 1 ).anyOne(), 0)
+	}
+}
+
+
+
 class Fondo inherits Ente {
 	override method prioridadColisiones() = 100
 }
