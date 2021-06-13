@@ -42,8 +42,8 @@ Estos monstruos alguna vez fueron humanos. Suelen rondar sin sentido pero casi s
 El objetivo del nivel es recolectar los elementos necesarios para poder reparar el auto y huir de los zombies y demonios. Hay que esquivar a los zombies y demonios para no perder vidas y retroceder. Se pueden tomar atajos mediante las alcantarillas. Una vez que se agarran todas las herramientas y se llega al auto, pasa al nivel 2. 
 
 ### Movimientos
-    desplazamiento  =  ← → ↑ ↓
-    hablar = X
+- desplazamiento  =  ← → ↑ ↓
+- hablar = X
 
 ![nivel1](assets/EscenarioNivel1.png)  
 
@@ -53,9 +53,9 @@ El objetivo del nivel es recolectar los elementos necesarios para poder reparar 
 El objetivo principal es sobrevivir a la horda de zombies y demonios que se acercan a tu posición. Tenés un arma que encontraste en el auto y es tu única esperanza para poder ganar tiempo. Una nave de rescate se acerca a tu posicion. Debes esperarla y subirte a ella para lograr escapar.
 
 ### Movimientos
-    desplazamiento  =  ← → 
-    Disparar = Ctrl
-    hablar = X
+- desplazamiento  =  ← → 
+- Disparar = Ctrl
+- hablar = X
 
 ![nivel2](assets/EscenarioNivel2.png)  
 
