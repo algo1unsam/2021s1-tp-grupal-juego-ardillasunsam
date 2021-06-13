@@ -8,12 +8,13 @@ Es hora de sobrevivir a este caos ¿pero cómo?. Todavía no lo sé. Encima esto
 
 ## Personaje principal
 
+    Vidas = 3
+    Ataque = Disparos (Nivel2)
+
 Totalmente atemorizado deambulas sin saber a donde ir. Te espera una travesía muy dura en búsqueda de sobrevivir un día más.
 
 ![principal](assets/George.gif)
 
-    Vidas = 3
-    Ataque = Disparos (Nivel2)
 
 ## Enemigos
 
