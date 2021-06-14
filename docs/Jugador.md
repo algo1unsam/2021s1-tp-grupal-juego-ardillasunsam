@@ -8,7 +8,7 @@ El jugador hereda de la clase Ente
 * **method image():**      
 -La imagen del jugador depende del tipo de movimiento que esté haciendo. Crea el nombre de la imagen mediante el gráfico, en este caso es george concatenando también el movimiento, ya sea arriba,abajo,derecha o izquierda.
 
-* **method bajarVida():**
+* **method bajarVida():**         
 -Verifica que el jugador esté vivo, si es así le baja una vida. Si luego de bajar una vida sigue vivo, lo mueve a la posición 0,0. Para que pueda seguir jugando desde el inicio.
 
 * **method gritar():**         
