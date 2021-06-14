@@ -1,7 +1,6 @@
 # Jugador
 
-En este apartado se encuentran los metodos propios del personaje principal. Muchos de sus metodos son heredados de la clase Ente. En esta clase configuramos la colision
-con los enemigos, los mensajes random que emite y tambien el daño producido por los enemigos.
+En este apartado se encuentran los métodos propios del personaje principal. Muchos de sus metodos son heredados de la clase Ente. En esta clase configuramos la colisión con los enemigos, los mensajes random que emite y tambien el daño producido por los enemigos.
 
 ## Class jugador
 El jugador hereda de la clase Ente
