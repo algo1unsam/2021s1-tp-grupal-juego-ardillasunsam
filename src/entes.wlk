@@ -11,6 +11,15 @@ class Ente {
 	var property direccion = abajo
 	var property grafico = ""
 
+	var property inventario = []
+	
+	method cantidadDeItems() = inventario.size()
+	
+	method agregarItemAlInventario(nuevoItem) {
+		inventario.add(nuevoItem)
+		game.removeVisual(nuevoItem)
+	}
+
 	method image() = grafico
 
 	method estaVivo() = (vidas > 0)
@@ -125,7 +134,7 @@ class Bloque inherits Ente {
 class Camioneta inherits Bloque {
 
 	override method colisionar(alguien) {
-		if (alguien.herramientas().size() == 4) {
+		if (alguien.cantidadDeItems() >= 4) {
 			game.say(self, "GANASTE")			
 			game.removeVisual(alguien)
 			self.movimiento()

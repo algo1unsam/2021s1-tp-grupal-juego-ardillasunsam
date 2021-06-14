@@ -53,8 +53,7 @@ class Jugador inherits Ente {
 	}
 
 	override method colisionar(objeto) {
-		herramientas.add(objeto)
-		game.removeVisual(objeto)
+		self.agregarItemAlInventario(objeto)
 	}
 	
 }
