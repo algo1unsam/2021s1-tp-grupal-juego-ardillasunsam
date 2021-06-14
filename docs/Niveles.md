@@ -68,3 +68,8 @@ Instancia un objeto de clase Bala..
 * **method movimientoZombie(unZombie)**
 -Desplaza los objetos Zombie utilizando el objeto abajo y su método mover(algo) siempre y cuando su coordenada en el eje y no sea cero. 
 -Si es cero reasigna nuevamente una posición utilizando el objeto randomZombies 
+
+
+## Objeto final
+*  **method iniciar()**: Permite iniciar la pantalla final del juego
+
