@@ -22,14 +22,14 @@ Permite iniciar el nivel el program
 
 Métodos vacíos para mantener polimorfismo
 
-method iniciarPresentacion()
-method iniciarFondo()
-method iniciarBloques()
-method iniciarZombies()
-method iniciarJugadores()
-method iniciarOtrosElementos()
-method iniciarAnimaciones()
-method iniciarExtras()
+method iniciarPresentacion()    
+method iniciarFondo()    
+method iniciarBloques()      
+method iniciarZombies()      
+method iniciarJugadores()        
+method iniciarOtrosElementos()      
+method iniciarAnimaciones()       
+method iniciarExtras()      
 
 ## Objeto nivel1
 hereda de Nivel
