@@ -1,5 +1,7 @@
 # Entes
 
+En esta sección colocamos todos los entes que interactúan en los distintos niveles. Modelamos al personaje principal, los enemigos y los objetos que no tienen un movimiento autonomo o son inanimados como los bloques que forman las paredes, la barra de vida, el auto, la nave y las balas.  Tambien creamos objetos que nos permiten randomizar la posicion de los enemigos y la nave.
+
 ##  Class Ente 
 * **method prioridadColisiones():**       
 -Creamos un sistema que le asignamos una prioridad a los entes del juego ya que todos entienden el método colisionar. Así controlamos  qué objeto es prioritario a la hora de elegir la colisión cuando se encuentran. 
