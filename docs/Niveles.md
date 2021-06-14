@@ -1,6 +1,7 @@
 # Niveles
 Para comenzar el juego Creamos un objeto inicio para la pantalla principal del juego
-Objeto inicio
+
+## Objeto inicio
 
 *  **method iniciar():**
 Se setea previamente que nivel va a iniciar luego de apretar ENTER
