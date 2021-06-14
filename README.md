@@ -67,4 +67,9 @@ El objetivo principal es sobrevivir a la horda de zombies y demonios que se acer
 
 
 
-
+### Autores
+* [Felipe Carballo](https://github.com/FelipeCarballo1991)
+* [Julieta Romero](https://github.com/julimr)
+* [Nahuel Carron](https://github.com/NahuelCarron)
+* [Gabriel Jotallan](https://github.com/gaabicarp)
+* [Bruno Lima](https://github.com/LimaBD)
