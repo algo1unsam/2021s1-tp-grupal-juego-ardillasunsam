@@ -119,4 +119,4 @@ Alcantarilla hereda de Ente
 
 ## Objeto randomNave
 * **method position():**  
- -Retorna un valor aleatorio en  coordenada  x mientras que en la coordenada y es siempre 0.
+ -Retorna un valor aleatorio en  coordenada de x entre 0 y 14 mientras que en la coordenada y es siempre 0.
