@@ -20,7 +20,7 @@ Setea las teclas de los jugadores 1 y 2.
 * **method iniciar():**
 Permite iniciar el nivel el program
 
-Métodos vacíos para mantener polimorfismo
+Métodos vacíos para mantener polimorfismo:
 
 method iniciarPresentacion()    
 method iniciarFondo()    
@@ -32,7 +32,7 @@ method iniciarAnimaciones()
 method iniciarExtras()      
 
 ## Objeto nivel1
-hereda de Nivel
+Hereda de Nivel
 
 Primer Nivel
 El objetivo del nivel es recolectar los elementos necesarios para poder reparar el auto y huir de los zombies y demonios. Hay que esquivar a los zombies y demonios para no perder vidas y retroceder. Se pueden tomar atajos mediante las alcantarillas. Una vez que se agarran todas las herramientas y se llega al auto, pasa al nivel 2. 
@@ -47,7 +47,7 @@ Instancia los objetos que no tienen movimiento.
 Agregamos un objeto de clase BarraVida que a medida que el personaje recibe daño va disminuyendo.
 
 ## Objeto nivel2
-hereda de Nivel
+Hereda de Nivel
 
 Segundo Nivel
 El objetivo principal es sobrevivir a la horda de zombies y demonios que se acercan a tu posición. Podés disparar con CTRL para matar a los enemigos. Para ganar el nivel hay que esperar a que llegue la nave de rescate y subirse a ella para escapar. Hay que esquivar a los zombies ya que te lastiman de la misma forma que en el Nivel 1. 
