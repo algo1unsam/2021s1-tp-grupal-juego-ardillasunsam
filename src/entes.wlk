@@ -148,10 +148,12 @@ class Avion inherits Camioneta{
 	override method colisionar(alguien){
 		if (alguien.prioridadColisiones() == 40) {
 			game.say(self, "Llegaste!!!")
+			alguien.position(game.at(300, 300))
 			game.removeVisual(alguien)
 			self.movimiento()
 		}
 	}
+	
 	override method movimiento(){
 		game.onTick(500,'mover Avion', {
 			if (self.position().y() == 10){
