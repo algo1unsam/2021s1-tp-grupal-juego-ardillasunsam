@@ -11,7 +11,7 @@ Aquí modelamos el objeto teclado el cual contiene los métodos que permiten gen
 * **method moverXFlechaDerechaIzquierda(jugador):**            
 -Igual que moverYFlechaArribaAbajo(jugador), solo que con las flechas izquierda y derecha.
 
-* **method girarArriba(jugador):**      
+* **method girarArriba(jugador):**   
 - Gira solamente el grafico del jugador.
 
 * **method moverYTeclaWS(jugador) y method moverXTeclaAD(jugador):**        
