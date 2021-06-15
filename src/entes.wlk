@@ -133,7 +133,8 @@ class Camioneta inherits Bloque {
 
 	override method colisionar(alguien) {
 		if (alguien.cantidadDeItems() >= 4) {
-			game.say(self, "EXELENTE UN ARAMA EN EL AUTO! :D")
+			game.say(self, "EXELENTE UN ARAMA EN EL AUTO!")
+			game.say(self, "F... :( solo tiene 20 balas")
 			game.removeVisual(alguien)
 			self.movimiento()
 		} else {
@@ -161,7 +162,7 @@ class Avion inherits Camioneta {
 			alguien.position(game.at(300,300))
 			pasajeros += 1
 			if (pasajeros < 6) {
-				game.say(self, "logra tiempo hasta que suban todos!")
+				game.say(self, "gana tiempo hasta que suban todos!")
 			}
 
 			if (pasajeros == 8) {

@@ -41,8 +41,11 @@ object teclado {
 	}
 
 	method dispararTeclaCTRL(jugador) {
-		keyboard.control().onPressDo({arriba.girar(jugador)
-			nivel2.crearBala()
+		var cargador=20
+		keyboard.control().onPressDo({if(cargador>0){
+			cargador--
+			arriba.girar(jugador)
+			nivel2.crearBala()}else{game.say(jugador, "te quedaste sin balas :(")}
 		})
 	}
 
