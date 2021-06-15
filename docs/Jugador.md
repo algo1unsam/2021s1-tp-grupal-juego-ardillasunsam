@@ -18,4 +18,4 @@ El jugador hereda de la clase Ente
 -Cuando se presiona la tecla X, el personaje emite un mensaje random. Para elegir el mensaje se crea un numero random del 1 al 3, dependiendo del número se emite un determinado mensaje.
 
 * **method colisionar(objeto):**         
--Cuando el jugador encuentra un objeto siendo este una herramienta, agrega a la misma a una colección y la remueve de la vista.
+- llama al metodo agregarItemAlInventario, para que este agregue a la lista el objeto encontrado.

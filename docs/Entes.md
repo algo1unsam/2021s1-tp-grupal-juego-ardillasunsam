@@ -3,6 +3,9 @@
 En esta sección colocamos todos los entes que interactúan en los distintos niveles. Modelamos al personaje principal, los enemigos y los objetos que no tienen un movimiento autonomo o son inanimados como los bloques que forman las paredes, la barra de vida, el auto, la nave y las balas.  Tambien creamos objetos que nos permiten randomizar la posicion de los enemigos y la nave.
 
 ##  Class Ente 
+* **method agregarItemAlInventario(nuevoItem):* **
+Agrega los items a una coleccion y elimina del visual al objeto.
+
 * **method prioridadColisiones():**       
 -Creamos un sistema que le asignamos una prioridad a los entes del juego ya que todos entienden el método colisionar. Así controlamos  qué objeto es prioritario a la hora de elegir la colisión cuando se encuentran. 
 
@@ -84,7 +87,7 @@ Bloque hereda de la clase Ente
 Avión hereda de Camioneta
 
 * **method colisionar(alguien):**       
--Verifica que ‘alguien’ sea el personaje, elimina al personaje de la visual y ejecuta el metodo movimiento(), si no es el personaje, no hace nada.
+- Verifica la prioridad de colisiones, cuenta cuantos sobrevivientes subieron a la nave, para saber si el jugador puede subir y escapar
 
 * **method movimiento()**        
 -Realiza el movimiento del avión para salir del visual cada un determinado tiempo, luego llama al objeto final para poder mostrar la pantalla ganadora.
@@ -128,7 +131,3 @@ Alcantarilla hereda de Ente
 ## Objeto randomZombie
 * **method position():**    
  -Retorna un valor aleatorio en  coordenada  x mientras que en la coordenada y es siempre game.height-1
-
-## Objeto randomNave
-* **method position():**  
- -Retorna un valor aleatorio en  coordenada de x entre 0 y 14 mientras que en la coordenada y es siempre 0.
