@@ -1,6 +1,7 @@
 # Teclado
 
-Aquí modelamos el objeto teclado el cual contiene todos los métodos que permiten generar acciones cuando se presionan distintos tipos de teclas.
+Aquí modelamos el objeto teclado el cual contiene los métodos que permiten generar acciones cuando se presionan distintos tipos de teclas.
+
 
 ## Objeto teclado
 
