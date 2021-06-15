@@ -210,9 +210,9 @@ object nivel2 inherits Nivel {
 		self.agregarJugador(game.at(game.origin().x(), game.origin().y()+1), "george")
 		teclado.mostrarCoordenadaTeclaH(jugadores.last())
 		
-		objetos.add(new Jugador(position = game.at(randomNave.position().x(), 0), grafico = "george", vidas = 3))
-		objetos.add(new Jugador(position = game.at(randomNave.position().x(), 0), grafico = "george", vidas = 3))
-		objetos.add(new Jugador(position = game.at(randomNave.position().x(), 0), grafico = "george", vidas = 3))
+		objetos.add(new Jugador(position = game.at(randomNave.position().x(), 0), grafico = "george", vidas = 1))
+		objetos.add(new Jugador(position = game.at(randomNave.position().x(), 0), grafico = "george", vidas = 1))
+		objetos.add(new Jugador(position = game.at(randomNave.position().x(), 0), grafico = "george", vidas = 1))
 	}
 	
 	override method iniciarOtrosElementos() {
