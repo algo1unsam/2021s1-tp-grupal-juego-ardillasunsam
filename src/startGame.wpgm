@@ -4,7 +4,7 @@ import entes.*
 import jugador.*
 import niveles.*
 
-program Escenario {
+program ZombiesAndDemons {
 
 	inicio.iniciar()
 
