@@ -2,6 +2,7 @@ import wollok.game.*
 import entes.*
 import fisicas.*
 import direcciones.*
+import niveles.*
 
 class Jugador inherits Ente {
 
@@ -27,6 +28,8 @@ class Jugador inherits Ente {
 		if (self.estaVivo()) {
 			self.position(game.origin())
 			self.gritar()
+		} else {
+			perdiste.iniciar()
 		}
 	}
 

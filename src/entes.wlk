@@ -110,13 +110,11 @@ class EnteBot inherits Ente {
 	}
 }
 
+
 class EnteMalvado inherits EnteBot {
 
 	override method colisionar(alguien) {
 		alguien.bajarVida()
-		if (not alguien.estaVivo()) {			
-			perdiste.iniciar()
-		}
 	}
 
 }
