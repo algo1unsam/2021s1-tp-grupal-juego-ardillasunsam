@@ -66,7 +66,16 @@ El objetivo principal es sobrevivir a la horda de zombies y demonios que se acer
 
 ![nivel2](assets/EscenarioNivel2.png)  
 
+### Autores
+Este juego fue realizado por alumnos de la Universidad Nacional de San Martín para la materia Algoritmos 1.     
 
+Integrantes:      
+
+* [Felipe Carballo](https://github.com/FelipeCarballo1991)
+* [Julieta Romero](https://github.com/julimr)
+* [Nahuel Carron](https://github.com/NahuelCarron)
+* [Gabriel Jotallan](https://github.com/gaabicarp)
+* [Bruno Lima](https://github.com/LimaBD)
 
 
 
@@ -74,9 +83,3 @@ El objetivo principal es sobrevivir a la horda de zombies y demonios que se acer
 
 
 
-### Autores
-* [Felipe Carballo](https://github.com/FelipeCarballo1991)
-* [Julieta Romero](https://github.com/julimr)
-* [Nahuel Carron](https://github.com/NahuelCarron)
-* [Gabriel Jotallan](https://github.com/gaabicarp)
-* [Bruno Lima](https://github.com/LimaBD)
