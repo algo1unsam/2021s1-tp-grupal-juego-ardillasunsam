@@ -1,8 +1,10 @@
 # Teclado
 
+Aquí modelamos el objeto teclado el cual contiene todos los métodos que permiten generar acciones cuando se presionan distintos tipos de teclas.
+
 ## Objeto teclado
 
-* **ethod moverYFlechaArribaAbajo(jugador):**        
+* **method moverYFlechaArribaAbajo(jugador):**        
 -Configura las teclas arriba y abajo, cuando son presionadas el jugador se mueve dependiendo de la flecha.
 
 * **method moverXFlechaDerechaIzquierda(jugador):**            
