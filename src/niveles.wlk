@@ -180,7 +180,7 @@ object nivel1 inherits Nivel {
 object nivel2 inherits Nivel {
 	
 	override method iniciarExtras(){
-		const avion = new Avion(position = game.at(randomNave.position().x(), 1), grafico = "avion.png")
+		const avion = new Avion(position = game.at(randomNave.position().x(), 1), grafico = "avion.png", nivel = self)
 		game.addVisual(avion)
 	}
 	
@@ -210,9 +210,9 @@ object nivel2 inherits Nivel {
 		self.agregarJugador(game.at(game.origin().x(), game.origin().y()+1), "george")
 		teclado.mostrarCoordenadaTeclaH(jugadores.last())
 		
-		objetos.add(new Jugador(position = game.at(randomNave.position().x(), 0), grafico = "george", vidas = 1))
-		objetos.add(new Jugador(position = game.at(randomNave.position().x(), 0), grafico = "george", vidas = 1))
-		objetos.add(new Jugador(position = game.at(randomNave.position().x(), 0), grafico = "george", vidas = 1))
+		jugadores.add(new Jugador(position = game.at(randomNave.position().x(), 0), grafico = "george", vidas = 1))
+		jugadores.add(new Jugador(position = game.at(randomNave.position().x(), 0), grafico = "george", vidas = 1))
+		jugadores.add(new Jugador(position = game.at(randomNave.position().x(), 0), grafico = "george", vidas = 1))
 	}
 	
 	override method iniciarOtrosElementos() {

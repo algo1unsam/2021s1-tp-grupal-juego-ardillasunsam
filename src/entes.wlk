@@ -153,13 +153,17 @@ class Camioneta inherits Bloque {
 	}
 
 }
-class Avion inherits Camioneta{
+class Avion inherits Camioneta {
+	var nivel
 	
 	override method colisionar(alguien){
 		if (alguien.prioridadColisiones() == 40) {
 			game.say(self, "Llegaste!!!")
-			alguien.position(game.at(300, 300))
-			game.removeVisual(alguien)
+
+			nivel.jugadores().forEach({ unJugador => 
+				game.removeVisual(unJugador)
+				unJugador.position(game.at(300, 300))
+			})
 			self.movimiento()
 		}
 	}
