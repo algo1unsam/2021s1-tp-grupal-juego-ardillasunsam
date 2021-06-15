@@ -4,10 +4,8 @@ import fisicas.*
 import direcciones.*
 import niveles.*
 
-class Jugador inherits Ente {
-
-	var property herramientas = []
-	
+class Jugador inherits EnteBot {
+		
 	override method prioridadColisiones() = 40
 	
 	override method image() {
@@ -26,21 +24,13 @@ class Jugador inherits Ente {
 		if (self.estaVivo()) {self.vidas(self.vidas()-1)}
 
 		if (self.estaVivo()) {
-			self.position(game.origin())
-			self.gritar()
+			self.position(game.at(0,1))
+		
 		} else {
 			perdiste.iniciar()
 		}
 	}
 
-	method gritar() {
-		if (self.vidas() == 2) {
-			game.say(self, "ME QUEDAN 2 VIDAS")
-		}
-		if (self.vidas() == 1) {
-			game.say(self, "ME QUEDAN 1 VIDA. CUIDADOOO")
-		}
-	}
 
 	method mensajeRandom() {
 		const random = new Range(start = 1, end = 3).anyOne()

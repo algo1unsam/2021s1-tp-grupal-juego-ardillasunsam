@@ -65,9 +65,8 @@ class Nivel {
 			objetos.forEach({ unObjeto => game.addVisual(unObjeto) })
 			
 			fisicas.colisionesEntreTodos(objetos)
-			game.schedule(10000, {self.iniciarExtras()})
-		})
-		
+			self.iniciarExtras()
+		})		
 	}
 	
 	method iniciarExtras(){}
@@ -163,7 +162,7 @@ object nivel1 inherits Nivel {
 object nivel2 inherits Nivel {
 	
 	override method iniciarExtras(){
-		const avion = new Avion(position = game.at(9, 1), grafico = "avion.png", nivel = self)
+		const avion = new Avion(position = game.at(9,0), grafico = "avion.png")
 		game.addVisual(avion)
 	}
 	
@@ -185,12 +184,31 @@ object nivel2 inherits Nivel {
 		self.agregarJugador(game.at(game.origin().x(), game.origin().y()+1), "george")
 		teclado.mostrarCoordenadaTeclaH(jugadores.last())
 		
-		jugadores.add(new Jugador(position = game.at(random.position().x(), 0), grafico = "george", vidas = 1))
-		jugadores.add(new Jugador(position = game.at(random.position().x(), 0), grafico = "george", vidas = 1))
-		jugadores.add(new Jugador(position = game.at(random.position().x(), 0), grafico = "george", vidas = 1))
 		objetos.add(new BarraVida(jugador = jugadores.first(), position = game.at(14, game.height()-1), grafico = "barra_red"))
 	
+		const sobrevivientes = []
+		
+		sobrevivientes.add(new Jugador(position = game.at(18,0), grafico = "george", vidas = 1))
+		sobrevivientes.add(new Jugador(position = game.at(25,0), grafico = "george", vidas = 1))
+		sobrevivientes.add(new Jugador(position = game.at(35,0), grafico = "george", vidas = 1))
+		sobrevivientes.add(new Jugador(position = game.at(40,0), grafico = "george", vidas = 1))
+		sobrevivientes.add(new Jugador(position = game.at(43,0), grafico = "george", vidas = 1))
+		sobrevivientes.add(new Jugador(position = game.at(0,0), grafico = "george", vidas = 1))			
+		sobrevivientes.add(new Jugador(position = game.at(-10,0), grafico = "george", vidas = 1))			
+		sobrevivientes.add(new Jugador(position = game.at(-15,0), grafico = "george", vidas = 1))			
+		sobrevivientes.add(new Jugador(position = game.at(-20,0), grafico = "george", vidas = 1))			
+		sobrevivientes.add(new Jugador(position = game.at(-40,0), grafico = "george", vidas = 1))		
+	
+		sobrevivientes.forEach{unSobreviviente => unSobreviviente.agregarPunto(9, 0)}
+		sobrevivientes.forEach({ unSobreviviente => unSobreviviente.iniciarMovimiento("noCiclico", 200.randomUpTo(600))})
+		jugadores.addAll(sobrevivientes)
+	
+	
+	
 	}
+	
+	
+	
 	
 	
 	override method asignarTeclas() {
@@ -250,9 +268,10 @@ object final{
 
 object perdiste{
 	method iniciar(){
+		game.schedule(3000,{ 
 		game.clear()
 		const perdiste = new Ente(grafico = "gameover.png")
-		game.addVisual(perdiste)
+		game.addVisual(perdiste)})
 		game.schedule(5000, {game.stop()})
 	}
 	

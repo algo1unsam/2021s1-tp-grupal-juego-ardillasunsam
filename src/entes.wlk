@@ -154,19 +154,25 @@ class Camioneta inherits Bloque {
 
 }
 class Avion inherits Camioneta {
-	var nivel
+	
+	var pasajeros=0
 	
 	override method colisionar(alguien){
 		if (alguien.prioridadColisiones() == 40) {
-			game.say(self, "Llegaste!!!")
-
-			nivel.jugadores().forEach({ unJugador => 
-				game.removeVisual(unJugador)
-				unJugador.position(game.at(300, 300))
-			})
-			self.movimiento()
+			game.removeVisual(alguien)
+			alguien.position(game.at(300, 300))
+			pasajeros+=1
+				
+				if(pasajeros==10){
+				arriba.mover(self)
+				}
+				
+				if(pasajeros==11){
+				game.say(self, "Llegaste!!!")
+				self.movimiento()			
+				}	
 		}
-	}
+}
 	
 	override method movimiento(){
 		game.onTick(500,'mover Avion', {
