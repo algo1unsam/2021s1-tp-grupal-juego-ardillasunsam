@@ -37,6 +37,13 @@ Estos monstruos alguna vez fueron humanos. Suelen rondar sin sentido pero casi s
 
 ![zombie1](assets/Zombie1.gif)        ![zombie2](assets/Zombie2.gif)       ![zombie3](assets/Zombie3.gif)       ![zombie4](assets/Zombie4.gif)
 
+## Sobrevivientes
+
+Están muy atemorizados y necesitan de tu ayuda. Sos el único que puede soportar la embestida de la horda.        
+
+![sobreviviente1](assets/Sobreviviente1.gif) ![sobreviviente2](assets/Sobreviviente2.gif)   ![sobreviviente3](assets/Sobreviviente3.gif)  ![sobreviviente4](assets/Sobreviviente4.gif)  
+
+
 ## Nivel 1
 
 El objetivo del nivel es recolectar los elementos necesarios para poder reparar el auto y huir de los zombies y demonios. Hay que esquivar a los zombies y demonios para no perder vidas y retroceder. Se pueden tomar atajos mediante las alcantarillas. Una vez que se agarran todas las herramientas y se llega al auto, pasa al nivel 2. 
@@ -50,7 +57,7 @@ El objetivo del nivel es recolectar los elementos necesarios para poder reparar 
 
 ## Nivel 2
 
-El objetivo principal es sobrevivir a la horda de zombies y demonios que se acercan a tu posición. Tenés un arma que encontraste en el auto y es tu única esperanza para poder ganar tiempo. Una nave de rescate se acerca a tu posicion. Debes esperarla y subirte a ella para lograr escapar.
+El objetivo principal es sobrevivir a la horda de zombies y demonios que se acercan a tu posición. Tenés un arma que encontrast con una cantidad limitada de balas. Debes disparar con cuidado a los zombies y demonios que se acercan mientras los sobrevivientes abordan la nave de rescate.
 
 ### Movimientos
 - Desplazamiento  =  ← → 
