@@ -83,8 +83,7 @@ class Nivel {
 	method iniciarJugadores() {}
 	method iniciarOtrosElementos() {}
 	method iniciarAnimaciones() {
-	objetos.add(new BarraVida(jugador = jugadores.last(), position = game.at(14, 0), grafico = "barra_red"))
-	
+		objetos.add(new BarraVida(jugador = jugadores.first(), position = game.at(14, 0), grafico = "barra_red"))
 	}
 	method iniciarExtras(){}
 }
