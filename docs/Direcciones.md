@@ -18,3 +18,8 @@ Permite definir la cantidad de ‘espacios’ que se va a mover el objeto. (var 
 
 * **method direccionOpuesta():**          
 -Devuelve la dirección opuesta, arriba → abajo, derecha -> izquierda, etc...
+
+* **method posicionMasUno(objeto):**   
+-Retorna la posicion +1 de un ente. Se le suma 1 dependiendo en que direccion este posicionado.
+
+Creamos los objetos arriba,abajo,izquierda,derecha que nos permite administrar los movimientos de los Entes
