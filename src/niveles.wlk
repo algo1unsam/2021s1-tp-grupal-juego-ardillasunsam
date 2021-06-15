@@ -9,7 +9,7 @@ object inicio {
 
 	method iniciar() {
 		self.configurarPantalla()
-		teclado.presentacionTeclaEnter(nivel1)
+		teclado.presentacionTeclaEnter(nivel2)
 		game.start()
 	}
 
@@ -173,6 +173,7 @@ object nivel2 inherits Nivel {
 		if (jugadores.size() == 1) {
 			teclado.moverXFlechaDerechaIzquierda(jugadores.first())
 			teclado.dispararTeclaCTRL(jugadores.first())
+			teclado.girarArriba(jugadores.first())
 		} else {
 			teclado.moverXTeclaAD(jugadores.last())
 			teclado.dispararTeclaG(jugadores.first())
@@ -184,16 +185,25 @@ object nivel2 inherits Nivel {
 	// hay que reemplazar por las mecanicas existentes de puntos.
 	method crearBala() {
 		
+	
 		const bala = new Bala(position = jugadores.first().position().up(1))
+		
+		bala.direccion(jugadores.first().direccion())
+		
 		game.addVisual(bala)
 		game.onTick(10, bala.identity().toString(), { if (bala.position().y() == game.height()+2) {
 				game.removeVisual(bala)
 				game.removeTickEvent(bala.identity().toString())
 			}
-			arriba.mover(bala)
+			
+			bala.direccion().mover(bala)
+			//arriba.mover(bala)
 		})
 		fisicas.colisiones(bala)
 	}
+	
+	
+	
 
 	method movimientoZombie(unZombie) {
 		game.onTick(900.randomUpTo(1200), self.identity().toString(), {if (unZombie.position().y() == 0) {

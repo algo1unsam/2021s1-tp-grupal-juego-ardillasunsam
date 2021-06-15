@@ -21,6 +21,10 @@ object teclado {
 			derecha.moverLimitado(jugador)
 		})
 	}
+	
+	method girarArriba(jugador){
+		keyboard.up().onPressDo({ arriba.girar(jugador)})		
+	}
 
 	method moverYTeclaWS(jugador) {
 		keyboard.w().onPressDo({ arriba.girar(jugador)
@@ -45,7 +49,7 @@ object teclado {
 		keyboard.control().onPressDo({if(cargador>0){
 			cargador--
 			if(cargador==15){game.say(jugador, "quedan 15 balas, apunta mejor")}
-			arriba.girar(jugador)
+			//arriba.girar(jugador)
 			nivel2.crearBala()}else{game.say(jugador, "te quedaste sin balas :(")}
 		})
 	}
