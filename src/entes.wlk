@@ -291,12 +291,12 @@ object randomZombie {
 
 }
 
-object random {
-	
-	method position(){
-		return game.at((0 .. 14 - 1 ).anyOne(), 0)
-	}
-}
+//object random {
+//	
+//	method position(){
+//		return game.at((0 .. 14 - 1 ).anyOne(), 0)
+//	}
+//}
 
 
 
