@@ -190,7 +190,7 @@ object nivel2 inherits Nivel {
 				game.removeVisual(bala)
 				game.removeTickEvent(bala.identity().toString())
 			}
-			derecha.mover(bala)
+			arriba.mover(bala)
 		})
 		fisicas.colisiones(bala)
 	}
