@@ -40,7 +40,7 @@ describe "Giro/Cambio de direccion de un objeto o jugador." {
 
 
 describe "Movimiento de un objeto o jugador." {
-	// En construccion.
+	//
 }
 
 

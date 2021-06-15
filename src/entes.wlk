@@ -10,11 +10,10 @@ class Ente {
 	var property position = game.origin()
 	var property direccion = abajo
 	var property grafico = ""
-
 	var property inventario = []
-	
+
 	method cantidadDeItems() = inventario.size()
-	
+
 	method agregarItemAlInventario(nuevoItem) {
 		inventario.add(nuevoItem)
 		game.removeVisual(nuevoItem)
@@ -23,19 +22,19 @@ class Ente {
 	method image() = grafico
 
 	method estaVivo() = (vidas > 0)
-	
-	method bajarVida() { 
+
+	method bajarVida() {
 		if (self.estaVivo()) {
-			self.vidas(self.vidas()-1)
+			self.vidas(self.vidas() - 1)
 		}
 	}
-	
+
 	method prioridadColisiones() = 0
 
-	method colisionar(alguien) {}
-
+	method colisionar(alguien) {
+	}
+	
 }
-
 
 class EnteBot inherits Ente {
 
@@ -67,7 +66,6 @@ class EnteBot inherits Ente {
 
 	method movimiento(tipoDeMovimiento) {
 		var puntoAlcanzado = true
-		
 		if (self.puntoXmenorAlActual()) {
 			derecha.girar(self)
 			puntoAlcanzado = false
@@ -84,7 +82,6 @@ class EnteBot inherits Ente {
 			arriba.girar(self)
 			puntoAlcanzado = false
 		}
-		
 		if (not puntoAlcanzado) {
 			self.direccion().mover(self)
 		} else {
@@ -111,8 +108,8 @@ class EnteBot inherits Ente {
 			puntoActual += 1
 		}
 	}
-}
 
+}
 
 class EnteMalvado inherits EnteBot {
 
@@ -123,7 +120,7 @@ class EnteMalvado inherits EnteBot {
 }
 
 class Bloque inherits Ente {
-	
+
 	override method prioridadColisiones() = 100
 
 	override method colisionar(alguien) {
@@ -136,54 +133,63 @@ class Camioneta inherits Bloque {
 
 	override method colisionar(alguien) {
 		if (alguien.cantidadDeItems() >= 4) {
-			game.say(self, "GANASTE")			
+			game.say(self, "EXELENTE UN ARAMA EN EL AUTO! :D")
 			game.removeVisual(alguien)
 			self.movimiento()
 		} else {
 			super(alguien)
 		}
 	}
-	method movimiento(){
-		game.onTick(500,'mover', {
-			if (self.position().x() == 0){
-				game.schedule(2000, { nivel2.iniciar()} ) 
+
+	method movimiento() {
+		game.onTick(500, 'mover', { if (self.position().x() == 0) {
+				game.schedule(2000, { nivel2.iniciar()})
 			}
 			izquierda.mover(self)
-		} )
+		})
 	}
 
 }
+
 class Avion inherits Camioneta {
-	
-	var pasajeros=0
-	
-	override method colisionar(alguien){
+
+	var pasajeros = 0
+
+	override method colisionar(alguien) {
 		if (alguien.prioridadColisiones() == 40) {
 			game.removeVisual(alguien)
-			alguien.position(game.at(300, 300))
-			pasajeros+=1
+			alguien.position(game.at(300,300))
+			pasajeros += 1
+			if (pasajeros < 6) {
+				game.say(self, "logra tiempo hasta que suban todos!")
+			}
+
+			if (pasajeros == 8) {
+				game.say(self, "solo faltan 2 sigue asi!!!!")
 				
-				if(pasajeros==10){
+			}			
+			
+			if (pasajeros == 10) {
+				game.say(self, "LISTO! SUBE! SOLO FALTAS TU!")
 				arriba.mover(self)
-				}
-				
-				if(pasajeros==11){
-				game.say(self, "Llegaste!!!")
-				self.movimiento()			
-				}	
+			}
+			if (pasajeros == 11) {
+				game.say(self, "SALVASTE A TODOS :D!!")
+				self.movimiento()
+				game.say(self, " listo , vamo al kiosoco :D ")
+			}
 		}
-}
-	
-	override method movimiento(){
-		game.onTick(500,'mover Avion', {
-			if (self.position().y() == 10){
-				game.schedule(2000, { final.iniciar()} ) 
+	}
+
+	override method movimiento() {
+		game.onTick(500, 'mover Avion', { if (self.position().y() == 10) {
+				game.schedule(2000, { final.iniciar()})
 			}
 			arriba.mover(self)
-		} )
+		})
 	}
-}
 
+}
 
 class BarraVida inherits Ente {
 
@@ -196,22 +202,16 @@ class BarraVida inherits Ente {
 }
 
 class Bala inherits EnteBot {
-	
-	const diferentesImagenes = ["bullet_azul.png",
-								"bullet_celeste.png",
-								"bullet_gris.png",
-								"bullet_naranja.png",
-								"bullet_roja.png",
-								"bullet_verde.png",
-								"bullet_violeta.png"]
+
+	const diferentesImagenes = [ "bullet_azul.png", "bullet_celeste.png", "bullet_gris.png", "bullet_naranja.png", "bullet_roja.png", "bullet_verde.png", "bullet_violeta.png" ]
 
 	override method image() {
 		if (self.grafico() == "") {
-			self.grafico(diferentesImagenes.anyOne())		  
+			self.grafico(diferentesImagenes.anyOne())
 		}
 		return self.grafico()
 	}
-	 
+
 	override method prioridadColisiones() = 100
 
 	override method colisionar(alguien) {
@@ -222,10 +222,10 @@ class Bala inherits EnteBot {
 	override method bajarVida() {
 		// Estos IF deben permanecer separados.
 		if (self.estaVivo()) {
-			self.vidas(self.vidas()-1)
+			self.vidas(self.vidas() - 1)
 		}
 		if (not self.estaVivo()) {
-			self.position(game.at(game.width(),game.height()))
+			self.position(game.at(game.width(), game.height()))
 		}
 	}
 
@@ -233,37 +233,32 @@ class Bala inherits EnteBot {
 
 class Zombie inherits EnteMalvado {
 
-	const diferentesImagenes = [ "zombie1", 
-								 "zombie2", 
-	  							 "zombie3", 
-								 "zombie4", 
-								 "devil1", 
-								 "devil2", 
-								 "devil3",
-								 "devil4" ]
-								 
+	const diferentesImagenes = [ "zombie1", "zombie2", "zombie3", "zombie4", "devil1", "devil2", "devil3", "devil4" ]
+
 	override method prioridadColisiones() = 60
 
 	override method image() {
 		if (self.grafico() == "") {
-		 self.grafico(diferentesImagenes.anyOne())
+			self.grafico(diferentesImagenes.anyOne())
 		}
 		return (self.grafico() + "_" + self.direccion() + ".png")
 	}
-	
+
 	override method bajarVida() {
 		// Estos IF deben permanecer separados.
 		if (self.estaVivo()) {
-			self.vidas(self.vidas()-1)
+			self.vidas(self.vidas() - 1)
 		}
 		if (not self.estaVivo()) {
 			self.position(randomZombie.position())
+			
 		}
 	}
 
 }
 
 class Alcantarilla inherits Ente {
+
 	var property salida = self
 
 	override method prioridadColisiones() = 60
@@ -272,12 +267,13 @@ class Alcantarilla inherits Ente {
 		abajo.girar(alguien)
 		alguien.position(salida.position())
 	}
+
 }
 
 object randomZombie {
 
 	method position() {
-		return game.at((0 .. game.width() - 1 ).anyOne(), game.height() - 1)
+		return game.at((0 .. game.width()).anyOne(), game.height() + 1)
 	}
 
 	method emptyPosition() {
@@ -288,18 +284,11 @@ object randomZombie {
 			return self.emptyPosition()
 		}
 	}
-
 }
-
-//object random {
-//	
-//	method position(){
-//		return game.at((0 .. 14 - 1 ).anyOne(), 0)
-//	}
-//}
-
-
 
 class Fondo inherits Ente {
+
 	override method prioridadColisiones() = 100
+
 }
+
