@@ -6,8 +6,8 @@ En este apartado creamos la clase direccion la cual se encarga de generar el tip
 Permite definir la cantidad de ‘espacios’ que se va a mover el objeto. (var property distanciaPorPaso = 1)
 
 * **method girar(objeto):**         
--Permite al objeto girar dependiendo en la dirección (objeto)  que se ejecute. Si la dirección es arriba y el objeto por parámetro está vivo, la dirección del objeto por parámetro será ‘arriba’.      
-Objeto arriba, Objeto abajo, Objeto derecha y Objeto izquierda.            
+-Permite al objeto girar dependiendo en la dirección (objeto)  que se ejecute. Si la dirección es arriba y el objeto por parámetro está vivo, la dirección del objeto por parámetro será ‘arriba’.          
+-Para eso modelamos los objetos arriba,abajo, derecha e izquierda.              
 -Todos estos objetos heredan de Dirección.
 
 * **method mover(objeto):**                     
