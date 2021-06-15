@@ -36,6 +36,7 @@ class Ente {
 
 }
 
+
 class EnteBot inherits Ente {
 
 	var property puntoActual = 0
@@ -65,37 +66,39 @@ class EnteBot inherits Ente {
 	}
 
 	method movimiento(tipoDeMovimiento) {
-		if (not self.girarEnEjeX()) {
-			if (not self.girarEnEjeY()) {
-				self.puntoAlcanzado(tipoDeMovimiento)
-			}
-		}
-		self.direccion().mover(self)
-	}
-
-	method girarEnEjeX() {
-		if (self.position().x() < self.puntoX(puntoActual)) {
+		var puntoAlcanzado = true
+		
+		if (self.puntoXmenorAlActual()) {
 			derecha.girar(self)
-			return true
-		} else if (self.position().x() > self.puntoX(puntoActual)) {
+			puntoAlcanzado = false
+		}
+		if (self.puntoXmayorAlActual()) {
 			izquierda.girar(self)
-			return true
+			puntoAlcanzado = false
+		}
+		if (self.puntoYmayorAlActual()) {
+			abajo.girar(self)
+			puntoAlcanzado = false
+		}
+		if (self.puntoYmenorAlActual()) {
+			arriba.girar(self)
+			puntoAlcanzado = false
+		}
+		
+		if (not puntoAlcanzado) {
+			self.direccion().mover(self)
 		} else {
-			return false
+			self.puntoAlcanzado(tipoDeMovimiento)
 		}
 	}
 
-	method girarEnEjeY() {
-		if (self.position().y() > self.puntoY(puntoActual)) {
-			abajo.girar(self)
-			return true
-		} else if (self.position().y() < self.puntoY(puntoActual)) {
-			arriba.girar(self)
-			return true
-		} else {
-			return false
-		}
-	}
+	method puntoXmenorAlActual() = self.position().x() < self.puntoX(puntoActual)
+
+	method puntoXmayorAlActual() = self.position().x() > self.puntoX(puntoActual)
+
+	method puntoYmayorAlActual() = self.position().y() > self.puntoY(puntoActual)
+
+	method puntoYmenorAlActual() = self.position().y() < self.puntoY(puntoActual)
 
 	method puntoAlcanzado(tipoDeMovimiento) {
 		if ((puntoActual + 1) == puntos.size()) {
