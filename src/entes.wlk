@@ -285,7 +285,7 @@ object randomZombie {
 
 }
 
-object randomNave {
+object random {
 	
 	method position(){
 		return game.at((0 .. 14 - 1 ).anyOne(), 0)
