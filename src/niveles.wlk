@@ -9,7 +9,7 @@ object inicio {
 
 	method iniciar() {
 		self.configurarPantalla()
-		teclado.presentacionTeclaEnter(nivel2)
+		teclado.presentacionTeclaEnter(nivel1)
 		game.start()
 	}
 
@@ -102,23 +102,23 @@ object nivel1 inherits Nivel {
 		objetos.add(alcantarilla2)
 		const zombies = []
 		zombies.add(new Zombie(position = game.at(5, 9)))
-		zombies.last().agregarPunto(5, 5) // recto eje y
+		zombies.last().agregarPunto(5, 5)
 		zombies.add(new Zombie(position = game.at(7, 6)))
-		zombies.last().agregarPunto(6, 7) // cuadrado
+		zombies.last().agregarPunto(6, 7)
 		zombies.add(new Zombie(position = game.at(10, 8)))
-		zombies.last().agregarPunto(10, 2) // recto eje y
+		zombies.last().agregarPunto(10, 2)
 		zombies.add(new Zombie(position = game.at(13, 8)))
-		zombies.last().agregarPunto(13, 3) // recto eje y
+		zombies.last().agregarPunto(13, 3)
 		zombies.add(new Zombie(position = game.at(15, 10)))
-		zombies.last().agregarPunto(11, 5) // cuadrado
+		zombies.last().agregarPunto(11, 5)
 		zombies.add(new Zombie(position = game.at(10, 3)))
-		zombies.last().agregarPunto(16, 3) // recto eje x
+		zombies.last().agregarPunto(16, 3)
 		zombies.add(new Zombie(position = game.at(1, 6)))
-		zombies.last().agregarPunto(3, 11) // cuadrado
+		zombies.last().agregarPunto(3, 11)
 		zombies.add(new Zombie(position = game.at(17, 11)))
-		zombies.last().agregarPunto(17, 3) // recto eje y
+		zombies.last().agregarPunto(17, 3)
 		zombies.add(new Zombie(position = game.at(6, 11)))
-		zombies.last().agregarPunto(13, 11) // recto eje x
+		zombies.last().agregarPunto(13, 11)
 		zombies.forEach({ unZombie => unZombie.iniciarMovimiento("ciclico", 100.randomUpTo(400))})
 		objetos.addAll(zombies)
 		self.agregarJugador(game.origin(), "george")
@@ -181,32 +181,21 @@ object nivel2 inherits Nivel {
 		teclado.hablarTeclaX(jugadores.last())
 	}
 
-	// hay que lograr que acepte los dos jugadores
-	// hay que reemplazar por las mecanicas existentes de puntos.
 	method crearBala() {
-		
-	
-		const bala = new Bala(position = jugadores.first().position().up(1))
-		
+		const bala = new Bala(position = jugadores.first().direccion().posicionMasUno(jugadores.first()))
 		bala.direccion(jugadores.first().direccion())
-		
 		game.addVisual(bala)
-		game.onTick(10, bala.identity().toString(), { if (bala.position().y() == game.height()+2) {
+		game.onTick(10, bala.identity().toString(), { if (bala.position().y() == game.height() + 2) {
 				game.removeVisual(bala)
 				game.removeTickEvent(bala.identity().toString())
 			}
-			
 			bala.direccion().mover(bala)
-			//arriba.mover(bala)
 		})
 		fisicas.colisiones(bala)
 	}
-	
-	
-	
 
 	method movimientoZombie(unZombie) {
-		game.onTick(900.randomUpTo(1200), self.identity().toString(), {if (unZombie.position().y() == 0) {
+		game.onTick(900.randomUpTo(1200), self.identity().toString(), { if (unZombie.position().y() == 0) {
 				unZombie.position(randomZombie.position())
 			}
 			abajo.mover(unZombie)

@@ -17,10 +17,6 @@ class Jugador inherits EnteBot {
 	}
 
 	override method bajarVida() {
-		// Este IF aunque tenga la misma condicion,
-		// debe permanecer separado del siguiente IF,
-		// ya que evalua si aun sigue vivo luego de
-		// cumplirse este IF.
 		if (self.estaVivo()) {self.vidas(self.vidas()-1)}
 
 		if (self.estaVivo()) {

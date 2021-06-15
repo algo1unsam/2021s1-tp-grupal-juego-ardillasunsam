@@ -33,6 +33,7 @@ object arriba inherits Direccion
 	}
 
 	method direccionOpuesta() = abajo
+	method posicionMasUno(objeto) = objeto.position().up(1)
 }
 
 
@@ -53,6 +54,7 @@ object abajo inherits Direccion
 	}
 	
 	method direccionOpuesta() = arriba
+	method posicionMasUno(objeto) = objeto.position().down(1)
 }
 
 
@@ -73,7 +75,10 @@ object derecha inherits Direccion
 	}
 	
 	method direccionOpuesta() = izquierda
+	method posicionMasUno(objeto) = objeto.position().right(1)
 }
+
+
 
 
 object izquierda inherits Direccion 
@@ -93,4 +98,5 @@ object izquierda inherits Direccion
 	}
 
 	method direccionOpuesta() = derecha
+	method posicionMasUno(objeto) = objeto.position().left(1)
 }

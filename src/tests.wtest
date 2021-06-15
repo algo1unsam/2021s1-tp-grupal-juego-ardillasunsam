@@ -38,17 +38,3 @@ describe "Giro/Cambio de direccion de un objeto o jugador." {
 	}
 }
 
-
-describe "Movimiento de un objeto o jugador." {
-	//
-}
-
-
-describe "Fisicas/Colisiones y sistema de prioridades." {
-	// En construccion.
-}
-
-
-describe "Movimientos automatas de zombies." {
-	// En construccion.
-}

@@ -221,7 +221,7 @@ class Bala inherits EnteBot {
 	}
 
 	override method bajarVida() {
-		// Estos IF deben permanecer separados.
+		
 		if (self.estaVivo()) {
 			self.vidas(self.vidas() - 1)
 		}
@@ -246,7 +246,7 @@ class Zombie inherits EnteMalvado {
 	}
 
 	override method bajarVida() {
-		// Estos IF deben permanecer separados.
+		
 		if (self.estaVivo()) {
 			self.vidas(self.vidas() - 1)
 		}
