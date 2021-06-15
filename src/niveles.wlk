@@ -9,7 +9,7 @@ object inicio {
 
 	method iniciar() {
 		self.configurarPantalla()
-		teclado.presentacionTeclaEnter(nivel1)
+		teclado.presentacionTeclaEnter(nivel2)
 		game.start()
 	}
 
@@ -190,13 +190,13 @@ object nivel2 inherits Nivel {
 				game.removeVisual(bala)
 				game.removeTickEvent(bala.identity().toString())
 			}
-			arriba.mover(bala)
+			derecha.mover(bala)
 		})
 		fisicas.colisiones(bala)
 	}
 
 	method movimientoZombie(unZombie) {
-		game.onTick(400.randomUpTo(600), self.identity().toString(), {if (unZombie.position().y() == 0) {
+		game.onTick(900.randomUpTo(1200), self.identity().toString(), {if (unZombie.position().y() == 0) {
 				unZombie.position(randomZombie.position())
 			}
 			abajo.mover(unZombie)

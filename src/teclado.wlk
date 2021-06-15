@@ -44,6 +44,7 @@ object teclado {
 		var cargador=20
 		keyboard.control().onPressDo({if(cargador>0){
 			cargador--
+			if(cargador==10){game.say(jugador, "quedan 10 balas, apunta mejor")}
 			arriba.girar(jugador)
 			nivel2.crearBala()}else{game.say(jugador, "te quedaste sin balas :(")}
 		})
