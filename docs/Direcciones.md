@@ -10,11 +10,11 @@ Permite definir la cantidad de ‘espacios’ que se va a mover el objeto. (var 
 Objeto arriba, Objeto abajo, Objeto derecha y Objeto izquierda.            
 -Todos estos objetos heredan de Dirección.
 
-* **method mover(objeto):**          
+* **method mover(objeto):**                     
 -Verifica que el objeto esté vivo y mueve al objeto dependiendo que objeto de dirección sea (arriba,abajo,izquierda o derecha) en la distancia que está definida. 
 
-* **method moverLimitado(objeto):**
+* **method moverLimitado(objeto):**        
 -Verifica que el objeto esté dentro del tamaño del visual para permitir que se mueva (ejecuta método mover).
 
-* **method direccionOpuesta():**
+* **method direccionOpuesta():**          
 -Devuelve la dirección opuesta, arriba → abajo, derecha -> izquierda, etc...
