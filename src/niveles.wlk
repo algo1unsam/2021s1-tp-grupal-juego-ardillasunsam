@@ -10,7 +10,7 @@ object inicio {
 
 	method iniciar() {
 		self.configurarPantalla()
-		teclado.presentacionTeclaEnter(nivel1)
+		teclado.presentacionTeclaEnter(nivel2)
 		game.start()
 	}
 
@@ -180,7 +180,7 @@ object nivel1 inherits Nivel {
 object nivel2 inherits Nivel {
 	
 	override method iniciarExtras(){
-		const avion = new Avion(position = randomNave.position(), grafico = "avion.png")
+		const avion = new Avion(position = game.at(randomNave.position().x(), 1), grafico = "avion.png")
 		game.addVisual(avion)
 	}
 	
@@ -207,8 +207,12 @@ object nivel2 inherits Nivel {
 	}
 	
 	override method iniciarJugadores() {
-		self.agregarJugador(game.origin(), "george")
+		self.agregarJugador(game.at(game.origin().x(), game.origin().y()+1), "george")
 		teclado.mostrarCoordenadaTeclaH(jugadores.last())
+		
+		objetos.add(new Jugador(position = game.at(randomNave.position().x(), 0), grafico = "george", vidas = 3))
+		objetos.add(new Jugador(position = game.at(randomNave.position().x(), 0), grafico = "george", vidas = 3))
+		objetos.add(new Jugador(position = game.at(randomNave.position().x(), 0), grafico = "george", vidas = 3))
 	}
 	
 	override method iniciarOtrosElementos() {
