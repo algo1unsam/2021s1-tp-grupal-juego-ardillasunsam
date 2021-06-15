@@ -134,7 +134,7 @@ class Camioneta inherits Bloque {
 	override method colisionar(alguien) {
 		if (alguien.cantidadDeItems() >= 4) {
 			game.say(self, "EXELENTE UN ARAMA EN EL AUTO!")
-			game.say(self, " solo tienes 20 balas")
+			game.say(self, "(solo tienes 30 balas)")
 			game.removeVisual(alguien)
 			self.movimiento()
 		} else {

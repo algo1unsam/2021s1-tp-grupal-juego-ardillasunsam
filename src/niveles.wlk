@@ -9,7 +9,7 @@ object inicio {
 
 	method iniciar() {
 		self.configurarPantalla()
-		teclado.presentacionTeclaEnter(nivel2)
+		teclado.presentacionTeclaEnter(nivel1)
 		game.start()
 	}
 
