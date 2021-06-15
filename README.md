@@ -60,7 +60,7 @@ El objetivo del nivel es recolectar los elementos necesarios para poder reparar 
 El objetivo principal es sobrevivir a la horda de zombies y demonios que se acercan a tu posición. Tenés un arma que encontraste en el auto con una cantidad limitada de balas. Debes disparar con cuidado a los zombies y demonios que se acercan mientras los sobrevivientes abordan la nave de rescate.
 
 ### Movimientos
-- Desplazamiento  =  ← → 
+- Desplazamiento  =  ← ↑ → 
 - Disparar = Ctrl
 - Hablar = X
 
