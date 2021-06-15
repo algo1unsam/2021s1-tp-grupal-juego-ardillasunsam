@@ -33,7 +33,19 @@ EnteBot hereda de Ente
 -Devuelve de la lista de puntos, en la posición que se pasa por parámetro el último valor del conjunto, en este caso la posición Y.
 
 * **method movimiento(tipoDeMovimiento):**      
--Verifica que no gireEnEjeX y no gireEnEjeY para poder ejecutar el método punto Alcanzado,dependiendo del tipo de movimiento.
+- Mediante los otros metodos puntoXmenorAlActual, puntoXmayorAlActual, puntoYmenorAlActual, puntoXmayorAlActual, se verifica si es necesario girar y moverse hacia arriba, abajo, derecha o izquierda para alcanzar un punto objetivo.
+
+* **method puntoXmenorAlActual:**
+- se verifica si la posicion actual en el eje X de un objeto es menor al punto objetivo, retorna un booleano.
+
+* **method puntoXmayorAlActual:**
+- se verifica si la posicion actual en el eje X de un objeto es mayor al punto objetivo, retorna un booleano.
+
+* **method puntoYmenorAlActual:**
+- se verifica si la posicion actual en el eje Y de un objeto es menor al punto objetivo, retorna un booleano.
+
+* **method puntoXmayorAlActual:**
+- se verifica si la posicion actual en el eje Y de un objeto es mayor al punto objetivo, retorna un booleano.
 
 * **method girarEnEjeX():**        
 -Verifica que la posición en X sea menor a la posición del punto actual en X, si es así, permite girar al objeto a la derecha y devuelve true.   
@@ -51,7 +63,7 @@ EnteBot hereda de Ente
 EnteMalvado hereda de EnteBot
 
 * **method colisionar(alguien):**       
--Cuando colisiona con alguien, le baja la vida. Luego evalúa el estado del ‘alguien’, para saber si está vivo, si no es así, ejecuta el objeto perdiste.iniciar(), el cual lleva a la pantalla GAME OVER.
+-Cuando colisiona con alguien, le baja la vida.
 
 ## Class Bloque
 Bloque hereda de la clase Ente
